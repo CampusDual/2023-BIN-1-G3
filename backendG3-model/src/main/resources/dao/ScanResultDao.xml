@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="scan_result"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_scan_result</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_scan_result</Column>
+    </UpdateKeys>
+    <Queries>
+        <Query id="default">
+            <ValidColumns>
+                <Column>id_scan_result</Column>
+                <Column>dev</Column>
+                <Column>date</Column>
+                <Column>scan_volume</Column>
+                <Column>calculated_volume</Column>
+                <Column>plate</Column>
+                <Column>height</Column>
+                <Column>width</Column>
+                <Column>length</Column>
+                <Column>trailer_plate</Column>
+                <Column>delivery_note</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.scan_result
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
