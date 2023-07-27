@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ontimize.boot</groupId>
+    <artifactId>ontimize-boot-parent</artifactId>
+    <version>3.10.1</version>
+  </parent>
+  <groupId>com.ontimize.backendG3</groupId>
+  <artifactId>backendG3</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>11</java.version>
+
+    <hsqldatabase.path>src/main/db</hsqldatabase.path>
+
+    <database.url>jdbc:postgresql://45.84.210.174:65432/2023-BIN-1-G3</database.url>
+
+    <hsqldb.version>2.3.4</hsqldb.version>
+
+    <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+
+  </properties>
+
+  <dependencyManagement>
+
+    <dependencies>
+
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.5.4</version>
+      </dependency>
+      
+      <dependency>
+        
+        <groupId>org.springframework.boot</groupId>
+
+        <artifactId>spring-boot-starter-web</artifactId>
+      
+      </dependency>
+
+      <dependency>
+
+        <groupId>com.ontimize.backendG3</groupId>
+
+        <artifactId>backendG3-api</artifactId>
+
+        <version>1.0-SNAPSHOT</version>
+
+      </dependency>
+      
+      <dependency>
+
+        <groupId>com.ontimize.backendG3</groupId>
+
+        <artifactId>backendG3-boot</artifactId>
+
+        <version>1.0-SNAPSHOT</version>
+      
+      </dependency>
+      
+      <dependency>
+                                        
+        
+        
+        
+        <groupId>com.ontimize.backendG3</groupId>
+                                        
+        
+        
+        
+        <artifactId>backendG3-model</artifactId>
+                                        
+        
+        
+        
+        <version>1.0-SNAPSHOT</version>
+                                      
+      
+      
+      
+      </dependency>
+                              
+      
+      
+      
+      <dependency>
+                                        
+        
+        
+        
+        <groupId>com.ontimize.backendG3</groupId>
+                                        
+        
+        
+        
+        <artifactId>backendG3-ws</artifactId>
+                                        
+        
+        
+        
+        <version>1.0-SNAPSHOT</version>
+                                      
+      
+      
+      
+      </dependency>
+                              
+      
+      
+      
+      <dependency>
+                                        
+        
+        
+        
+        <groupId>org.hsqldb</groupId>
+                                        
+        
+        
+        
+        <artifactId>hsqldb</artifactId>
+                                        
+        
+        
+        
+        <version>${hsqldb.version}</version>
+                                      
+      
+      
+      
+      </dependency>
+                            
+    
+    
+    
+    </dependencies>
+                  
+  
+  
+  
+  </dependencyManagement>
+        
+  
+  
+  
+  <modules>
+                  
+    
+    
+    
+    <module>backendG3-api</module>
+                  
+    
+    
+    
+    <module>backendG3-model</module>
+              
+    
+    
+    <module>backendG3-ws</module>
+          
+    
+    <module>backendG3-boot</module>
+      
+  </modules>
+      
+
+
+</project>
