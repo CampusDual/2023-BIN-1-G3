@@ -25,4 +25,17 @@ public class ScanResultService implements IScanResultService {
     public EntityResult scanResultQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(scanResultDao, keyMap, attrList);
     }
+
+    public EntityResult scanResultInsert(Map<?, ?> attrMap) {
+        return this.daoHelper.insert(scanResultDao, attrMap);
+    }
+
+    public EntityResult scanResultUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+        return this.daoHelper.update(scanResultDao, attrMap, keyMap);
+    }
+
+    public EntityResult scanResultDelete(Map<?, ?> keyMap) {
+        return this.daoHelper.delete(this.scanResultDao, keyMap);
+    }
+
 }

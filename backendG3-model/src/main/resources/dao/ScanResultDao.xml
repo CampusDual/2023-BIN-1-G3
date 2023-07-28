@@ -11,7 +11,8 @@
     <UpdateKeys>
         <Column>id_scan_result</Column>
     </UpdateKeys>
-    <Queries>
+    <GeneratedKey>id_scan_result</GeneratedKey>
+    <!--<Queries>
         <Query id="default">
             <ValidColumns>
                 <Column>id_scan_result</Column>
@@ -36,5 +37,5 @@
                 ]]>
             </Sentence>
         </Query>
-    </Queries>
+    </Queries>-->
 </JdbcEntitySetup>
