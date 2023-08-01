@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="backendG3-boot" />
+        <module name="backendG3-ws" />
+        <module name="backendG3-model" />
+        <module name="backendG3-api" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="backendG3-api" options="-parameters" />
+      <module name="backendG3-boot" options="-parameters" />
+      <module name="backendG3-model" options="-parameters" />
+      <module name="backendG3-ws" options="-parameters" />
+    </option>
+  </component>
+</project>
