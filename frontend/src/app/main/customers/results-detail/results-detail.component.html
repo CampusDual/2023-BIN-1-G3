@@ -1,0 +1,26 @@
+<o-form service="results" entity="scanResult" keys="id_scan_result" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input attr="id_scan_result" sql-type="INTEGER" enabled="no" label-visible="yes" oHidden></o-text-input>
+    <o-row>
+      <o-column title-label="RESULTS_INFORMATION" fxFlex>
+        <o-row>
+          <o-text-input class="input-padding" attr="plate" fxFlex="40" required="yes"></o-text-input>
+          <o-text-input class="input-padding" attr="trailer_plate" fxFlex="40" required="no"></o-text-input>
+          <o-date-input attr="date" fxFlex="20"></o-date-input>
+        </o-row>
+        <o-row>
+          <o-real-input attr="height" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes"></o-real-input>
+          <o-real-input attr="width" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes"></o-real-input>
+          <o-real-input attr="length" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes"></o-real-input>
+          <!-- <o-combo attr="CUSTOMERTYPEID" class="input-padding" fxFlex="20" service="customers" 
+             entity="customerType" keys="CUSTOMERTYPEID" columns="CUSTOMERTYPEID;DESCRIPTION" 
+             visible-columns="DESCRIPTION" value-column="CUSTOMERTYPEID"></o-combo> -->
+        </o-row>
+        <o-row>
+            <o-real-input attr="scan_volume" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0" class="input-padding" fxFlex="25" required="yes"></o-real-input>
+            <o-real-input attr="calculated_volume" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0" class="input-padding" fxFlex="25" required="no"></o-real-input>
+            <o-text-input class="input-padding" attr="dev" fxFlex="25" required="yes"></o-text-input>
+            <o-integer-input attr="delivery_note" class="input-padding" fxFlex="25" required="yes"></o-integer-input>
+        </o-row>
+      </o-column>
+    </o-row>
+  </o-form>

@@ -1,0 +1,18 @@
+.bold {
+    font-style: italic;
+    background-color: aquamarine;
+}
+
+.button{
+    display: grid;
+    width: 30px;
+    height: 30px;
+}
+
+#mas {
+    background-color: green;
+}
+
+#menos {
+    background-color: red;
+}
