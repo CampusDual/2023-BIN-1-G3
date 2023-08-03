@@ -1,1 +1,12 @@
 .idea
+/backendG3-api/target
+/backendG3-boot/target
+/backendG3-model/target
+/backendG3-ws/target
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
