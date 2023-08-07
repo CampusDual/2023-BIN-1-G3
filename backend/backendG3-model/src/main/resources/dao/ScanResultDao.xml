@@ -38,4 +38,19 @@
             </Sentence>
         </Query>
     </Queries>-->
+    <Queries>
+        <Query id="groupByDate">
+            <Sentence>
+                <![CDATA[
+                     WITH date_range AS
+                     ( SELECT generate_series( (SELECT MIN(date) FROM scan_result WHERE dev = 'IN_SCAN_1'),
+                    (SELECT MAX(date) FROM scan_result WHERE dev = 'IN_SCAN_1'), '1 day' )::DATE AS generated_date )
+                    SELECT date_range.generated_date AS date, COALESCE(conteo, 0) AS conteo FROM date_range
+                    LEFT JOIN ( SELECT date(date) AS fecha, COUNT(*) AS conteo FROM scan_result sr WHERE dev = 'IN_SCAN_1'
+                    GROUP BY sr.dev, date(date) ) AS sr_count ON date_range.generated_date = sr_count.fecha
+                    ORDER BY date_range.generated_date;
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

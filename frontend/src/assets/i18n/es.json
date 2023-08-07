@@ -33,5 +33,11 @@
   "width": "Ancho",
   "length": "Longitud",
   "trailer_plate": "Matrícula de trailer",
-  "delivery_note": "Número de envío"
+  "delivery_note": "Número de envío",
+  "Entry_Filters": "Entrada de filtros",
+  "Date": "Fecha",
+  "INIT": "Inicio",
+  "END": "Final",
+  "FILTER": "Filtro",
+  "CLEAR": "Limpiar"
 }

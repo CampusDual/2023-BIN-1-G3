@@ -5,6 +5,7 @@ import com.ontimize.backendG3.api.core.service.IUserService;
 import com.ontimize.backendG3.model.core.dao.ScanResultDao;
 import com.ontimize.backendG3.model.core.dao.UserDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -36,6 +37,11 @@ public class ScanResultService implements IScanResultService {
 
     public EntityResult scanResultDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.scanResultDao, keyMap);
+    }
+
+    public EntityResult scanResultByDateQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.scanResultDao, keyMap, attrList, "groupByDate");
+
     }
 
 }

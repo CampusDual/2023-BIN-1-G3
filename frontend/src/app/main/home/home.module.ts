@@ -5,12 +5,16 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CtrComponent } from './ctr/ctr.component';
+import { OChartModule } from 'ontimize-web-ngx-charts';
+
 
 @NgModule({
   imports: [
     SharedModule,
     OntimizeWebModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    OChartModule
+
   ],
   declarations: [
     HomeComponent,

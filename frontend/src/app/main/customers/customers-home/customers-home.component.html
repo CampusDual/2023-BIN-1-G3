@@ -1,22 +1,7 @@
-<!-- <div fxFill fxLayout="column" fxLayoutAlign="start">
-  <o-table attr="scanTable" service="results" entity="scanResult" keys="id_scan_result"
-    columns="id_scan_result;dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note"
-    visible-columns="dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note"
-    query-rows="20">
-    <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
-      empty-image="assets/images/no-image.png" image-type="base64"></o-table-column>
-    <o-table-column attr="date" title="date" type="date" format="LL"></o-table-column>
-    <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column>
-  </o-table>
-</div> -->
 
-<!-- <o-chart fxFlex service="results" type="pieChart" entity="scanResult"
-columns="id_scan_result;dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note" x-axis="calculated_volume" y-axis="plate" chart-height="200" [chart-parameters]="chartParameters">
-</o-chart> -->
-
-  <o-chart fxFlex type="donutChart" service="results" chart-height="300" entity="scanResult" [x-axis]="{{date | date: 'dd/MM/yyyy'}}"
-    y-axis="dev" [chart-parameters]="chartParameters">
-  </o-chart>
+  <!-- <o-chart fxFlex type="line" service="results" chart-height="300" entity="scanResultByDate" x-axis="date" x-data-type="time"
+    y-axis="conteo" [chart-parameters]="chartParameters">
+  </o-chart> -->
 
 
 <o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="dev;delivery_note">

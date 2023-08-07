@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartSeries, PieChartConfiguration } from 'ontimize-web-ngx-charts';
-import { OChartComponent, DonutChartConfiguration } from 'ontimize-web-ngx-charts';
-
+// import { ChartSeries, PieChartConfiguration } from 'ontimize-web-ngx-charts';
+// import { OChartComponent, DonutChartConfiguration } from 'ontimize-web-ngx-charts';
 
 @Component({
   selector: 'app-customers-home',
@@ -15,7 +14,7 @@ export class CustomersHomeComponent implements OnInit {
 
   //constructor() {}
 
-  public movementTypesChartParams: PieChartConfiguration;
+  /*public movementTypesChartParams: PieChartConfiguration;
   public chartParameters: DonutChartConfiguration;
 
   private _configureDonutChart(locale: any): void {
@@ -32,6 +31,6 @@ export class CustomersHomeComponent implements OnInit {
     this.chartParameters.showLabels = true;
     this.chartParameters.cornerRadius = 1;
     this.chartParameters.donutRatio = 0.5;
-  }
+  }*/
 
 }
