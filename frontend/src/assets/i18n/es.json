@@ -39,5 +39,8 @@
   "INIT": "Inicio",
   "END": "Final",
   "FILTER": "Filtro",
-  "CLEAR": "Limpiar"
+  "CLEAR": "Limpiar",
+  "GRAPHS": "Gráficas",
+  "conteo": "Entradas",
+  "entradacamiones": "Entrada camiones"
 }

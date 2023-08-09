@@ -6,9 +6,9 @@
 
 <o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="dev;delivery_note">
   <div fxFill>
-    <o-table attr="scanTable" service="results" entity="scanResult" keys="id_scan_result"
+    <o-table attr="scanTable" delete-button="no" insert-button="no" service="results" entity="scanResult" keys="id_scan_result"
       columns="id_scan_result;dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note"
-      visible-columns="dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note"
+      visible-columns="date;scan_volume;calculated_volume;plate;trailer_plate;delivery_note"
       query-rows="20">
       <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
       empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->

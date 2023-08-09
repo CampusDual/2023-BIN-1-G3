@@ -36,8 +36,11 @@
   "delivery_note": "Delivery note",
   "Entry_Filters": "Entry Filters",
   "Date": "Date",
-  "INIT": "INIT",
-  "END": "END",
-  "FILTER": "FILTER",
-  "CLEAR": "Clear"
+  "INIT": "Init",
+  "END": "End",
+  "FILTER": "Filter",
+  "CLEAR": "Clear",
+  "GRAPHS": "Graphs",
+  "conteo": "Entries",
+  "entradacamiones": "Truck entries"
 }
