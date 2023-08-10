@@ -49,6 +49,8 @@ public class ScanService implements IScanService {
         return this.daoHelper.update(scanDao, attrMap, keyMap);
     }
 
+    // En agosto
+
     public EntityResult scanDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.scanDao, keyMap);
     }
