@@ -78,33 +78,18 @@ export class GraphsHomeComponent implements OnInit {
 
   dataLoaded(event: any) {
     console.log(event);
-    this.adaptResult(event);
-    //console.log(this.chartData.length);
-    if (event.length === 0) {
-      this.graph.setDataArray(this.adaptResult([{ date: 1677625200000, conteo: 58 }]));
-      // console.log("Vaciar gráfica");
-    } else {
-      this.graph.setDataArray(this.chartData);
-    }
-
-    // DataAdapterUtils.createDataAdapter(this.chartParameters);
-    // this.candlestick.setDataArray(DataAdapterUtils.adapter.adaptResult(charData));
-    //this.chartData = DataAdapterUtils.adapter.adaptResult(data);
-    // console.log(this.chartData.length);
+    this.chartData = this.adaptResult(event);
+    this.graph.setDataArray(this.chartData);
   }
 
   adaptResult(data: any) {
-    if (data && data.length) {
-      let values = this.processValues(data);
-      // chart data
-      this.chartData = [
-        {
-          key: "Graph",
-          values: values,
-        },
-      ];
-    }
-    console.log("Datos " + this.chartData.length);
+    let values = this.processValues(data);
+    return [
+      {
+        key: "Graph",
+        values: values,
+      },
+    ];
   }
   processValues(data: any) {
     let values = [];
@@ -116,13 +101,10 @@ export class GraphsHomeComponent implements OnInit {
         x: date,
         y: conteo,
       };
-      // console.log("Entradas "+ entrada);
-      // console.log("Date "+ date);
 
       values.push(entrada);
     });
 
-    // console.log("Values"+ values);
     return values;
   }
 }

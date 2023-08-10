@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IScanService {
 
     public EntityResult scanQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult scanInsert(Map<?, ?> attrMap);
+    public EntityResult scanInsert(Map<String, Object> attrMap);
     public EntityResult scanUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult scanDelete(Map<?, ?> keyMap);
 }

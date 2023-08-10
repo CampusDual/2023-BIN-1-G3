@@ -32,7 +32,10 @@ public class ScanDao extends OntimizeJdbcDaoSupport {
     public static final String TWIDTH = "twidth";
     public static final String TLENGTH = "tlength";
 
-    public static final String ID_DELIVERY = "id_delivery";
+    public static final String DELIVERY_NOTE = "delivery_note";
 
+    public static final String ID_TRUCK = "id_truck";
+
+    public static final String ID_TRAILER = "id_trailer";
 
 }

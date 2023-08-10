@@ -8,12 +8,6 @@ import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 
 public interface IMasterService {
 
-    // DELIVERY
-    public EntityResult deliveryQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
-    public EntityResult deliveryInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
-    public EntityResult deliveryUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
-    public EntityResult deliveryDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
-
     // truck
     public EntityResult truckQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
     public EntityResult truckInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;

@@ -27,7 +27,7 @@ public class ScanResultRestController  extends ORestController<IScanResultServic
     }
 
     @RequestMapping(
-            value = "/scan",
+            value = "/scan2",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<EntityResult> scan(@RequestBody Map<String,Object> datos) {

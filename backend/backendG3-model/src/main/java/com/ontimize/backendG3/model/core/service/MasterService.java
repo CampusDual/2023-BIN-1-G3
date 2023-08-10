@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ontimize.backendG3.api.core.service.IMasterService;
 import com.ontimize.backendG3.model.core.dao.DeviceDao;
-import com.ontimize.backendG3.model.core.dao.DeliveryDao;
 import com.ontimize.backendG3.model.core.dao.TruckDao;
 import com.ontimize.backendG3.model.core.dao.TrailerDao;
 
@@ -21,33 +20,10 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 @Lazy
 public class MasterService implements IMasterService{
 
-    @Autowired private DeliveryDao deliveryDao;
     @Autowired private TruckDao TruckDao;
     @Autowired private TrailerDao TrailerDao;
     @Autowired private DeviceDao DeviceDao;
     @Autowired private DefaultOntimizeDaoHelper daoHelper;
-
-    @Override
-    public EntityResult deliveryQuery(Map<String, Object> keyMap, List<String> attrList)
-            throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.deliveryDao, keyMap, attrList);
-    }
-
-    @Override
-    public EntityResult deliveryInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.deliveryDao, attrMap);
-    }
-
-    @Override
-    public EntityResult deliveryUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
-            throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.deliveryDao, attrMap, keyMap);
-    }
-
-    @Override
-    public EntityResult deliveryDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.deliveryDao, keyMap);
-    }
 
     @Override
     public EntityResult truckQuery(Map<String, Object> keyMap, List<String> attrList)
