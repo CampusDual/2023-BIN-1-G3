@@ -1,10 +1,7 @@
 package com.ontimize.backendG3.model.core.service;
 
 import com.ontimize.backendG3.api.core.service.IScanService;
-import com.ontimize.backendG3.model.core.dao.DeviceDao;
-import com.ontimize.backendG3.model.core.dao.ScanDao;
-import com.ontimize.backendG3.model.core.dao.TrailerDao;
-import com.ontimize.backendG3.model.core.dao.TruckDao;
+import com.ontimize.backendG3.model.core.dao.*;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +32,64 @@ public class ScanService implements IScanService {
 
     public EntityResult scanInsert(Map<String, Object> attrMap) {
 
+//        Map<String, Object> nonScanData = removeNonRelatedData(attrMap, ScanDao.ID_DEV_IN,
+//                ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
+//        this.insertNonRelatedData(nonScanData);
+//        attrMap.putAll(nonScanData);
+//        return this.daoHelper.insert(this.scanDao, attrMap);
 
-        Map<String, Object> nonScanData = removeNonRelatedData(attrMap, ScanDao.ID_DEV_IN,
-                ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
-        this.insertNonRelatedData(nonScanData);
-        attrMap.putAll(nonScanData);
-        return this.daoHelper.insert(this.scanDao, attrMap);
+        Map<String, Object> data = new HashMap<String, Object>();
 
-        //return this.daoHelper.insert(scanDao, attrMap);
+
+        if(attrMap.get("dev").equals("IN_SCAN_1")){
+            data.put(ScanDao.ID_DEV_IN, attrMap.get("dev"));
+            //data.put(ScanDao.ID_DEV_OUT, null);
+            data.put(ScanDao.SCAN_DATE_IN, attrMap.get("date"));
+            //data.put(ScanDao.SCAN_DATE_OUT, null);
+            data.put(ScanDao.SCAN_VOLUME_IN, attrMap.get("scan_volume"));
+            //data.put(ScanDao.SCAN_VOLUME_OUT, null);
+            //data.put(ScanDao.CALCULATE_VOLUME, null);
+            data.put(ScanDao.THEIGHT, attrMap.get("height"));
+            data.put(ScanDao.TWIDTH, attrMap.get("width"));
+            data.put(ScanDao.TLENGTH, attrMap.get("length"));
+            data.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
+            data.put(ScanDao.ID_TRUCK, attrMap.get("plate"));
+            data.put(ScanDao.ID_TRAILER, attrMap.get("trailer_plate"));
+
+            //data.put("data", data);
+
+            // insert
+
+            Map<String, Object> nonScanData = removeNonRelatedData(data, ScanDao.ID_DEV_IN,
+                    ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
+            this.insertNonRelatedData(nonScanData);
+
+            data.putAll(nonScanData);
+            return this.daoHelper.insert(this.scanDao, data);
+
+
+        } else {
+            //data.put(ScanDao.ID_DEV_IN, null);
+            data.put(ScanDao.ID_DEV_OUT, attrMap.get("dev"));
+            //data.put(ScanDao.SCAN_DATE_IN, null);
+            data.put(ScanDao.SCAN_DATE_OUT, attrMap.get("date"));
+            //data.put(ScanDao.SCAN_VOLUME_IN, null);
+            data.put(ScanDao.SCAN_VOLUME_OUT, attrMap.get("scan_volume"));
+            data.put(ScanDao.CALCULATE_VOLUME, attrMap.get("calculate_volume"));
+
+            //update
+
+//            Map<String, Object> nonScanData = removeNonRelatedData(data, ScanDao.ID_DEV_IN,
+//                    ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
+            //this.insertNonRelatedData(nonScanData);
+
+           // data.putAll(nonScanData);
+            Map<String, Object> keyMap = new HashMap<String, Object>();;
+            keyMap.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
+            return this.scanUpdate(data, keyMap);
+
+        }
+
     }
 
     public EntityResult scanUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
