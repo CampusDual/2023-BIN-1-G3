@@ -9,7 +9,7 @@ public interface IScanService {
 
     public EntityResult scanQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult scanInsert(Map<String, Object> attrMap);
-    public EntityResult scanUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    public EntityResult scanUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult scanDelete(Map<?, ?> keyMap);
 }
 

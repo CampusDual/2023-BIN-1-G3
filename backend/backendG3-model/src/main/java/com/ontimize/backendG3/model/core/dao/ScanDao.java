@@ -26,7 +26,7 @@ public class ScanDao extends OntimizeJdbcDaoSupport {
 
     public static final String SCAN_VOLUME_OUT = "scan_volume_out";
 
-    public static final String CALCULATE_VOLUME = "calculate_volume";
+    public static final String CALCULATED_VOLUME = "calculated_volume";
 
     public static final String THEIGHT = "theight";
     public static final String TWIDTH = "twidth";

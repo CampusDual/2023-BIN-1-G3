@@ -7,6 +7,7 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,33 +31,22 @@ public class ScanService implements IScanService {
         return this.daoHelper.query(scanDao, keyMap, attrList);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public EntityResult scanInsert(Map<String, Object> attrMap) {
-
-//        Map<String, Object> nonScanData = removeNonRelatedData(attrMap, ScanDao.ID_DEV_IN,
-//                ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
-//        this.insertNonRelatedData(nonScanData);
-//        attrMap.putAll(nonScanData);
-//        return this.daoHelper.insert(this.scanDao, attrMap);
 
         Map<String, Object> data = new HashMap<String, Object>();
 
 
-        if(attrMap.get("dev").equals("IN_SCAN_1")){
+        if (attrMap.get("dev").equals("IN_SCAN_1")) {
             data.put(ScanDao.ID_DEV_IN, attrMap.get("dev"));
-            //data.put(ScanDao.ID_DEV_OUT, null);
             data.put(ScanDao.SCAN_DATE_IN, attrMap.get("date"));
-            //data.put(ScanDao.SCAN_DATE_OUT, null);
             data.put(ScanDao.SCAN_VOLUME_IN, attrMap.get("scan_volume"));
-            //data.put(ScanDao.SCAN_VOLUME_OUT, null);
-            //data.put(ScanDao.CALCULATE_VOLUME, null);
             data.put(ScanDao.THEIGHT, attrMap.get("height"));
             data.put(ScanDao.TWIDTH, attrMap.get("width"));
             data.put(ScanDao.TLENGTH, attrMap.get("length"));
             data.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
             data.put(ScanDao.ID_TRUCK, attrMap.get("plate"));
             data.put(ScanDao.ID_TRAILER, attrMap.get("trailer_plate"));
-
-            //data.put("data", data);
 
             // insert
 
@@ -69,34 +59,37 @@ public class ScanService implements IScanService {
 
 
         } else {
-            //data.put(ScanDao.ID_DEV_IN, null);
             data.put(ScanDao.ID_DEV_OUT, attrMap.get("dev"));
-            //data.put(ScanDao.SCAN_DATE_IN, null);
             data.put(ScanDao.SCAN_DATE_OUT, attrMap.get("date"));
-            //data.put(ScanDao.SCAN_VOLUME_IN, null);
             data.put(ScanDao.SCAN_VOLUME_OUT, attrMap.get("scan_volume"));
-            data.put(ScanDao.CALCULATE_VOLUME, attrMap.get("calculate_volume"));
+            data.put(ScanDao.CALCULATED_VOLUME, attrMap.get("calculated_volume"));
 
             //update
 
-//            Map<String, Object> nonScanData = removeNonRelatedData(data, ScanDao.ID_DEV_IN,
-//                    ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
-            //this.insertNonRelatedData(nonScanData);
+            Map<String, Object> keyMap = new HashMap<String, Object>();
 
-           // data.putAll(nonScanData);
-            Map<String, Object> keyMap = new HashMap<String, Object>();;
+            List<Object> l = new ArrayList<>();
             keyMap.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
+            l.add(ScanDao.ID_SCAN_RESULT);
+            EntityResult x = this.scanQuery(keyMap, l);
+            Object id_scan_value = x.getRecordValues(0).get(ScanDao.ID_SCAN_RESULT);
+            keyMap.clear();
+            keyMap.put(ScanDao.ID_SCAN_RESULT, id_scan_value);
+
             return this.scanUpdate(data, keyMap);
 
         }
 
     }
 
-    public EntityResult scanUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
-        return this.daoHelper.update(scanDao, attrMap, keyMap);
+    @Transactional(rollbackFor = Exception.class)
+    public EntityResult scanUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        Map<String, Object> nonScanData = removeNonRelatedData(attrMap, ScanDao.ID_DEV_IN,
+                ScanDao.ID_DEV_OUT, ScanDao.ID_TRAILER, ScanDao.ID_TRUCK);
+        this.insertNonRelatedData(nonScanData);
+        attrMap.putAll(nonScanData);
+        return this.daoHelper.update(this.scanDao, attrMap, keyMap);
     }
-
-    // En agosto
 
     public EntityResult scanDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.scanDao, keyMap);
