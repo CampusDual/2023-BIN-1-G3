@@ -4,5 +4,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'results': {
     'path': '/results'
+  },
+  'scans': {
+    'path': '/scans'
   }
 };
