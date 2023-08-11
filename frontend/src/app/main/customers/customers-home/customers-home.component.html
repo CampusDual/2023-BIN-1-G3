@@ -4,15 +4,15 @@
   </o-chart> -->
 
 
-<o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="dev;delivery_note">
+<o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="delivery_note">
   <div fxFill>
-    <o-table attr="scanTable" delete-button="no" insert-button="no" service="results" entity="scanResult" keys="id_scan_result"
-      columns="id_scan_result;dev;date;scan_volume;calculated_volume;plate;height;width;length;trailer_plate;delivery_note"
-      visible-columns="date;scan_volume;calculated_volume;plate;trailer_plate;delivery_note"
+    <o-table attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scan" keys="id_scan_result"
+      columns="id_scan_result;delivery_note"
+      visible-columns="delivery_note"
       query-rows="20">
       <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
       empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->
-      <o-table-column attr="date" title="date" type="date" format="DD/MM/YYYY HH:MM"></o-table-column>
+      <!-- <o-table-column attr="date" title="date" type="date" format="DD/MM/YYYY HH:MM"></o-table-column> -->
       <!-- <o-table-column attr="date" title="date" type="date">{{date | date: 'short'}}</o-table-column> -->
       <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column>
     </o-table>

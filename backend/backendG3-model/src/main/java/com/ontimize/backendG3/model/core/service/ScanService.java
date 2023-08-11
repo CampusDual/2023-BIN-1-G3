@@ -3,16 +3,17 @@ package com.ontimize.backendG3.model.core.service;
 import com.ontimize.backendG3.api.core.service.IScanService;
 import com.ontimize.backendG3.model.core.dao.*;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Lazy
 @Service("ScanService")
@@ -31,22 +32,26 @@ public class ScanService implements IScanService {
         return this.daoHelper.query(scanDao, keyMap, attrList);
     }
 
+    public EntityResult scanByDateQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.scanDao, keyMap, attrList, "groupByDate");
+    }
+
     @Transactional(rollbackFor = Exception.class)
-    public EntityResult scanInsert(Map<String, Object> attrMap) {
+    public EntityResult scanInsert(Map<String, Object> attrMap)  {
 
         Map<String, Object> data = new HashMap<String, Object>();
 
 
         if (attrMap.get("dev").equals("IN_SCAN_1")) {
-            data.put(ScanDao.ID_DEV_IN, attrMap.get("dev"));
-            data.put(ScanDao.SCAN_DATE_IN, attrMap.get("date"));
-            data.put(ScanDao.SCAN_VOLUME_IN, attrMap.get("scan_volume"));
-            data.put(ScanDao.THEIGHT, attrMap.get("height"));
-            data.put(ScanDao.TWIDTH, attrMap.get("width"));
-            data.put(ScanDao.TLENGTH, attrMap.get("length"));
-            data.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
-            data.put(ScanDao.ID_TRUCK, attrMap.get("plate"));
-            data.put(ScanDao.ID_TRAILER, attrMap.get("trailer_plate"));
+            data.put(ScanDao.ID_DEV_IN, (String) attrMap.get("dev"));
+            data.put(ScanDao.SCAN_DATE_IN, (String) attrMap.get("date"));
+            data.put(ScanDao.SCAN_VOLUME_IN, (Double) attrMap.get("scan_volume"));
+            data.put(ScanDao.THEIGHT, (Double) attrMap.get("height"));
+            data.put(ScanDao.TWIDTH, (Double) attrMap.get("width"));
+            data.put(ScanDao.TLENGTH, (Double) attrMap.get("length"));
+            data.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note").toString());
+            data.put(ScanDao.ID_TRUCK, (String) attrMap.get("plate"));
+            data.put(ScanDao.ID_TRAILER, (String) attrMap.get("trailer_plate"));
 
             // insert
 
@@ -59,17 +64,26 @@ public class ScanService implements IScanService {
 
 
         } else {
-            data.put(ScanDao.ID_DEV_OUT, attrMap.get("dev"));
-            data.put(ScanDao.SCAN_DATE_OUT, attrMap.get("date"));
-            data.put(ScanDao.SCAN_VOLUME_OUT, attrMap.get("scan_volume"));
-            data.put(ScanDao.CALCULATED_VOLUME, attrMap.get("calculated_volume"));
+            data.put(ScanDao.ID_DEV_OUT, (String) attrMap.get("dev"));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date d = null;
+            try {
+                d = sdf.parse((String) attrMap.get("date"));
+                java.sql.Timestamp tiempo = new Timestamp(d.getTime());
+                data.put(ScanDao.SCAN_DATE_OUT, tiempo);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            //data.put(ScanDao.SCAN_DATE_OUT, attrMap.get("date").toString());
+            data.put(ScanDao.SCAN_VOLUME_OUT, (Double) attrMap.get("scan_volume"));
+            data.put(ScanDao.CALCULATED_VOLUME, (Double) attrMap.get("calculated_volume"));
 
             //update
 
             Map<String, Object> keyMap = new HashMap<String, Object>();
 
             List<Object> l = new ArrayList<>();
-            keyMap.put(ScanDao.DELIVERY_NOTE, attrMap.get("delivery_note"));
+            keyMap.put(ScanDao.DELIVERY_NOTE, (String) attrMap.get("delivery_note").toString());
             l.add(ScanDao.ID_SCAN_RESULT);
             EntityResult x = this.scanQuery(keyMap, l);
             Object id_scan_value = x.getRecordValues(0).get(ScanDao.ID_SCAN_RESULT);

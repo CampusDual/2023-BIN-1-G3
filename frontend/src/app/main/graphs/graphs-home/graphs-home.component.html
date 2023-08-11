@@ -81,7 +81,7 @@
 
 
   <div fxFill>
-    <o-table #table attr="scanTable" service="results" insert-button="no" delete-button="no" entity="scanResultByDate"
+    <o-table #table attr="scanTable" service="scans" entity="scanByDate" insert-button="no" delete-button="no"
       (onDataLoaded)="dataLoaded($event)"
       columns="date;conteo"
       visible-columns="date;conteo"

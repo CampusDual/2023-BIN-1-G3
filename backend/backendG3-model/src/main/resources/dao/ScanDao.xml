@@ -12,17 +12,35 @@
         <Column>id_scan_result</Column>
     </UpdateKeys>
     <GeneratedKey>id_scan_result</GeneratedKey>
-<!--    <Queries>-->
-<!--       <Query id="default">-->
-<!--           <Sentence>-->
-<!--               <![CDATA[-->
-<!--                   SELECT-->
-<!--                       #COLUMNS#-->
-<!--                   FROM-->
-<!--                       ${mainschema}.scan-->
-<!--                   #WHERE#-->
-<!--               ]]>-->
-<!--           </Sentence>-->
-<!--       </Query>-->
-<!--   </Queries>-->
+    <Queries>
+        <Query id="groupByDate">
+            <Sentence>
+                <![CDATA[
+                WITH t_query AS (
+                    WITH date_range AS (
+                            SELECT
+                                generate_series( (SELECT MIN(scan_date_in)
+                            FROM scan),
+                            (
+                                SELECT MAX(scan_date_in)
+                                FROM scan
+                                ), '1 day' )::DATE AS generated_date
+                            )
+                    SELECT date_range.generated_date AS date, COALESCE(conteo, 0) AS conteo
+                    FROM date_range
+                    LEFT JOIN (
+                        SELECT date(scan_date_in) AS fecha, COUNT(*) AS conteo
+                        FROM scan sr
+                        GROUP BY sr.id_dev_in, date(scan_date_in)
+                    )
+                    AS sr_count ON date_range.generated_date = sr_count.fecha
+                    ORDER BY date_range.generated_date
+                )
+                SELECT #COLUMNS#
+                FROM t_query
+                #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
