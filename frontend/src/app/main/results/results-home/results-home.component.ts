@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 // import { OChartComponent, DonutChartConfiguration } from 'ontimize-web-ngx-charts';
 
 @Component({
-  selector: 'app-customers-home',
-  templateUrl: './customers-home.component.html',
-  styleUrls: ['./customers-home.component.scss']
+  selector: 'app-results-home',
+  templateUrl: './results-home.component.html',
+  styleUrls: ['./results-home.component.scss']
 })
-export class CustomersHomeComponent implements OnInit {
+export class ResultsHomeComponent implements OnInit {
 
   ngOnInit() {
   }

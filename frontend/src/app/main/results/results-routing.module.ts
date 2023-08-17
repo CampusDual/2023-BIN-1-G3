@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomersHomeComponent } from './customers-home/customers-home.component';
+import { ResultsHomeComponent } from './results-home/results-home.component';
 import { ResultsDetailComponent } from './results-detail/results-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CustomersHomeComponent
+    component: ResultsHomeComponent
   },
   {
     path: ":id_scan_result",
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CustomersRoutingModule { }
+export class ResultsRoutingModule { }
