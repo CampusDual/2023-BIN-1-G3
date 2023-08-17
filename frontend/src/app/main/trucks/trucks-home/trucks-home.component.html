@@ -1,0 +1,41 @@
+<o-form-layout-manager
+  title="{{ 'Data of Trucks' | oTranslate }}"
+  separator=" "
+  mode="tab"
+>
+  <div fxFill>
+    <o-table
+      attr="truckTable"
+      delete-button="no"
+      insert-button="no"
+      service="master"
+      entity="truck"
+      keys="id_truck"
+      columns="id_truck;plate;ttype"
+      visible-columns="plate;ttype"
+      query-rows="15"
+    >
+      <o-table-column
+        attr="id_truck"
+        title="ID_TRUCK"
+        sql-type="INTEGER"
+        width="150px"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="plate"
+        title="plate"
+        type="string"
+        width="150px"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="ttype"
+        title="ttype"
+        type="INTEGER"
+        width="150px"
+        content-align="center"
+      ></o-table-column>
+    </o-table>
+  </div>
+</o-form-layout-manager>
