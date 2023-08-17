@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { ChartSeries, PieChartConfiguration } from 'ontimize-web-ngx-charts';
-// import { OChartComponent, DonutChartConfiguration } from 'ontimize-web-ngx-charts';
+import { FilterExpressionUtils, Expression } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-results-home',
@@ -9,28 +8,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsHomeComponent implements OnInit {
 
-  ngOnInit() {
+  public array: Object[] = [{
+    key: 1,
+    value: 'Completed'
+  }, {
+    key: 2,
+    value: 'In progress'
+  }];
+
+  public getDataArray(): any[] {
+    return this.array;
   }
 
-  //constructor() {}
+  public getValueSimple(): any {
+    return 0;
+  }
 
-  /*public movementTypesChartParams: PieChartConfiguration;
-  public chartParameters: DonutChartConfiguration;
+  ngOnInit() {
+  }
+  createFilter(values: Array<{ attr, value }>): Expression {
+    // Prepare simple expressions from the filter components values
+    let filters: Array<Expression> = [];
+    values.forEach(fil => {
+      if (fil.value === 2) {
+        if (fil.attr === 'resultState') {
+          filters.push(FilterExpressionUtils.buildExpressionIsNull('scan_date_out'));
+        }
+      }
+      if (fil.value === 1){
+        if (fil.attr === 'resultState') {
+          filters.push(FilterExpressionUtils.buildExpressionIsNotNull('scan_date_out'));
+        }
+      }
+    });
 
-  private _configureDonutChart(locale: any): void {
-    this.movementTypesChartParams = new PieChartConfiguration();
-    this.movementTypesChartParams.margin.top = 0;
-    this.movementTypesChartParams.margin.right = 0;
-    this.movementTypesChartParams.margin.bottom = 0;
-    this.movementTypesChartParams.margin.left = 0;
-    this.movementTypesChartParams.legendPosition = 'bottom';
-    this.movementTypesChartParams.legend.vers = 'furious';
-    this.movementTypesChartParams.labelType = 'value';
-    //this.movementTypesChartParams.valueType = locale.numberFormat('$,.2f');
-    this.chartParameters = new DonutChartConfiguration();
-    this.chartParameters.showLabels = true;
-    this.chartParameters.cornerRadius = 1;
-    this.chartParameters.donutRatio = 0.5;
-  }*/
-
+    // Build complex expression
+    if (filters.length > 0) {
+      return filters[0];
+    } else {
+      return null;
+    }
+  }
 }

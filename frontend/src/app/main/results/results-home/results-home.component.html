@@ -5,9 +5,33 @@
 
 <o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="delivery_note">
   <div fxFill>
-    <o-table attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scanData" keys="id_scan_result"
+    <o-form editable-detail="no" show-header="no">
+
+      <o-column>
+        <o-row layout-align="end start">
+          <o-combo attr="resultState" label="resultState" [static-data]="getDataArray()" [data]="getValueSimple()" value-column="key"
+          columns="key;value" visible-columns="value" required="no" read-only="false">
+        </o-combo>
+        <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
+        </o-row>
+
+        <!-- <o-list-picker attr="resultState" read-only="no" service="employees" entity="employeeType" columns="EMPLOYEETYPEID;EMPLOYEETYPENAME"
+          value-column="EMPLOYEETYPEID" keys="EMPLOYEETYPEID" visible-columns="EMPLOYEETYPENAME" width="33%">
+        </o-list-picker> -->
+
+        <o-row layout-align="end">
+          <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="RAISED" label="FILTER" class="filter-button"></o-button>
+          <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="RAISED" label="CLEAR" class="filter-button"></o-button>
+        </o-row>
+      </o-column>
+
+      <o-filter-builder #filterBuilder attr="thefilter" filters="resultState" [target]="scanTable"
+        query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
+
+    <o-table #scanTable attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scanData" keys="id_scan_result"
       columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
-      visible-columns="plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
+      visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
+      virtual-scroll="no"
       query-rows="20">
 
       <o-table-column attr="plate" title="plate" type="string" content-align="center"></o-table-column>
@@ -15,7 +39,13 @@
       <o-table-column attr="delivery_note" title="delivery_note" type="INTEGER" content-align="center"></o-table-column>
       <o-table-column attr="scan_date_in" title="scan_date_in" type="date" format="DD/MM/YYYY HH:MM" content-align="center"></o-table-column>
       <o-table-column attr="scan_date_out" title="scan_date_out" type="date" format="DD/MM/YYYY HH:MM" content-align="center"></o-table-column>
+
+      <o-table-column attr="resultState" title="resultState" class="o-table-column-centered">
+        <app-results-state-render></app-results-state-render>
+      </o-table-column>
+
       <o-table-column attr="id_scan_result" title="ID" sql-type="INTEGER" width="150px" content-align="center"></o-table-column>
     </o-table>
+  </o-form>
   </div>
 </o-form-layout-manager>

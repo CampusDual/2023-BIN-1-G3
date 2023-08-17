@@ -49,5 +49,8 @@
   "TRUCKS": "Trucks",
   "TRAILERS": "Trailers",
   "Type_of_Truck": "Type of truck",
-  "ID_TRAILER": "ID_Trailer"
+  "ID_TRAILER": "ID_Trailer",
+  "resultState": "Status",
+  "Completado": "Completed",
+  "En curso": "In progress"
 }

@@ -49,5 +49,8 @@
   "TRUCKS": "Camiones",
   "TRAILERS": "Remolque",
   "Type_of_Truck": "Tipo de Camión",
-  "ID_TRAILER": "ID_Remolque"
+  "ID_TRAILER": "ID_Remolque",
+  "resultState": "Estado",
+  "Completado": "Completado",
+  "En curso": "En curso"
 }

@@ -5,6 +5,7 @@ import { ResultsRoutingModule } from './results-routing.module';
 import { ResultsHomeComponent } from './results-home/results-home.component';
 import { ResultsDetailComponent } from './results-detail/results-detail.component';
 import { OChartModule } from 'ontimize-web-ngx-charts';
+import { ResultsStateRenderComponent } from './results-home/results-state-render/results-state-render.component';
 
 
 @NgModule({
@@ -14,6 +15,6 @@ import { OChartModule } from 'ontimize-web-ngx-charts';
     ResultsRoutingModule,
     OChartModule
   ],
-  declarations: [ResultsHomeComponent, ResultsDetailComponent]
+  declarations: [ResultsHomeComponent, ResultsDetailComponent, ResultsStateRenderComponent]
 })
 export class ResultsModule { }
