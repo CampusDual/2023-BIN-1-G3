@@ -13,6 +13,28 @@
     </UpdateKeys>
     <GeneratedKey>id_scan_result</GeneratedKey>
     <Queries>
+        <Query id="data">
+            <Sentence>
+                <![CDATA[
+                WITH consulta as(
+                    SELECT s.id_scan_result, s.delivery_note, t.plate, tra.trailer_plate, s.scan_date_in, s.scan_date_out
+                    FROM PUBLIC.scan s
+                    LEFT JOIN PUBLIC.device as entrada ON
+                       s.id_dev_in = entrada.id_device
+                    LEFT JOIN PUBLIC.device as salida ON
+                       s.id_dev_out = salida.id_device
+                    LEFT JOIN PUBLIC.truck t ON
+                       s.id_truck = t.id_truck
+                    LEFT JOIN PUBLIC.trailer tra on
+                        s.id_trailer = tra.id_trailer
+                ORDER BY s.id_scan_result, s.delivery_note
+                )
+                SELECT #COLUMNS#
+                FROM consulta
+                 #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="groupByDate">
             <Sentence>
                 <![CDATA[
@@ -40,6 +62,18 @@
                 FROM t_query
                 #WHERE#
                 ]]>
+            </Sentence>
+        </Query>
+        <!-- Consulta SQL para imprimir los pedidos que estén en curso-->
+        <Query id="deliveriesencurso">
+            <Sentence>
+                <!--
+                 select s.scan_date_in as fecha_entrada, s.scan_date_out as fecha_salida, s.delivery_note as nº_pedido
+                 from Public.scan s
+                 where s.scan_date_out IS null
+                 group by s.scan_date_in, s.scan_date_out, s.delivery_note
+                 order by s.scan_date_in;
+                -->
             </Sentence>
         </Query>
     </Queries>

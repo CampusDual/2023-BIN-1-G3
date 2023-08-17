@@ -3,18 +3,19 @@
     y-axis="conteo" [chart-parameters]="chartParameters">
   </o-chart> -->
 
-
 <o-form-layout-manager title="{{'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="delivery_note">
   <div fxFill>
-    <o-table attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scan" keys="id_scan_result"
-      columns="id_scan_result;delivery_note"
-      visible-columns="delivery_note"
+    <o-table attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scanData" keys="id_scan_result"
+      columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
+      visible-columns="plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
       query-rows="20">
-      <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
-      empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->
-      <!-- <o-table-column attr="date" title="date" type="date" format="DD/MM/YYYY HH:MM"></o-table-column> -->
-      <!-- <o-table-column attr="date" title="date" type="date">{{date | date: 'short'}}</o-table-column> -->
-      <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column>
+
+      <o-table-column attr="plate" title="plate" type="string" content-align="center"></o-table-column>
+      <o-table-column attr="trailer_plate" title="trailer_plate" type="string" content-align="center"></o-table-column>
+      <o-table-column attr="delivery_note" title="delivery_note" type="INTEGER" content-align="center"></o-table-column>
+      <o-table-column attr="scan_date_in" title="scan_date_in" type="date" format="DD/MM/YYYY HH:MM" content-align="center"></o-table-column>
+      <o-table-column attr="scan_date_out" title="scan_date_out" type="date" format="DD/MM/YYYY HH:MM" content-align="center"></o-table-column>
+      <o-table-column attr="id_scan_result" title="ID" sql-type="INTEGER" width="150px" content-align="center"></o-table-column>
     </o-table>
   </div>
 </o-form-layout-manager>

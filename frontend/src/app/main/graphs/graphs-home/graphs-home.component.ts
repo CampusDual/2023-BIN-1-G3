@@ -10,6 +10,7 @@ import {
 import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { OTranslateService } from "ontimize-web-ngx";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-graphs-home",
@@ -18,6 +19,9 @@ import { OTranslateService } from "ontimize-web-ngx";
 })
 @Component({
   selector: "line",
+  template: `
+    <p>{{ translatedWord }}</p>
+  `
   //templateUrl: './line.component.html'
 })
 export class GraphsHomeComponent implements OnInit {
@@ -26,16 +30,32 @@ export class GraphsHomeComponent implements OnInit {
   chartParameters: LineChartConfiguration;
 
   chartData: Array<Object>;
+  translatedWord: string;
 
-  constructor(private router: Router, private actRoute: ActivatedRoute) {
+  constructor(private router: Router, private actRoute: ActivatedRoute, private http: HttpClient) {
     this.chartParameters = new LineChartConfiguration();
     this.chartParameters.isArea = [false];
     this.chartParameters.interactive = true;
     this.chartParameters.useInteractiveGuideline = false;
+    this.chartParameters.legend.vers = 'furious';
+    this.fetchTranslation();
+  }
+
+  fetchTranslation() {
+    this.http.get<any>('assets/i18n/es.json').subscribe(data => {
+      const translatedWord = data['graph'];
+      console.log(translatedWord);
+    });
   }
 
   ngOnInit() {
     // nothing to do
+  }
+
+  public ngOnDestroy(): void {
+    if (this.http) {
+      this.http.delete;
+    }
   }
 
   createFilter(values: Array<{ attr; value }>): Expression {
@@ -86,7 +106,7 @@ export class GraphsHomeComponent implements OnInit {
     let values = this.processValues(data);
     return [
       {
-        key: "Graph",
+        key: "graph",
         values: values,
       },
     ];

@@ -12,4 +12,20 @@
         <Column>id_trailer</Column>
     </UpdateKeys>
     <GeneratedKey>id_trailer</GeneratedKey>
+    <Queries>
+        <Query id="datatrailer">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trailer" prefix="IT" databaseName="id_trailer" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                      SELECT tra.id_trailer, tra.trailer_plate AS trailer_plate
+                      FROM PUBLIC.Trailer tra
+                      #WHERE#
+                      GROUP BY tra.id_trailer, tra.trailer_plate
+                      ORDER by tra.id_trailer;
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

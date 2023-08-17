@@ -165,4 +165,9 @@ public class ScanService implements IScanService {
         }
     }
 
+    public EntityResult scanDataQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.scanDao, keyMap, attrList, "data");
+
+    }
+
 }

@@ -28,7 +28,7 @@
   "date": "Date",
   "scan_volume": "Scanned volume",
   "calculated_volume": "Calculated volume",
-  "plate": "Plate",
+  "plate": "Truck plate",
   "height": "Height",
   "width": "Width",
   "length": "Length",
@@ -40,7 +40,14 @@
   "END": "End",
   "FILTER": "Filter",
   "CLEAR": "Clear",
+  "graph": "Number of entries",
   "GRAPHS": "Graphs",
   "conteo": "Entries",
-  "entradacamiones": "Truck entries"
+  "entradacamiones": "Truck entries",
+  "scan_date_in": "scan_date_in",
+  "scan_date_out": "scan_date_out",
+  "TRUCKS": "Trucks",
+  "TRAILERS": "Trailers",
+  "Type_of_Truck": "Type of truck",
+  "ID_TRAILER": "ID_Trailer"
 }

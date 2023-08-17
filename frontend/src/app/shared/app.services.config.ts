@@ -7,5 +7,14 @@ export const SERVICE_CONFIG: Object = {
   },
   'scans': {
     'path': '/scans'
+  },
+  'trucks': {
+    'path': '/trucks'
+  },
+  'trailers': {
+    'path': '/trailers'
+  },
+  'master':{
+    'path': '/master'
   }
 };

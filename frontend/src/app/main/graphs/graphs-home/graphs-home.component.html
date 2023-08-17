@@ -69,16 +69,16 @@
       fxFlex
       #graph
       type="line"
-      chart-height="500"
       x-label="Tiempo"
       y-label="Entradas"
       x-axis="date"
-      x-data-type="time"
       y-axis="conteo"
       [chart-parameters]="chartParameters"
+      x-data-type="time"
     >
     </o-chart>
 
+    {{ 'graph' | oTranslate }}
 
   <div fxFill>
     <o-table #table attr="scanTable" service="scans" entity="scanByDate" insert-button="no" delete-button="no"
@@ -89,7 +89,8 @@
     >
       <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
       empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->
-      <o-table-column attr="date" type="date" format="DD/MM/YYYY HH:MM"></o-table-column>
+      <o-table-column attr="date" type="date" format="DD/MM/YYYY HH:MM" fxFlex="50" content-align="center"></o-table-column>
+      <o-table-column attr="conteo" type="number" fxFlex="50" content-align="center"></o-table-column>
       <!-- <o-table-column attr="date" title="date" type="date">{{date | date: 'short'}}</o-table-column> -->
       <!-- <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column> -->
     </o-table>

@@ -31,6 +31,11 @@ public class MasterService implements IMasterService{
         return this.daoHelper.query(this.TruckDao, keyMap, attrList);
     }
 
+    // Data of trucks
+    public EntityResult truckDataQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TruckDao, keyMap, attrList, "datatruck");
+    }
+
     @Override
     public EntityResult truckInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.TruckDao, attrMap);
@@ -67,6 +72,11 @@ public class MasterService implements IMasterService{
     @Override
     public EntityResult trailerDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.TrailerDao, keyMap);
+    }
+
+    // Data of trailers
+    public EntityResult trailerDataQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TrailerDao, keyMap, attrList, "datatrailer");
     }
 
     @Override

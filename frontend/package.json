@@ -3,7 +3,7 @@
   "version": "8.4.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4299",
+    "start": "ng serve --port 4299 -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -36,7 +36,7 @@
     "ontimize-web-ngx": "8.11.1",
     "ontimize-web-ngx-charts": "^8.2.0",
     "ontimize-web-ngx-report": "8.1.1",
-    "ontimize-web-ngx-theming": "8.5.1",
+    "ontimize-web-ngx-theming": "^8.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
