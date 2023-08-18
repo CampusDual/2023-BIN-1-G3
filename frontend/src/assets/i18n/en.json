@@ -48,7 +48,7 @@
   "scan_date_out": "Date out",
   "TRUCKS": "Trucks",
   "TRAILERS": "Trailers",
-  "Type_of_Truck": "Articulated",
+  "checkTruck": "Articulated",
   "Yes": "Yes",
   "No": "No",
   "ID_TRAILER": "Id trailer",

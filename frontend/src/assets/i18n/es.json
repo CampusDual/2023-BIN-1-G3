@@ -48,7 +48,7 @@
   "graph": "Nº de entradas",
   "TRUCKS": "Camiones",
   "TRAILERS": "Remolque",
-  "Type_of_Truck": "Articulado",
+  "checkTruck": "Articulado",
   "Yes": "Sí",
   "No": "No",
   "ID_TRAILER": "Id remolque",

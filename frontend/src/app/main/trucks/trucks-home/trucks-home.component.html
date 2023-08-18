@@ -12,7 +12,7 @@
       entity="truckData"
       keys="id_truck"
       columns="id_truck;plate;Type_of_Truck"
-      visible-columns="plate;Type_of_Truck;check"
+      visible-columns="plate;checkTruck"
       query-rows="20"
     >
       <o-table-column
@@ -37,8 +37,9 @@
         content-align="center"
       ></o-table-column>
       <o-table-column
-      attr="check"
-      title="check"
+      attr="checkTruck"
+      title="checkTruck"
+      width="30px"
       class="o-table-column-centered"
     >
       <app-check-render></app-check-render>
