@@ -28,11 +28,11 @@
   "date": "Fecha",
   "scan_volume": "Volumen escaneado",
   "calculated_volume": "Volumen calculado",
-  "plate": "Matrícula Camion",
+  "plate": "Matrícula camion",
   "height": "Altura",
   "width": "Ancho",
   "length": "Longitud",
-  "trailer_plate": "Matrícula Trailer",
+  "trailer_plate": "Matrícula trailer",
   "delivery_note": "Número de pedido",
   "Entry_Filters": "Entrada de filtros",
   "Date": "Fecha",
@@ -48,9 +48,15 @@
   "graph": "Nº de entradas",
   "TRUCKS": "Camiones",
   "TRAILERS": "Remolque",
-  "Type_of_Truck": "Tipo de Camión",
-  "ID_TRAILER": "ID_Remolque",
+  "Type_of_Truck": "Articulado",
+  "Yes": "Sí",
+  "No": "No",
+  "ID_TRAILER": "Id_remolque",
   "resultState": "Estado",
   "Completado": "Completado",
-  "En curso": "En curso"
+  "En curso": "En curso",
+  "Data of Trucks": "Datos de camiones",
+  "Data of Trailers": "Datos de trailers"
+
+
 }

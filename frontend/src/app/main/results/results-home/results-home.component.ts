@@ -1,43 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { FilterExpressionUtils, Expression } from 'ontimize-web-ngx';
+import { Component, OnInit } from "@angular/core";
+import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
+import { OTranslateService } from "ontimize-web-ngx";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-results-home',
-  templateUrl: './results-home.component.html',
-  styleUrls: ['./results-home.component.scss']
+  selector: "app-results-home",
+  templateUrl: "./results-home.component.html",
+  styleUrls: ["./results-home.component.scss"],
 })
 export class ResultsHomeComponent implements OnInit {
+  private translateServiceSubscription: Subscription;
+  public array: Object[];
 
-  public array: Object[] = [{
-    key: 1,
-    value: 'Completed'
-  }, {
-    key: 2,
-    value: 'In progress'
-  }];
+  constructor(translate: OTranslateService) {
+    console.log(translate.get("Completado"));
+    this.array = [
+      {
+        key: 1,
+        value: "Completado",
+      },
+      {
+        key: 2,
+        value: "En curso",
+      },
+    ];
+    
+  }
+
+  public ngOnDestroy(): void {
+    if (this.translateServiceSubscription) {
+      this.translateServiceSubscription.unsubscribe();
+    }
+  }
 
   public getDataArray(): any[] {
+
     return this.array;
+
   }
 
   public getValueSimple(): any {
     return 0;
   }
 
-  ngOnInit() {
-  }
-  createFilter(values: Array<{ attr, value }>): Expression {
+  ngOnInit() {}
+  createFilter(values: Array<{ attr; value }>): Expression {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
-    values.forEach(fil => {
+    values.forEach((fil) => {
       if (fil.value === 2) {
-        if (fil.attr === 'resultState') {
-          filters.push(FilterExpressionUtils.buildExpressionIsNull('scan_date_out'));
+        if (fil.attr === "resultState") {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
+          );
         }
       }
-      if (fil.value === 1){
-        if (fil.attr === 'resultState') {
-          filters.push(FilterExpressionUtils.buildExpressionIsNotNull('scan_date_out'));
+      if (fil.value === 1) {
+        if (fil.attr === "resultState") {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
+          );
         }
       }
     });

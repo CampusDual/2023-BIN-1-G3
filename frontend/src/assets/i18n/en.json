@@ -44,13 +44,18 @@
   "GRAPHS": "Graphs",
   "conteo": "Entries",
   "entradacamiones": "Truck entries",
-  "scan_date_in": "scan_date_in",
-  "scan_date_out": "scan_date_out",
+  "scan_date_in": "Scan_date_in",
+  "scan_date_out": "Scan_date_out",
   "TRUCKS": "Trucks",
   "TRAILERS": "Trailers",
-  "Type_of_Truck": "Type of truck",
-  "ID_TRAILER": "ID_Trailer",
+  "Type_of_Truck": "Articulated",
+  "Yes": "Yes",
+  "No": "No",
+  "ID_TRAILER": "Id_trailer",
   "resultState": "Status",
   "Completado": "Completed",
-  "En curso": "In progress"
+  "En curso": "In progress",
+  "Data of Trucks": "Data of Trucks",
+  "Data of Trailers": "Data of Trailers"
+
 }

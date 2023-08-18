@@ -19,11 +19,14 @@
         </AmbiguousColumns>
         <Sentence>
             <![CDATA[
-                    SELECT t.id_truck, t.plate AS plate, t.ttype AS Type_of_Truck
+                    SELECT t.id_truck, t.plate AS plate,
+                    CASE
+                        WHEN t.ttype = 0 THEN 'Yes'
+                        WHEN t.ttype = 1 THEN 'No'
+                    END AS Type_of_Truck
                     FROM PUBLIC.Truck t
-                    #WHERE#
                     GROUP BY t.id_truck, t.plate, t.ttype
-                    ORDER BY t.id_truck
+                    ORDER BY t.id_truck;
                 ]]>
         </Sentence>
     </Query>
