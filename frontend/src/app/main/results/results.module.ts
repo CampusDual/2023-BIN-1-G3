@@ -5,16 +5,16 @@ import { ResultsRoutingModule } from './results-routing.module';
 import { ResultsHomeComponent } from './results-home/results-home.component';
 import { ResultsDetailComponent } from './results-detail/results-detail.component';
 import { OChartModule } from 'ontimize-web-ngx-charts';
-import { ResultsStateRenderComponent } from './results-home/results-state-render/results-state-render.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     OntimizeWebModule,
     ResultsRoutingModule,
     OChartModule
   ],
-  declarations: [ResultsHomeComponent, ResultsDetailComponent, ResultsStateRenderComponent]
+  declarations: [ResultsHomeComponent, ResultsDetailComponent]
 })
 export class ResultsModule { }

@@ -21,8 +21,8 @@
             <![CDATA[
                     SELECT t.id_truck, t.plate AS plate,
                     CASE
-                        WHEN t.ttype = 0 THEN 'Yes'
-                        WHEN t.ttype = 1 THEN 'No'
+                        WHEN t.ttype = 0 THEN true
+                        WHEN t.ttype = 1 THEN false
                     END AS Type_of_Truck
                     FROM PUBLIC.Truck t
                     GROUP BY t.id_truck, t.plate, t.ttype

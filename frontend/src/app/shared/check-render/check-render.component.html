@@ -1,0 +1,10 @@
+<ng-template #templateref let-cellvalue="cellvalue" let-rowvalue="rowvalue">
+  <!-- Se evalúa aqui el contenido de esta funcion -->
+  <div *ngIf="cellvalue" style="font-size: 1rem;">
+    ✅
+  </div>
+  <div *ngIf="!cellvalue" style="font-size: 1rem;">
+    ❌
+  </div>
+  <!-- y para llamar al celldata: {{getCellData(cellvalue,rowvalue)}}-->
+</ng-template>
