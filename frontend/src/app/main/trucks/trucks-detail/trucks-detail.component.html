@@ -1,11 +1,11 @@
 <o-form
   service="master"
-  entity="truckDataDetails"
+  entity="truck"
   keys="id_truck"
   editable-detail="no"
   show-header-navigation="no"
 >
-  <o-column title="{{ 'TRUCK DETAILS' | oTranslate }}"  fxFlex layout-padding>
+  <o-column title="{{ 'TRUCK DETAILS' | oTranslate }}" fxFlex layout-padding>
     <o-row>
       <o-text-input
         class="input-padding"
@@ -24,71 +24,56 @@
         read-only="yes"
       ></o-text-input>
     </o-row>
-  </o-column>
-  <!-- Detalles remolques, carga transportada -->
-  <!-- DATATRUCKS: Nombre de la vista -->
-  <o-column title="{{ 'TRAILER DETAILS' | oTranslate }}">
     <o-table
       fxFlex
       service="master"
       entity="truckDataDetails"
       parent-keys="id_truck"
-      columns="id_truck;trailer_plate;scan_volume_in;scan_volume_out;scan_date_in;scan_date_out;delivery_note"
-      visible-columns="delivery_note;trailer_plate;scan_volume_in;scan_volume_out;scan_date_in;scan_date_out"
+      columns="id_truck;trailer_plate;scan_volume_in;scan_volume_out;calculated_volume;scan_date_in;scan_date_out;delivery_note"
+      visible-columns="delivery_note;trailer_plate;scan_volume_in;scan_volume_out;calculated_volume;scan_date_in;scan_date_out"
       insert-button="no"
       delete-button="no"
       query-rows="8"
     >
       <o-table-column
         attr="trailer_plate"
-        title="Trailer_plate"
+        title="trailer_plate"
         class="o-table-column-centered"
       ></o-table-column>
       <o-table-column
         attr="scan_volume_in"
-        title="Scan_volume_in"
+        title="scan_volume_in"
         class="o-table-column-centered"
       ></o-table-column>
       <o-table-column
         attr="scan_volume_out"
-        title="Scan_volume_out"
+        title="scan_volume_out"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="calculated_volume"
+        title="calculated_volume"
         class="o-table-column-centered"
       ></o-table-column>
       <o-table-column
         attr="scan_date_in"
-        title="Scan_date_in"
+        title="scan_date_in"
+        type="date"
+        format="DD/MM/YYYY HH:MM"
         class="o-table-column-centered"
       ></o-table-column>
       <o-table-column
-      attr="scan_date_out"
-      title="Scan_date_out"
-      class="o-table-column-centered"
-    ></o-table-column>
-    <o-table-column
-    attr="delivery_note"
-    title="delivery_note"
-    class="o-table-column-centered"
-  ></o-table-column>
-    </o-table>
-  </o-column>
-  <!-- Detalles deliveries asociados -->
-  <!-- <o-column title="{{ 'DELIVERIES ASSOCIATED' | oTranslate }}">
-    <o-table
-      fxFlex
-      service="master"
-      entity="DATATRUCKS"
-      parent-keys="id_truck"
-      columns="delivery_note"
-      visible-columns="delivery_note"
-      insert-button="no"
-      delete-button="no"
-      query-rows="8"
-    >
+        attr="scan_date_out"
+        title="scan_date_out"
+        type="date"
+        format="DD/MM/YYYY HH:MM"
+        class="o-table-column-centered"
+      ></o-table-column>
       <o-table-column
         attr="delivery_note"
         title="delivery_note"
         class="o-table-column-centered"
       ></o-table-column>
     </o-table>
-  </o-column> -->
+  </o-column>
 </o-form>

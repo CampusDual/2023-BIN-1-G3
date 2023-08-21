@@ -45,6 +45,8 @@
   "entradacamiones": "Entrada camiones",
   "scan_date_in": "Fecha entrada",
   "scan_date_out": "Fecha salida",
+  "scan_volume_in": "Volumen entrada",
+  "scan_volume_out": "Volumen salida",
   "graph": "Nº de entradas",
   "TRUCKS": "Camiones",
   "TRAILERS": "Remolque",
@@ -56,7 +58,9 @@
   "Completado": "Completado",
   "En curso": "En curso",
   "Data of Trucks": "Datos de camiones",
-  "Data of Trailers": "Datos de trailers"
+  "Data of Trailers": "Datos de trailers",
+  "TRUCK DETAILS": "Detalles camión"
+
 
 
 }
