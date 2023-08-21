@@ -41,7 +41,7 @@ export class GraphsHomeComponent implements OnInit {
     this.chartParameters.isArea = [false];
     this.chartParameters.interactive = true;
     this.chartParameters.useInteractiveGuideline = false;
-    this.chartParameters.legend.vers = 'furious';
+    // this.chartParameters.legend.vers = 'furious';
     // this.fetchTranslation();
     this.chartParameters.showLegend = true;
 

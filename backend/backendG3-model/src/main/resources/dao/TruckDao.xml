@@ -30,5 +30,15 @@
                 ]]>
         </Sentence>
     </Query>
+        <Query id="detailstruck">
+            <Sentence>
+                <![CDATA[
+                    SELECT #COLUMNS#
+                    FROM DATATRUCKS
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

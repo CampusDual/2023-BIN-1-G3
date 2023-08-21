@@ -1,0 +1,94 @@
+<o-form
+  service="master"
+  entity="truckDataDetails"
+  keys="id_truck"
+  editable-detail="no"
+  show-header-navigation="no"
+>
+  <o-column title="{{ 'TRUCK DETAILS' | oTranslate }}"  fxFlex layout-padding>
+    <o-row>
+      <o-text-input
+        class="input-padding"
+        attr="id_truck"
+        fxFlex="20"
+        sql-type="INTEGER"
+        enabled="no"
+        label-visible="yes"
+        oHidden
+      ></o-text-input>
+      <o-text-input
+        class="input-padding"
+        attr="plate"
+        fxFlex="20"
+        required="no"
+        read-only="yes"
+      ></o-text-input>
+    </o-row>
+  </o-column>
+  <!-- Detalles remolques, carga transportada -->
+  <!-- DATATRUCKS: Nombre de la vista -->
+  <o-column title="{{ 'TRAILER DETAILS' | oTranslate }}">
+    <o-table
+      fxFlex
+      service="master"
+      entity="truckDataDetails"
+      parent-keys="id_truck"
+      columns="id_truck;trailer_plate;scan_volume_in;scan_volume_out;scan_date_in;scan_date_out;delivery_note"
+      visible-columns="delivery_note;trailer_plate;scan_volume_in;scan_volume_out;scan_date_in;scan_date_out"
+      insert-button="no"
+      delete-button="no"
+      query-rows="8"
+    >
+      <o-table-column
+        attr="trailer_plate"
+        title="Trailer_plate"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_volume_in"
+        title="Scan_volume_in"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_volume_out"
+        title="Scan_volume_out"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_date_in"
+        title="Scan_date_in"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+      attr="scan_date_out"
+      title="Scan_date_out"
+      class="o-table-column-centered"
+    ></o-table-column>
+    <o-table-column
+    attr="delivery_note"
+    title="delivery_note"
+    class="o-table-column-centered"
+  ></o-table-column>
+    </o-table>
+  </o-column>
+  <!-- Detalles deliveries asociados -->
+  <!-- <o-column title="{{ 'DELIVERIES ASSOCIATED' | oTranslate }}">
+    <o-table
+      fxFlex
+      service="master"
+      entity="DATATRUCKS"
+      parent-keys="id_truck"
+      columns="delivery_note"
+      visible-columns="delivery_note"
+      insert-button="no"
+      delete-button="no"
+      query-rows="8"
+    >
+      <o-table-column
+        attr="delivery_note"
+        title="delivery_note"
+        class="o-table-column-centered"
+      ></o-table-column>
+    </o-table>
+  </o-column> -->
+</o-form>

@@ -36,6 +36,11 @@ public class MasterService implements IMasterService{
         return this.daoHelper.query(this.TruckDao, keyMap, attrList, "datatruck");
     }
 
+    // Detail of trucks
+    public EntityResult truckDataDetailsQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TruckDao, keyMap, attrList, "detailstruck");
+    }
+
     @Override
     public EntityResult truckInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.TruckDao, attrMap);
