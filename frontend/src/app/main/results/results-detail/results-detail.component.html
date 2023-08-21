@@ -1,27 +1,27 @@
-<o-form service="results" entity="scanResult" keys="id_scan_result" editable-detail="no" show-header-navigation="no">
+<o-form service="scans" entity="scanData" keys="id_scan_result" editable-detail="no" show-header-navigation="no">
     <o-text-input attr="id_scan_result" sql-type="INTEGER" enabled="no" label-visible="yes" oHidden></o-text-input>
     <o-row>
       <o-column title-label="RESULTS_INFORMATION" fxFlex layout-padding>
         <o-row>
           <o-text-input class="input-padding" attr="plate" fxFlex="40" required="yes" read-only="yes"></o-text-input>
           <o-text-input class="input-padding" attr="trailer_plate" fxFlex="40" required="no" read-only="yes"></o-text-input>
-          <o-date-input attr="date" fxFlex="20" read-only="yes"></o-date-input>
+          <o-date-input attr="scan_date_in" fxFlex="20" read-only="yes"></o-date-input>
+          <o-date-input attr="scan_date_out" fxFlex="20" read-only="yes"></o-date-input>
         </o-row>
         <o-row>
-          <o-real-input attr="height" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
-          <o-real-input attr="width" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
-          <o-real-input attr="length" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
-          <!-- <o-combo attr="CUSTOMERTYPEID" class="input-padding" fxFlex="20" service="customers"
-             entity="customerType" keys="CUSTOMERTYPEID" columns="CUSTOMERTYPEID;DESCRIPTION"
-             visible-columns="DESCRIPTION" value-column="CUSTOMERTYPEID"></o-combo> -->
+          <o-real-input attr="theight" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
+          <o-real-input attr="twidth" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
+          <o-real-input attr="tlength" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
         </o-row>
         <o-row>
-            <o-real-input attr="scan_volume" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="50" required="yes" read-only="yes"></o-real-input>
-            <o-real-input attr="calculated_volume" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="50" required="no" read-only="yes"></o-real-input>
+            <o-real-input attr="scan_volume_in" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
+            <o-real-input attr="scan_volume_out" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-real-input>
+            <o-real-input attr="calculated_volume" decimal-separator="," max-decimal-digits="16" min-decimal-digits="0" class="input-padding" fxFlex="33" required="no" read-only="yes"></o-real-input>
         </o-row>
         <o-row>
-          <o-text-input class="input-padding" attr="dev" fxFlex="50" required="yes" read-only="yes"></o-text-input>
-          <o-text-input attr="delivery_note" class="input-padding" fxFlex="50" required="yes" read-only="yes"></o-text-input>
+          <o-text-input class="input-padding" attr="dev_in" fxFlex="33" required="yes" read-only="yes"></o-text-input>
+          <o-text-input class="input-padding" attr="dev_out" fxFlex="33" required="yes" read-only="yes"></o-text-input>
+          <o-text-input attr="delivery_note" class="input-padding" fxFlex="33" required="yes" read-only="yes"></o-text-input>
       </o-row>
       </o-column>
     </o-row>
