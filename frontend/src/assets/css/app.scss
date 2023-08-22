@@ -5,13 +5,13 @@
 // Choose one of the following imports
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-indigo-pink.scss';
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-deeppurple-amber.scss';
-// @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-pink-bluegrey.scss';
+ @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-pink-bluegrey.scss';
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-purple-green.scss';
-@import 'node_modules/ontimize-web-ngx-theming/src/themes/ontimize.scss';
+// @import 'node_modules/ontimize-web-ngx-theming/src/themes/ontimize-black-yellow.scss';
 
 // Include ontimize theme
 @include ontimize-theme-styles($theme);
-@import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-pink-bluegrey.scss';// Include ontimize-lite theme
+// Include ontimize-lite theme
 // @import 'node_modules/ontimize-web-ngx-theming/ontimize-theme-lite.scss';
 // @include ontimize-theme-styles-lite($theme, $lite-typography);
 
@@ -22,9 +22,3 @@
 // Propagate theme to screen styles definition.
 @import '../../app/login/login.theme.scss';
 @include login-theme($theme);
-
-// @import 'node_modules/ontimize-web-ngx-theming/ontimize-theme-dark.scss';
-// @include ontimize-theme-styles-dark($theme);
-
-// @import 'node_modules/ontimize-web-ngx-theming/ontimize-theme-lite.scss';
-// @include ontimize-theme-styles-lite($theme, $default-typography);
