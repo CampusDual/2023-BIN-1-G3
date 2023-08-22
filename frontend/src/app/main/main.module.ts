@@ -14,7 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule
   ],
   declarations: [
-    MainComponent
+    MainComponent,
   ]
 })
 export class MainModule { }

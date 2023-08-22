@@ -62,7 +62,10 @@
   "Data of Trucks": "Datos de camiones",
   "Data of Trailers": "Datos de trailers",
   "TRUCK DETAILS": "Detalles camión",
-  "TRAILER DETAILS": "Detalles trailer"
-
+  "TRAILER DETAILS": "Detalles trailer",
+  "LANG_es": "Español",
+  "LANG_en": "Inglés",
+  "THEME": "Tema",
+  "DARK_MODE": "Modo oscuro"
 
 }

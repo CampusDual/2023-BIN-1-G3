@@ -15,7 +15,9 @@ export const routes: Routes = [
       { path: 'results', loadChildren: () => import('./results/results.module').then(m => m.ResultsModule) },
       { path: 'graphs', loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule) },
       { path: 'trucks', loadChildren: () => import('./trucks/trucks.module').then(m => m.TrucksModule) },
-      { path: 'trailers', loadChildren: () => import('./trailers/trailers.module').then(m => m.TrailersModule) }
+      { path: 'trailers', loadChildren: () => import('./trailers/trailers.module').then(m => m.TrailersModule) },
+      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
+
     ]
   }
 ];
