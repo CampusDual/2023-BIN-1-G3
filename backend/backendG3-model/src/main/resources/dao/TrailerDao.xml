@@ -27,5 +27,15 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="detailstrailer">
+            <Sentence>
+                <![CDATA[
+                    SELECT #COLUMNS#
+                    FROM DATATRAILERS
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

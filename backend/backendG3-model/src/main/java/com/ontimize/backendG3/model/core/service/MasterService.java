@@ -63,6 +63,10 @@ public class MasterService implements IMasterService{
         return this.daoHelper.query(this.TrailerDao, keyMap, attrList);
     }
 
+    public EntityResult trailerDataDetailsQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TrailerDao, keyMap, attrList, "detailstrailer");
+    }
+
     @Override
     public EntityResult trailerInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.TrailerDao, attrMap);

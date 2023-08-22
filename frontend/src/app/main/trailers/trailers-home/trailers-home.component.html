@@ -1,38 +1,11 @@
-<o-form-layout-manager
-  title="{{ 'Data of Trailers' | oTranslate }}"
-  separator=" "
-  mode="tab"
->
+<o-form-layout-manager title="{{ 'Data of Trailers' | oTranslate }}" separator=" " mode="dialog">
   <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table
-      attr="trailerTable"
-      delete-button="no"
-      insert-button="no"
-      service="master"
-      entity="trailer"
-      keys="id_trailer"
-      columns="id_trailer;trailer_plate"
-      visible-columns="id_trailer;trailer_plate"
-      query-rows="20"
-    >
-      <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
-      empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->
-      <!-- <o-table-column attr="scan_date_in" title="scan_date_in" type="date" format="DD/MM/YYYY HH:MM"></o-table-column>
-      <o-table-column attr="scan_date_out" title="scan_date_out" type="date" format="DD/MM/YYYY HH:MM"></o-table-column> -->
-      <o-table-column
-        attr="id_trailer"
-        title="ID_TRAILER"
-        sql-type="INTEGER"
-        width="150px"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="trailer_plate"
-        title="trailer_plate"
-        type="string"
-        width="150px"
-        content-align="center"
-      ></o-table-column>
+    <o-table attr="trailerTable" delete-button="no" insert-button="no" service="master" entity="trailer"
+      keys="id_trailer" columns="id_trailer;trailer_plate" visible-columns="trailer_plate" query-rows="20">
+      <o-table-column attr="id_trailer" title="ID_TRAILER" sql-type="INTEGER" width="150px"
+        content-align="center"></o-table-column>
+      <o-table-column attr="trailer_plate" title="trailer_plate" type="string" width="150px"
+        content-align="center"></o-table-column>
     </o-table>
   </div>
 </o-form-layout-manager>

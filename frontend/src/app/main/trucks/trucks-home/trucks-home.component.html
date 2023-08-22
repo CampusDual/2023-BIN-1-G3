@@ -1,49 +1,15 @@
-<o-form-layout-manager
-  title="{{ 'Data of Trucks' | oTranslate }}"
-  separator=" "
-  mode="dialog"
->
-  <div fxFill>
-    <o-table
-      attr="truckTable"
-      delete-button="no"
-      insert-button="no"
-      service="master"
-      entity="truckData"
-      keys="id_truck"
-      columns="id_truck;plate;Type_of_Truck"
-      visible-columns="plate;checkTruck"
-      query-rows="20"
-    >
-      <o-table-column
-        attr="id_truck"
-        title="ID_TRUCK"
-        sql-type="INTEGER"
-        width="150px"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="plate"
-        title="plate"
-        type="string"
-        width="150px"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="Type_of_Truck"
-        title="Type_of_Truck"
-        type="INTEGER"
-        width="150px"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-      attr="checkTruck"
-      title="checkTruck"
-      width="30px"
-      class="o-table-column-centered"
-    >
-      <app-check-render></app-check-render>
-    </o-table-column>
+<o-form-layout-manager title="{{ 'Data of Trucks' | oTranslate }}" separator=" " mode="dialog">
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="truckTable" delete-button="no" insert-button="no" service="master" entity="truckData" keys="id_truck"
+      columns="id_truck;plate;Type_of_Truck" visible-columns="plate;checkTruck" query-rows="20">
+      <o-table-column attr="id_truck" title="ID_TRUCK" sql-type="INTEGER" width="150px"
+        content-align="center"></o-table-column>
+      <o-table-column attr="plate" title="plate" type="string" width="150px" content-align="center"></o-table-column>
+      <o-table-column attr="Type_of_Truck" title="Type_of_Truck" type="INTEGER" width="150px"
+        content-align="center"></o-table-column>
+      <o-table-column attr="checkTruck" title="checkTruck" width="30px" class="o-table-column-centered">
+        <app-check-render></app-check-render>
+      </o-table-column>
     </o-table>
   </div>
 </o-form-layout-manager>
