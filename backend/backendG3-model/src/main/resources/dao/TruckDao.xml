@@ -19,7 +19,7 @@
         </AmbiguousColumns>
         <Sentence>
             <![CDATA[
-                    SELECT t.id_truck, t.plate AS plate, t.ttype
+                    SELECT t.id_truck, t.plate, t.ttype
                     FROM PUBLIC.Truck t
                     #WHERE#
                     GROUP BY t.id_truck, t.plate, t.ttype
