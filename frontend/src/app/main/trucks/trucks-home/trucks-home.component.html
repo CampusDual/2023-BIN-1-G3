@@ -1,15 +1,109 @@
-<o-form-layout-manager title="{{ 'Data of Trucks' | oTranslate }}" separator=" " mode="dialog">
+<o-form-layout-manager
+  title="{{ 'Data of Trucks' | oTranslate }}"
+  separator=" "
+  mode="dialog"
+>
   <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table attr="truckTable" delete-button="no" insert-button="no" service="master" entity="truckData" keys="id_truck"
-      columns="id_truck;plate;Type_of_Truck" visible-columns="plate;checkTruck" query-rows="20">
-      <o-table-column attr="id_truck" title="ID_TRUCK" sql-type="INTEGER" width="150px"
-        content-align="center"></o-table-column>
-      <o-table-column attr="plate" title="plate" type="string" width="150px" content-align="center"></o-table-column>
-      <o-table-column attr="Type_of_Truck" title="Type_of_Truck" type="INTEGER" width="150px"
-        content-align="center"></o-table-column>
-      <o-table-column attr="checkTruck" title="checkTruck" width="30px" class="o-table-column-centered">
-        <app-check-render></app-check-render>
-      </o-table-column>
-    </o-table>
+    <o-form editable-detail="no" show-header="no">
+      <o-column layout-padding class="container-item">
+        <o-row layout-align="end start" appearance="outline" elevation="1">
+          <o-combo
+            o-grid-toolbar
+            position="end start"
+            width="200px"
+            attr="checkTruck"
+            label="checkTruck"
+            [static-data]="getDataArray()"
+            [data]="getValueSimple()"
+            value-column="key"
+            columns="key;value"
+            visible-columns="value"
+            required="no"
+            read-only="false"
+            appearance="outline"
+            translate="yes"
+          >
+          </o-combo>
+          <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
+        </o-row>
+
+        <!-- <o-list-picker attr="resultState" read-only="no" service="employees" entity="employeeType" columns="EMPLOYEETYPEID;EMPLOYEETYPENAME"
+        value-column="EMPLOYEETYPEID" keys="EMPLOYEETYPEID" visible-columns="EMPLOYEETYPENAME" width="33%">
+      </o-list-picker> -->
+
+        <o-row layout-align="end" layout-gap="18px">
+          <o-button
+            attr="filter"
+            [oFilterBuilderQuery]="filterBuilder"
+            type="RAISED"
+            label="FILTER"
+            layout-padding
+            color="accent"
+            class="filter-button"
+          ></o-button>
+          <o-button
+            attr="clear"
+            [oFilterBuilderClear]="filterBuilder"
+            type="RAISED"
+            label="CLEAR"
+            layout-padding
+            color="accent"
+            class="filter-button"
+          ></o-button>
+        </o-row>
+      </o-column>
+
+      <o-filter-builder
+        #filterBuilder
+        attr="thefilter"
+        filters="checkTruck"
+        [target]="truckTable"
+        query-on-change="no"
+        query-on-change-delay="500"
+        [expression-builder]="createFilter"
+      ></o-filter-builder>
+      <o-table
+        #truckTable
+        attr="truckTable"
+        delete-button="no"
+        insert-button="no"
+        service="master"
+        entity="truckData"
+        keys="id_truck"
+        columns="id_truck;plate;Type_of_Truck"
+        visible-columns="plate;checkTruck"
+        query-rows="20"
+      >
+        <o-table-column
+          attr="id_truck"
+          title="ID_TRUCK"
+          sql-type="INTEGER"
+          width="150px"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="plate"
+          title="plate"
+          type="string"
+          width="150px"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="Type_of_Truck"
+          title="Type_of_Truck"
+          type="INTEGER"
+          width="150px"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="checkTruck"
+          title="checkTruck"
+          width="30px"
+          class="o-table-column-centered"
+        >
+          <app-check-render></app-check-render>
+        </o-table-column>
+      </o-table>
+    </o-form>
   </div>
 </o-form-layout-manager>

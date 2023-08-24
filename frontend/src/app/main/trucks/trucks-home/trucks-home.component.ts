@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { OTranslateService } from "ontimize-web-ngx";
+import { Subscription } from "rxjs";
+import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
+
 
 @Component({
   selector: 'app-trucks-home',
@@ -7,10 +11,65 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TrucksHomeComponent implements OnInit {
+  private translateServiceSubscription: Subscription;
+  public array: Object[];
 
-  constructor() { }
+  constructor(translate: OTranslateService) {
+    this.array = [
+      {
+        key: 1,
+        value: "Articulado",
+      },
+      {
+        key: 2,
+        value: "No Articulado",
+      },
+    ];
 
-  ngOnInit() {
   }
 
+  public ngOnDestroy(): void {
+    if (this.translateServiceSubscription) {
+      this.translateServiceSubscription.unsubscribe();
+    }
+  }
+
+  public getDataArray(): any[] {
+
+    return this.array;
+
+  }
+
+  public getValueSimple(): any {
+    return 0;
+  }
+
+  ngOnInit() {}
+  createFilter(values: Array<{ attr; value }>): Expression {
+    // Prepare simple expressions from the filter components values
+    let filters: Array<Expression> = [];
+    values.forEach((fil) => {
+      if (fil.value === 2) {
+        if (fil.attr === "checkTruck") {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNull("Type_of_Truck")
+          );
+        }
+      }
+      if (fil.value === 1) {
+        if (fil.attr === "checkTruck") {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNotNull("Type_of_Truck")
+          );
+        }
+      }
+    });
+
+    // Build complex expression
+    if (filters.length > 0) {
+      return filters[0];
+    } else {
+      return null;
+    }
+  }
 }
