@@ -66,6 +66,8 @@
   "LANG_es": "Español",
   "LANG_en": "Inglés",
   "THEME": "Tema",
-  "DARK_MODE": "Modo oscuro"
+  "DARK_MODE": "Modo oscuro",
+  "DATOS": "Datos",
+  "GRAFICAS": "Gráficas"
 
 }
