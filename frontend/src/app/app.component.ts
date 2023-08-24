@@ -22,10 +22,4 @@ export class AppComponent {
       this._themeService.installTheme(theme);
     }
   }
-
-    // ngOnInit(): void {
-  //   // Cambiar el tema al iniciar la página
-  //   const initialTheme = this._themeService.getStoredTheme() /* Obtener el tema inicial */;
-  //   this._themeService.installTheme(initialTheme);
-  // }
 }
