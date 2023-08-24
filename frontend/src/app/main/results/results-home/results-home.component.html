@@ -5,11 +5,11 @@
 <o-form-layout-manager title="{{ 'RESULTS' | oTranslate }}" separator=" " mode="tab" label-columns="delivery_note">
   <div fxFill>
     <o-form editable-detail="no" show-header="no">
-      <o-column>
+      <o-column layout-padding class="container-item">
         <o-row layout-align="end start" appearance="outline" elevation="1">
-          <o-combo attr="resultState" label="resultState" [static-data]="getDataArray()" [data]="getValueSimple()"
+          <o-combo o-grid-toolbar position="end start" width="200px" attr="resultState" label="resultState" [static-data]="getDataArray()" [data]="getValueSimple()"
             value-column="key" columns="key;value" visible-columns="value" required="no" read-only="false"
-            layout-padding appearance="outline" translate="yes">
+             appearance="outline" translate="yes">
           </o-combo>
           <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
         </o-row>
@@ -18,11 +18,11 @@
           value-column="EMPLOYEETYPEID" keys="EMPLOYEETYPEID" visible-columns="EMPLOYEETYPENAME" width="33%">
         </o-list-picker> -->
 
-        <o-row layout-align="end">
+        <o-row layout-align="end" layout-gap="18px">
           <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="RAISED" label="FILTER"
-            class="filter-button"></o-button>
+            layout-padding color="accent" class="filter-button"></o-button>
           <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="RAISED" label="CLEAR"
-            class="filter-button"></o-button>
+          layout-padding color="accent" class="filter-button"></o-button>
         </o-row>
       </o-column>
 
@@ -32,7 +32,7 @@
       <o-table #scanTable attr="scanTable" delete-button="no" insert-button="no" service="scans" entity="scanData"
         keys="id_scan_result" columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
         visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out" virtual-scroll="no"
-        query-rows="20">
+        query-rows="10">
         <o-table-column attr="plate" title="plate" type="string" content-align="center"></o-table-column>
         <o-table-column attr="trailer_plate" title="trailer_plate" type="string"
           content-align="center"></o-table-column>

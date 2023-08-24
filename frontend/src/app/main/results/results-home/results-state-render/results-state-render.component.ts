@@ -23,9 +23,9 @@ export class ResultsStateRenderComponent extends OBaseTableCellRenderer {
   getStateData(cellvalue: any, rowvalue?: any): string {
 
     if(rowvalue["scan_date_out"] == null){
-      return "En curso";
+      return "⌛";
     } else {
-      return "Completado"
+      return "✅"
     }
   }
 }

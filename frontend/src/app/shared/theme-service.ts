@@ -27,13 +27,14 @@ export class ThemeService {
       href_dark: 'ontimize-dark.css',
       description: 'Ontimize',
       isDefault: true
-    }, {
-      primary: '#1464a5',
-      accent: '#1464a5',
-      href: 'ontimize-implatform.css',
-      href_dark: 'ontimize-implatform-dark.css',
-      description: 'Ontimize with fashion styles'
     },
+    // {
+    //   primary: '#1464a5',
+    //   accent: '#1464a5',
+    //   href: 'ontimize-implatform.css',
+    //   href_dark: 'ontimize-implatform-dark.css',
+    //   description: 'Ontimize with fashion styles'
+    // },
     {
       primary: '#4649A6',
       accent: '#4649A6',

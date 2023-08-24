@@ -1,4 +1,4 @@
-<o-form service="master" entity="trailer" keys="id_trailer" editable-detail="no" show-header-navigation="no">
+<o-form service="master" entity="trailer" keys="id_trailer" editable-detail="no" show-header-navigation="no" show-header="no">
     <o-column title="{{ 'TRAILER DETAILS' | oTranslate }}" fxFlex layout-padding>
         <o-row>
             <o-text-input class="input-padding" attr="id_trailer" fxFlex="20" sql-type="INTEGER" enabled="no"
@@ -20,9 +20,11 @@
         <o-table-column attr="scan_date_out" title="scan_date_out" type="date" format="DD/MM/YYYY HH:mm"
           class="o-table-column-centered"></o-table-column>
         <o-table-column attr="delivery_note" title="delivery_note" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="theight" title="theight" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="twidth" title="twidth" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="tlength" title="tlength" class="o-table-column-centered"></o-table-column>
+        <!-- type="currency"
+        currency-symbol="m" currency-symbol-position="right"-->
+        <o-table-column attr="theight" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="theight" content-align="center"></o-table-column>
+        <o-table-column attr="twidth" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="twidth" content-align="center" class="o-table-column-centered"></o-table-column>
+        <o-table-column attr="tlength" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="tlength" class="o-table-column-centered"></o-table-column>
         <o-table-column attr="plate" title="plate" class="o-table-column-centered"></o-table-column>
       </o-table>
     </o-column>
