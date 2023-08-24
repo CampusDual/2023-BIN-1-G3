@@ -25,7 +25,7 @@ export class AppComponent {
 
     // ngOnInit(): void {
   //   // Cambiar el tema al iniciar la página
-  //   const initialTheme = this._themeService.getDefaultTheme() /* Obtener el tema inicial */;
+  //   const initialTheme = this._themeService.getStoredTheme() /* Obtener el tema inicial */;
   //   this._themeService.installTheme(initialTheme);
   // }
 }
