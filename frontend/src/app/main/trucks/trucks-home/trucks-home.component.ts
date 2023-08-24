@@ -49,17 +49,17 @@ export class TrucksHomeComponent implements OnInit {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
     values.forEach((fil) => {
-      if (fil.value === 2) {
-        if (fil.attr === "checkTruck") {
-          filters.push(
-            FilterExpressionUtils.buildExpressionIsNull("Type_of_Truck")
-          );
-        }
-      }
       if (fil.value === 1) {
         if (fil.attr === "checkTruck") {
           filters.push(
-            FilterExpressionUtils.buildExpressionIsNotNull("Type_of_Truck")
+            FilterExpressionUtils.buildExpressionEquals("ttype", 0)
+          );
+        }
+      }
+      if (fil.value === 2) {
+        if (fil.attr === "checkTruck") {
+          filters.push(
+            FilterExpressionUtils.buildExpressionEquals("ttype", 1)
           );
         }
       }
