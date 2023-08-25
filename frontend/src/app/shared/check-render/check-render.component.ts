@@ -20,7 +20,7 @@ export class CheckRenderComponent extends OBaseTableCellRenderer {
   /* Metodo que formatee el contenido de la celda */
   getCellData(cellvalue: any, rowvalue?: any): string{
     //return "funciona";
-    return rowvalue['ttype']?"❌":"✅";
+    return rowvalue['type_of_truck']?"❌":"✅";
   }
 
 }

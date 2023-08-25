@@ -35,6 +35,12 @@
 			<groupId>com.ontimize.jee</groupId>
 			<artifactId>ontimize-jee-server-jdbc</artifactId>
 		</dependency>
+		<!-- Report -->
+			<dependency>
+				<groupId>com.ontimize.jee.report</groupId>
+				<artifactId>ontimize-jee-report-server</artifactId>
+			</dependency>
+
 	</dependencies>
 
 	<build>

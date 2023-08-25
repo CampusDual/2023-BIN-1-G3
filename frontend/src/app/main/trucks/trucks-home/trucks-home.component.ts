@@ -52,14 +52,14 @@ export class TrucksHomeComponent implements OnInit {
       if (fil.value === 1) {
         if (fil.attr === "checkTruck") {
           filters.push(
-            FilterExpressionUtils.buildExpressionEquals("ttype", 0)
+            FilterExpressionUtils.buildExpressionEquals("type_of_truck", 0)
           );
         }
       }
       if (fil.value === 2) {
         if (fil.attr === "checkTruck") {
           filters.push(
-            FilterExpressionUtils.buildExpressionEquals("ttype", 1)
+            FilterExpressionUtils.buildExpressionEquals("type_of_truck", 1)
           );
         }
       }

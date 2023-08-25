@@ -15,7 +15,7 @@
     <Queries>
         <Query id="datatrailer">
             <AmbiguousColumns>
-                <AmbiguousColumn name="id_trailer" prefix="IT" databaseName="id_trailer" />
+                <AmbiguousColumn name="id_trailer" prefix="t" databaseName="id_trailer" />
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
@@ -34,6 +34,46 @@
                     FROM DATATRAILERS
                     #WHERE#
                     #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="datacolumnsincrementtrailer">
+            <Sentence>
+                <!-- 2ª opcion
+                 select count(s.id_truck) as viajes_completados,
+                 sum(s.scan_volume_in + s.scan_volume_out) as total_carga,
+                 count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
+                 count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
+                 t.plate ,
+                 t.id_truck,
+                 SUM(s.scan_volume_out) filter (where s.scan_volume_in > s.scan_volume_out) as total_cargado,
+                 SUM(s.scan_volume_in) filter (where s.scan_volume_in <= s.scan_volume_out) as total_descargado
+                 from scan s
+                 left join truck t on s.id_truck = t.id_truck
+                 where s.scan_volume_in is not null and s.scan_volume_out is not null
+                 group by s.id_truck, t.plate, t.id_truck
+                 order by s.id_truck;
+                -->
+                <![CDATA[
+                WITH tr_consulta_nuevas_columnas AS (
+                      select count(s.id_trailer) as viajes_completados,
+                        sum(abs(s.scan_volume_in - s.scan_volume_out)) as total_carga,
+                        count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
+                        count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
+                        tr.trailer_plate,
+                        tr.id_trailer,
+                        COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in > s.scan_volume_out), 0) as total_cargado,
+                        COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in <= s.scan_volume_out), 0) as total_descargado
+                     from scan s
+                        left join trailer tr on s.id_trailer = tr.id_trailer
+                     where s.scan_volume_in is not null and s.scan_volume_out is not null
+                     group by s.id_trailer, tr.trailer_plate, tr.id_trailer
+                     order by s.id_trailer
+                )
+                SELECT #COLUMNS#
+                FROM tr_consulta_nuevas_columnas
+                #WHERE#
                 ]]>
             </Sentence>
         </Query>

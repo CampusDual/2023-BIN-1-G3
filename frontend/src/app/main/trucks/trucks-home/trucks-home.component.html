@@ -10,7 +10,7 @@
           <o-combo
             o-grid-toolbar
             position="end start"
-            width="200px"
+            width="150px"
             attr="checkTruck"
             label="checkTruck"
             [static-data]="getDataArray()"
@@ -68,12 +68,12 @@
         delete-button="no"
         insert-button="no"
         service="master"
-        entity="truckData"
+        entity="truckDataNew"
         keys="id_truck"
-        columns="id_truck;plate;Type_of_Truck"
-        visible-columns="plate;checkTruck"
+        columns="id_truck;plate;type_of_truck;viajes_completados;total_carga;viajes_carga;viajes_descarga;total_cargado;total_descargado"
+        visible-columns="plate;viajes_completados;total_carga;viajes_carga;viajes_descarga;total_cargado;total_descargado;checkTruck"
         virtual-scroll="false"
-        query-rows="10"
+        query-rows="15"
       >
         <o-table-column
           attr="id_truck"
@@ -86,20 +86,66 @@
           attr="plate"
           title="plate"
           type="string"
-          width="150px"
           content-align="center"
         ></o-table-column>
         <o-table-column
-          attr="Type_of_Truck"
-          title="Type_of_Truck"
+          attr="type_of_truck"
+          title="type_of_truck"
           type="INTEGER"
-          width="150px"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="viajes_completados"
+          title="Total viajes"
+          type="INTEGER"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="total_carga"
+          title="Total carga transportada"
+          type="real"
+          decimal-separator="."
+          thousand-separator="."
+          max-decimal-digits="2"
+          class="o-table-column-centered"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="viajes_carga"
+          title="Nº viajes carga"
+          type="INTEGER"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="viajes_descarga"
+          title="Nº viajes descarga"
+          type="INTEGER"
+          width="80px"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="total_cargado"
+          title="Total carga entrada"
+          type="real"
+          decimal-separator="."
+          thousand-separator="."
+          max-decimal-digits="2"
+          class="o-table-column-centered"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="total_descargado"
+          title="Total carga salida"
+          type="real"
+          decimal-separator="."
+          thousand-separator="."
+          max-decimal-digits="2"
+          class="o-table-column-centered"
           content-align="center"
         ></o-table-column>
         <o-table-column
           attr="checkTruck"
           title="checkTruck"
-          width="30px"
           class="o-table-column-centered"
         >
           <app-check-render></app-check-render>

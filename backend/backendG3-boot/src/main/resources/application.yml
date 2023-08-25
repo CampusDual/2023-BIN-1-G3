@@ -75,3 +75,7 @@ spring:
    autoconfigure:
       exclude: |
          org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
+   ontimize:
+      export:
+         url: /export
+         enable: true

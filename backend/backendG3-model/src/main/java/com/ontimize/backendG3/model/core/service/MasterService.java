@@ -41,6 +41,11 @@ public class MasterService implements IMasterService{
         return this.daoHelper.query(this.TruckDao, keyMap, attrList, "detailstruck");
     }
 
+    // New columns added
+    public EntityResult truckDataNewQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TruckDao, keyMap, attrList, "datacolumnsincrement");
+    }
+
     @Override
     public EntityResult truckInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.TruckDao, attrMap);
@@ -65,6 +70,12 @@ public class MasterService implements IMasterService{
 
     public EntityResult trailerDataDetailsQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.TrailerDao, keyMap, attrList, "detailstrailer");
+    }
+
+
+    // New columns added
+    public EntityResult trailerDataNewQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.TrailerDao, keyMap, attrList, "datacolumnsincrementtrailer");
     }
 
     @Override

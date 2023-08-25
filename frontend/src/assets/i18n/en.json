@@ -59,6 +59,8 @@
   "resultState": "Status",
   "Completado": "Completed",
   "En curso": "In progress",
+  "Articulado": "Articulated",
+  "No Articulado": "Not articulated",
   "Data of Trucks": "Data of Trucks",
   "Data of Trailers": "Data of Trailers",
   "TRUCK DETAILS": "Truck details",
@@ -68,6 +70,11 @@
   "THEME": "Theme",
   "DARK_MODE": "Dark mode",
   "DATOS": "Data",
-  "GRAFICAS": "Graphs"
-
+  "GRAFICAS": "Graphs",
+  "Total carga salida": "Total load output(m³)",
+  "Total carga entrada": "Total load in(m³)",
+  "Nº viajes descarga": "Nº unloading trips",
+  "Nº viajes carga": "Nº loading trips",
+  "Total carga transportada": "Total load transportated(m³)",
+  "Total viajes": "Total trips"
 }

@@ -15,15 +15,20 @@
     <Queries>
     <Query id="datatruck">
         <AmbiguousColumns>
-            <AmbiguousColumn name="id_truck" prefix="IT" databaseName="id_truck" />
+            <AmbiguousColumn name="id_truck" prefix="t" databaseName="id_truck" />
         </AmbiguousColumns>
         <Sentence>
             <![CDATA[
-                    SELECT t.id_truck, t.plate, t.ttype
-                    FROM PUBLIC.Truck t
-                    #WHERE#
-                    GROUP BY t.id_truck, t.plate, t.ttype
-                    ORDER BY t.id_truck;
+             WITH t_consulta AS (
+                SELECT t.id_truck, t.plate, t.ttype as type_of_truck
+                FROM PUBLIC.Truck t
+                GROUP BY t.id_truck, t.plate, t.ttype
+                ORDER BY t.id_truck
+             )
+             SELECT #COLUMNS#
+             FROM t_consulta
+             #WHERE#
+
                 ]]>
         </Sentence>
     </Query>
@@ -37,5 +42,47 @@
                 ]]>
             </Sentence>
         </Query>
+
+        <Query id="datacolumnsincrement">
+            <Sentence>
+                <!-- 2ª opcion
+                 select count(s.id_truck) as viajes_completados,
+                 sum(s.scan_volume_in + s.scan_volume_out) as total_carga,
+                 count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
+                 count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
+                 t.plate ,
+                 t.id_truck,
+                 SUM(s.scan_volume_out) filter (where s.scan_volume_in > s.scan_volume_out) as total_cargado,
+                 SUM(s.scan_volume_in) filter (where s.scan_volume_in <= s.scan_volume_out) as total_descargado
+                 from scan s
+                 left join truck t on s.id_truck = t.id_truck
+                 where s.scan_volume_in is not null and s.scan_volume_out is not null
+                 group by s.id_truck, t.plate, t.id_truck
+                 order by s.id_truck;
+                -->
+                <![CDATA[
+                WITH t_consulta_nuevas_columnas AS (
+                     select count(s.id_truck) as viajes_completados,
+                        sum(abs(s.scan_volume_in - s.scan_volume_out)) as total_carga,
+                        count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
+                        count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
+                        t.plate, t.ttype as type_of_truck,
+                        t.id_truck,
+                        COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in > s.scan_volume_out), 0) as total_cargado,
+                        COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in <= s.scan_volume_out), 0) as total_descargado
+                     from scan s
+                        left join truck t on s.id_truck = t.id_truck
+                     where s.scan_volume_in is not null and s.scan_volume_out is not null
+                     group by s.id_truck, t.plate, t.id_truck
+                     order by s.id_truck
+                )
+
+                SELECT #COLUMNS#
+                FROM t_consulta_nuevas_columnas
+                #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+
     </Queries>
 </JdbcEntitySetup>
