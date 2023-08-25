@@ -2,14 +2,6 @@
     <o-text-input attr="id_scan_result" sql-type="INTEGER" enabled="no" label-visible="yes" oHidden></o-text-input>
     <o-row>
       <o-column title-label="RESULTS_INFORMATION" fxFlex layout-padding>
-        <div o-form-toolbar-buttons>
-          <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="nnn()"
-            attr="fillreport">
-            <mat-icon>description</mat-icon>
-            <span>{{ 'REPORT' | oTranslate }}</span>
-          </button>
-        </div>
-      <div id="body">
         <o-row>
           <o-text-input class="input-padding" attr="plate" fxFlex="40" read-only="yes"></o-text-input>
           <o-text-input class="input-padding" attr="trailer_plate" fxFlex="40" required="no" read-only="yes"></o-text-input>
@@ -31,7 +23,6 @@
           <o-text-input class="input-padding" attr="dev_out" fxFlex="33"  read-only="yes"></o-text-input>
           <o-text-input attr="delivery_note" class="input-padding" fxFlex="33" read-only="yes"></o-text-input>
       </o-row>
-    </div>
       </o-column>
     </o-row>
   </o-form>
