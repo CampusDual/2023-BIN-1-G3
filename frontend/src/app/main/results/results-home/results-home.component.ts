@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
+import { FilterExpressionUtils, Expression, OTableComponent } from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import * as XLSX from 'xlsx';
@@ -77,11 +77,14 @@ export class ResultsHomeComponent implements OnInit {
 
   /*name of the excel-file which will be downloaded. */
 
-  @ViewChild('scanTable', { static: false }) scanTable: ElementRef;
+  @ViewChild('scanTable', { static: false }) scanTable: OTableComponent;
+
 
   exportExcel()
   {
-    const ws: XLSX.WorkSheet= XLSX.utils.table_to_sheet(this.scanTable.nativeElement);//converts a DOM TABLE element to a worksheet
+    console.log(this.scanTable.getDataArray());
+    console.log(this.scanTable.getAllValues());
+    const ws: XLSX.WorkSheet= XLSX.utils.json_to_sheet(this.scanTable.getAllValues());//converts a DOM TABLE element to a worksheet
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
