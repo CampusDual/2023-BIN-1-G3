@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: MainComponent,
     canActivate: [AuthGuardService],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'results', pathMatch: 'full' },
       // { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       { path: 'results', loadChildren: () => import('./results/results.module').then(m => m.ResultsModule) },
       { path: 'graphs', loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule) },

@@ -12,17 +12,15 @@
     <o-form editable-detail="no" show-header="no">
       <o-column layout-padding class="container-item">
         <div o-form-toolbar-buttons>
-          <button
-            type="button"
-            class="o-form-toolbar-button"
-            mat-raised-button
+          <o-button
+            type="RAISED"
             color="primary"
             (click)="exportExcel()"
             attr="fillreport"
+            label="Generate report"
+            icon="cloud_download"
           >
-            <mat-icon>cloud_download</mat-icon>
-            <span>{{ " Generate report" | oTranslate }}</span>
-          </button>
+          </o-button>
         </div>
         <o-row layout-align="end start" appearance="outline" elevation="1">
           <o-combo

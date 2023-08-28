@@ -6,6 +6,17 @@
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-form editable-detail="no" show-header="no">
       <o-column layout-padding class="container-item">
+        <div o-form-toolbar-buttons>
+          <o-button
+            type="RAISED"
+            color="primary"
+            (click)="exportExcel()"
+            attr="fillreport"
+            label="Generate report"
+            icon="cloud_download"
+          >
+          </o-button>
+        </div>
         <o-row layout-align="end start" appearance="outline" elevation="1">
           <o-combo
             o-grid-toolbar
@@ -96,13 +107,13 @@
         ></o-table-column>
         <o-table-column
           attr="viajes_completados"
-          title="Total viajes"
+          title="viajes_completados"
           type="INTEGER"
           content-align="center"
         ></o-table-column>
         <o-table-column
           attr="total_carga"
-          title="Total carga transportada"
+          title="total_carga"
           type="real"
           decimal-separator=","
           thousand-separator="."
@@ -112,20 +123,20 @@
         ></o-table-column>
         <o-table-column
           attr="viajes_carga"
-          title="Nº viajes carga"
+          title="viajes_carga"
           type="INTEGER"
           content-align="center"
         ></o-table-column>
         <o-table-column
           attr="viajes_descarga"
-          title="Nº viajes descarga"
+          title="viajes_descarga"
           type="INTEGER"
           width="80px"
           content-align="center"
         ></o-table-column>
         <o-table-column
           attr="total_cargado"
-          title="Total carga entrada"
+          title="total_cargado"
           type="real"
           decimal-separator=","
           thousand-separator="."
@@ -135,7 +146,7 @@
         ></o-table-column>
         <o-table-column
           attr="total_descargado"
-          title="Total carga salida"
+          title="total_descargado"
           type="real"
           decimal-separator=","
           thousand-separator="."

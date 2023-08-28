@@ -104,7 +104,6 @@ export class ResultsHomeComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, 'Results.xlsx');
-
   }
 
 }

@@ -71,11 +71,11 @@
   "DARK_MODE": "Dark mode",
   "DATOS": "Data",
   "GRAFICAS": "Graphs",
-  "Total carga salida": "Total load output(m³)",
-  "Total carga entrada": "Total load in(m³)",
-  "Nº viajes descarga": "Nº unloading trips",
-  "Nº viajes carga": "Nº loading trips",
-  "Total carga transportada": "Total load transportated(m³)",
-  "Total viajes": "Total trips",
+  "total_descargado": "Total load output(m³)",
+  "total_cargado": "Total load in(m³)",
+  "viajes_descarga": "Nº unloading trips",
+  "viajes_carga": "Nº loading trips",
+  "total_carga": "Total load transportated(m³)",
+  "viajes_completados": "Total trips",
   "Generate report": "Generate report"
 }

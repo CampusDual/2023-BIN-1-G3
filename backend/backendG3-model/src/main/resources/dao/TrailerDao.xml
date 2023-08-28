@@ -66,7 +66,7 @@
                         COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in > s.scan_volume_out), 0) as total_cargado,
                         COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in <= s.scan_volume_out), 0) as total_descargado
                      from scan s
-                        left join trailer tr on s.id_trailer = tr.id_trailer
+                        inner join trailer tr on s.id_trailer = tr.id_trailer
                      where s.scan_volume_in is not null and s.scan_volume_out is not null
                      group by s.id_trailer, tr.trailer_plate, tr.id_trailer
                      order by s.id_trailer

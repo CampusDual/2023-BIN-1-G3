@@ -117,6 +117,7 @@ export class GraphsHomeComponent implements OnInit {
       {
         key: this.translate.get('graph'),
         values: values,
+        color: '#e74c3c'
       },
     ];
   }
