@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef} from "@angular/core";
 import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: "app-results-home",
@@ -24,7 +25,7 @@ export class ResultsHomeComponent implements OnInit {
         value: "En curso",
       },
     ];
-    
+
   }
 
   public ngOnDestroy(): void {
@@ -71,4 +72,22 @@ export class ResultsHomeComponent implements OnInit {
       return null;
     }
   }
+
+  // Export data
+
+  /*name of the excel-file which will be downloaded. */
+
+  @ViewChild('scanTable', { static: false }) scanTable: ElementRef;
+
+  exportExcel()
+  {
+    const ws: XLSX.WorkSheet= XLSX.utils.table_to_sheet(this.scanTable.nativeElement);//converts a DOM TABLE element to a worksheet
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'Results.xlsx');
+
+  }
+
 }

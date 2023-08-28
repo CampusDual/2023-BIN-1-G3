@@ -36,6 +36,12 @@ public class ScanService implements IScanService {
         return this.daoHelper.query(this.scanDao, keyMap, attrList, "groupByDate");
     }
 
+
+    /*public EntityResult scanLoadVolumeQuery(Map<String, Object> keyMap,List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.scanDao, keyMap, attrList, "loadvolume");
+    }*/
+
+
     @Transactional(rollbackFor = Exception.class)
     public EntityResult scanInsert(Map<String, Object> attrMap)  {
 
@@ -169,5 +175,6 @@ public class ScanService implements IScanService {
         return this.daoHelper.query(this.scanDao, keyMap, attrList, "data");
 
     }
+
 
 }

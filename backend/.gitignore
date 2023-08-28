@@ -3,6 +3,7 @@
 /backendG3-boot/target
 /backendG3-model/target
 /backendG3-ws/target
+/target
 
 .vscode/*
 !.vscode/settings.json

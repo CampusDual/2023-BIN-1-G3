@@ -1,31 +1,115 @@
-<o-form service="master" entity="trailer" keys="id_trailer" editable-detail="no" show-header-navigation="no" show-header="no">
-    <o-column title="{{ 'TRAILER DETAILS' | oTranslate }}" fxFlex layout-padding>
-        <o-row>
-            <o-text-input class="input-padding" attr="id_trailer" fxFlex="20" sql-type="INTEGER" enabled="no"
-                label-visible="yes" oHidden></o-text-input>
-            <o-text-input class="input-padding" attr="trailer_plate" fxFlex="20" required="no"
-                read-only="yes"></o-text-input>
-        </o-row>
-        <o-table fxFlex service="master" entity="trailerDataDetails" parent-keys="id_trailer"
-        columns="id_trailer;plate;scan_volume_in;scan_volume_out;calculated_volume;scan_date_in;scan_date_out;delivery_note;theight;twidth;tlength"
-        visible-columns="delivery_note;plate;scan_date_in;scan_date_out;theight;twidth;tlength"
-        insert-button="no" delete-button="no" query-rows="8">
-        <o-table-column attr="truck_plate" title="truck_plate" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="scan_volume_in" title="scan_volume_in" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="scan_volume_out" title="scan_volume_out" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="calculated_volume" title="calculated_volume"
-          class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="scan_date_in" title="scan_date_in" type="date" format="DD/MM/YYYY HH:mm"
-          class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="scan_date_out" title="scan_date_out" type="date" format="DD/MM/YYYY HH:mm"
-          class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="delivery_note" title="delivery_note" class="o-table-column-centered"></o-table-column>
-        <!-- type="currency"
+<o-form
+  service="master"
+  entity="trailer"
+  keys="id_trailer"
+  editable-detail="no"
+  show-header-navigation="yes"
+  show-header="yes"
+>
+  <o-column title="{{ 'TRAILER DETAILS' | oTranslate }}" fxFlex layout-padding>
+    <o-row>
+      <o-text-input
+        class="input-padding"
+        attr="id_trailer"
+        fxFlex="20"
+        sql-type="INTEGER"
+        enabled="no"
+        label-visible="yes"
+        oHidden
+      ></o-text-input>
+      <o-text-input
+        class="input-padding"
+        attr="trailer_plate"
+        fxFlex="20"
+        required="no"
+        read-only="yes"
+      ></o-text-input>
+    </o-row>
+    <o-table
+      fxFlex
+      service="master"
+      entity="trailerDataDetails"
+      parent-keys="id_trailer"
+      columns="id_trailer;plate;scan_volume_in;scan_volume_out;calculated_volume;scan_date_in;scan_date_out;delivery_note;theight;twidth;tlength"
+      visible-columns="delivery_note;plate;scan_date_in;scan_date_out;theight;twidth;tlength"
+      insert-button="no"
+      delete-button="no"
+      query-rows="8"
+    >
+      <o-table-column
+        attr="truck_plate"
+        title="truck_plate"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_volume_in"
+        title="scan_volume_in"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_volume_out"
+        title="scan_volume_out"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="calculated_volume"
+        title="calculated_volume"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_date_in"
+        title="scan_date_in"
+        type="date"
+        format="DD/MM/YYYY HH:mm"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_date_out"
+        title="scan_date_out"
+        type="date"
+        format="DD/MM/YYYY HH:mm"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="delivery_note"
+        title="delivery_note"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <!-- type="currency"
         currency-symbol="m" currency-symbol-position="right"-->
-        <o-table-column attr="theight" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="theight" content-align="center"></o-table-column>
-        <o-table-column attr="twidth" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="twidth" content-align="center" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="tlength" type="real" decimal-separator="." thousand-separator="." max-decimal-digits="2" title="tlength" class="o-table-column-centered"></o-table-column>
-        <o-table-column attr="plate" title="plate" class="o-table-column-centered"></o-table-column>
-      </o-table>
-    </o-column>
+      <o-table-column
+        attr="theight"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        title="theight"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="twidth"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        title="twidth"
+        content-align="center"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="tlength"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        title="tlength"
+        class="o-table-column-centered"
+      ></o-table-column>
+      <o-table-column
+        attr="plate"
+        title="plate"
+        class="o-table-column-centered"
+      ></o-table-column>
+    </o-table>
+  </o-column>
 </o-form>

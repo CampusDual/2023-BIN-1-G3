@@ -37,10 +37,16 @@ export const MENU_CONFIG: MenuRootItem[] = [
     items: [
       {
         id: "graficas",
-        name: "Trucks",
+        name: "Truck entries",
         route: "/main/graphs",
         icon: "stacked_line_chart",
       },
+      // {
+      //   id: "graficacarga",
+      //   name: "Load volume",
+      //   route: "/main/volume",
+      //   icon: "multiline_chart",
+      // },
     ],
   },
 

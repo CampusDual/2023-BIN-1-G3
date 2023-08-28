@@ -76,5 +76,6 @@
   "Nº viajes descarga": "Nº unloading trips",
   "Nº viajes carga": "Nº loading trips",
   "Total carga transportada": "Total load transportated(m³)",
-  "Total viajes": "Total trips"
+  "Total viajes": "Total trips",
+  "Generate report": "Generate report"
 }

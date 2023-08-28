@@ -5,7 +5,6 @@ import { GraphsRoutingModule } from './graphs-routing.module';
 import { GraphsHomeComponent } from './graphs-home/graphs-home.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 
-
 @NgModule({
   declarations: [GraphsHomeComponent],
   imports: [
