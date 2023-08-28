@@ -13,8 +13,8 @@ export class ResultsHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
-  constructor(translate: OTranslateService) {
-    console.log(translate.get("Completado"));
+  constructor(private translate: OTranslateService) {
+    console.log(this.translate.get("Completado"));
     this.array = [
       {
         key: 1,
@@ -82,11 +82,25 @@ export class ResultsHomeComponent implements OnInit {
 
   exportExcel()
   {
-    console.log(this.scanTable.getDataArray());
-    console.log(this.scanTable.getAllValues());
-    const ws: XLSX.WorkSheet= XLSX.utils.json_to_sheet(this.scanTable.getAllValues());//converts a DOM TABLE element to a worksheet
+    let data = this.scanTable.getAllRenderedValues();
+    data.forEach((fil) => {
+      if (fil['scan_date_out'] === undefined) {
+        fil['resultState'] = this.translate.get("En curso");
+      }
+      else {
+        fil['resultState'] = this.translate.get("Completado");
+      }
+    });
+    const ws: XLSX.WorkSheet= XLSX.utils.json_to_sheet(data);
+    ws['A1']['v'] = this.translate.get('resultState');
+    ws['B1']['v'] = this.translate.get('plate');
+    ws['C1']['v'] = this.translate.get('trailer_plate');
+    ws['D1']['v'] = this.translate.get('delivery_note');
+    ws['E1']['v'] = this.translate.get('scan_date_in');
+    ws['F1']['v'] = this.translate.get('scan_date_out');
+
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.utils.book_append_sheet(wb, ws, 'Results');
 
     /* save to file */
     XLSX.writeFile(wb, 'Results.xlsx');
