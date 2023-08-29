@@ -20,6 +20,13 @@ export class TrailersHomeComponent implements OnInit {
     let data = this.trailerTable.getAllRenderedValues();
 
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    ws["!cols"] = [];
+    Object.keys(data[0]).forEach((cell: any) => {
+      const colWidth = 145;
+      ws["!cols"].push({
+        wpx: colWidth,
+      });
+    });
     ws["A1"]["v"] = this.translate.get("trailer_plate");
     ws["B1"]["v"] = this.translate.get("viajes_completados");
     ws["C1"]["v"] = this.translate.get("total_carga");
@@ -32,6 +39,6 @@ export class TrailersHomeComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, "Trailers");
 
     /* save to file */
-    XLSX.writeFile(wb, "Trailers.xlsx");
+    XLSX.writeFile(wb, "Trailers.xlsx", { cellStyles: true });
   }
 }

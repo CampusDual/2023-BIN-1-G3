@@ -77,29 +77,38 @@ export class TrucksHomeComponent implements OnInit {
 
   exportExcel() {
     let data = this.truckTable.getAllValues();
-    //let columnasaquitar = ["type_of_truck", "id_truck"];
-    //let datosfiltrados = [];
-    data.forEach((fil) => {
-      fil["type_of_truck"] === 0
-        ? (fil["checkTruck"] = this.translate.get("Yes"))
-        : (fil["checkTruck"] = this.translate.get("No"));
 
-      // Filtrar las columnas que queremos mantener en el excel.
-      // let filtered = Object.keys(fil)
-      // .filter(key => columnasaquitar.includes(key))
-      // .reduce((obj, key) =>{
-      //     obj[key] = fil[key];
-      //     return obj;
-      // }, {});
-      //   datosfiltrados.push(filtered);
+    // data.forEach((fil) => {
+    //   let translate_to = fil["type_of_truck"] === 0 ? "Yes" : "No";
+    //   fil["checkTruck"] = this.translate.get(translate_to);
 
-      delete fil["type_of_truck"];
-      delete fil["id_truck"];
+    //   delete fil["type_of_truck"];
+    //   delete fil["id_truck"];
+    // });
+
+    let cols_to_del = ["type_of_truck", "id_truck"];
+    let excel_data = data.map((fil) => {
+      let ret = {};
+      for (let key of Object.keys(fil)) {
+        if (cols_to_del.includes(key)) continue;
+        ret[key] = fil[key];
+      }
+      ret["checkTruck"] = this.translate.get(
+        fil["type_of_truck"] === 0 ? "Yes" : "No"
+      );
+      return ret;
     });
 
     // const updatedArray = data.map(({ ["id_truck"]: _, ...rest }) => rest);
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excel_data);
+    ws["!cols"] = [];
+    Object.keys(data[0]).forEach((cell: any) => {
+      const colWidth = 145;
+      ws["!cols"].push({
+        wpx: colWidth,
+      });
+    });
 
     // ws['!cols'][7] = { hidden: true };
     ws["A1"]["v"] = this.translate.get("viajes_completados");
@@ -115,6 +124,6 @@ export class TrucksHomeComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, "Trucks");
 
     /* save to file */
-    XLSX.writeFile(wb, "Trucks.xlsx");
+    XLSX.writeFile(wb, "Trucks.xlsx", { cellStyles: true });
   }
 }

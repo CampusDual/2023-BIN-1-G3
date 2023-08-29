@@ -87,11 +87,18 @@ export class ResultsHomeComponent implements OnInit {
   exportExcel() {
     let data = this.scanTable.getAllRenderedValues();
     data.forEach((fil) => {
-      fil["scan_date_out"] === undefined
-        ? (fil["resultState"] = this.translate.get("En curso"))
-        : (fil["resultState"] = this.translate.get("Completado"));
+      let translate_to =
+        fil["scan_date_out"] === undefined ? "En curso" : "Completado";
+      fil["resultState"] = this.translate.get(translate_to);
     });
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    ws["!cols"] = [];
+    Object.keys(data[0]).forEach((cell: any) => {
+      const colWidth = 140;
+      ws["!cols"].push({
+        wpx: colWidth,
+      });
+    });
     ws["A1"]["v"] = this.translate.get("resultState");
     ws["B1"]["v"] = this.translate.get("plate");
     ws["C1"]["v"] = this.translate.get("trailer_plate");
@@ -103,6 +110,6 @@ export class ResultsHomeComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, "Results");
 
     /* save to file */
-    XLSX.writeFile(wb, "Results.xlsx");
+    XLSX.writeFile(wb, "Results.xlsx", { cellStyles: true });
   }
 }
