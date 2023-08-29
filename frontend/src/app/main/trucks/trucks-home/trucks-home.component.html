@@ -6,7 +6,7 @@
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-form editable-detail="no" show-header="no">
       <o-column layout-padding class="container-item">
-        <div o-form-toolbar-buttons>
+        <!-- <div o-form-toolbar-buttons>
           <o-button
             type="RAISED"
             color="primary"
@@ -16,14 +16,14 @@
             icon="cloud_download"
           >
           </o-button>
-        </div>
+        </div> -->
         <o-row layout-align="end start" appearance="outline" elevation="1">
           <o-combo
             o-grid-toolbar
             position="end start"
-            width="150px"
+            width="180px"
             attr="checkTruck"
-            label="checkTruck"
+            label="type_of_truck"
             [static-data]="getDataArray()"
             [data]="getValueSimple()"
             value-column="key"
@@ -33,6 +33,7 @@
             read-only="false"
             appearance="outline"
             translate="yes"
+            null-selection="no"
           >
           </o-combo>
           <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
@@ -86,6 +87,15 @@
         virtual-scroll="false"
         query-rows="15"
       >
+        <o-table-button
+          attr="button"
+          type="RAISED"
+          color="primary"
+          label="Generate report"
+          icon="cloud_download"
+          (onClick)="exportExcel()"
+        ></o-table-button>
+
         <o-table-column
           attr="id_truck"
           title="ID_TRUCK"

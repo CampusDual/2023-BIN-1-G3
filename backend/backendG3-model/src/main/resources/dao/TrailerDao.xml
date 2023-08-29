@@ -58,7 +58,7 @@
                 <![CDATA[
                 WITH tr_consulta_nuevas_columnas AS (
                       select count(s.id_trailer) as viajes_completados,
-                        sum(abs(s.scan_volume_in - s.scan_volume_out)) as total_carga,
+                        coalesce(sum(abs(s.scan_volume_in - s.scan_volume_out)), 0) as total_carga,
                         count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
                         count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
                         tr.trailer_plate,
@@ -67,7 +67,6 @@
                         COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in <= s.scan_volume_out), 0) as total_descargado
                      from scan s
                         inner join trailer tr on s.id_trailer = tr.id_trailer
-                     where s.scan_volume_in is not null and s.scan_volume_out is not null
                      group by s.id_trailer, tr.trailer_plate, tr.id_trailer
                      order by s.id_trailer
                 )

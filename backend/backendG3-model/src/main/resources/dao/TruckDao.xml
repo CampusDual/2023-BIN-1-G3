@@ -63,7 +63,7 @@
                 <![CDATA[
                 WITH t_consulta_nuevas_columnas AS (
                      select count(s.id_truck) as viajes_completados,
-                        sum(abs(s.scan_volume_in - s.scan_volume_out)) as total_carga,
+                        coalesce(sum(abs(s.scan_volume_in - s.scan_volume_out)),0) as total_carga,
                         count(s.scan_volume_in) filter (where s.scan_volume_in > s.scan_volume_out) as viajes_carga,
                         count(s.scan_volume_out) filter (where s.scan_volume_in <= s.scan_volume_out) as viajes_descarga,
                         t.plate, t.ttype as type_of_truck,
@@ -71,8 +71,7 @@
                         COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in > s.scan_volume_out), 0) as total_cargado,
                         COALESCE(SUM(abs(s.scan_volume_in - s.scan_volume_out)) filter (where s.scan_volume_in <= s.scan_volume_out), 0) as total_descargado
                      from scan s
-                        left join truck t on s.id_truck = t.id_truck
-                     where s.scan_volume_in is not null and s.scan_volume_out is not null
+                        inner join truck t on s.id_truck = t.id_truck
                      group by s.id_truck, t.plate, t.id_truck
                      order by s.id_truck
                 )

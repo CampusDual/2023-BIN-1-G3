@@ -82,12 +82,12 @@
 
     <!-- {{ 'graph' | oTranslate }} -->
 
-  <div fxFill>
+  <div fxFill id="tabla">
     <o-table #table attr="scanTable" service="scans" entity="scanByDate" insert-button="no" delete-button="no"
       (onDataLoaded)="dataLoaded($event)"
       columns="date;conteo"
       visible-columns="date;conteo"
-      query-rows="20" visible="no"
+      query-rows="0"
     >
       <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
       empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->

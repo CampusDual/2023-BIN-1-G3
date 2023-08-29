@@ -11,22 +11,11 @@
   <div fxFill>
     <o-form editable-detail="no" show-header="no">
       <o-column layout-padding class="container-item">
-        <div o-form-toolbar-buttons>
-          <o-button
-            type="RAISED"
-            color="primary"
-            (click)="exportExcel()"
-            attr="fillreport"
-            label="Generate report"
-            icon="cloud_download"
-          >
-          </o-button>
-        </div>
         <o-row layout-align="end start" appearance="outline" elevation="1">
           <o-combo
             o-grid-toolbar
             position="end start"
-            width="200px"
+            width="180px"
             attr="resultState"
             label="resultState"
             [static-data]="getDataArray()"
@@ -38,6 +27,7 @@
             read-only="false"
             appearance="outline"
             translate="yes"
+            null-selection="no"
           >
           </o-combo>
           <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
@@ -92,6 +82,15 @@
           virtual-scroll="no"
           query-rows="15"
         >
+          <o-table-button
+            attr="button"
+            type="RAISED"
+            color="primary"
+            label="Generate report"
+            icon="cloud_download"
+            (onClick)="exportExcel()"
+          ></o-table-button>
+
           <o-table-column
             attr="plate"
             title="plate"

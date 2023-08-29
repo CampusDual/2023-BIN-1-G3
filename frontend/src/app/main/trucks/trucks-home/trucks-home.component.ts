@@ -1,21 +1,24 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { OTableComponent, OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
-import * as XLSX from 'xlsx';
+import * as XLSX from "xlsx";
 
 @Component({
-  selector: 'app-trucks-home',
-  templateUrl: './trucks-home.component.html',
-  styleUrls: ['./trucks-home.component.css']
+  selector: "app-trucks-home",
+  templateUrl: "./trucks-home.component.html",
+  styleUrls: ["./trucks-home.component.css"],
 })
-
 export class TrucksHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
   constructor(private translate: OTranslateService) {
     this.array = [
+      {
+        key: 0,
+        value: "All",
+      },
       {
         key: 1,
         value: "Articulado",
@@ -25,7 +28,6 @@ export class TrucksHomeComponent implements OnInit {
         value: "No Articulado",
       },
     ];
-
   }
 
   public ngOnDestroy(): void {
@@ -35,9 +37,7 @@ export class TrucksHomeComponent implements OnInit {
   }
 
   public getDataArray(): any[] {
-
     return this.array;
-
   }
 
   public getValueSimple(): any {
@@ -73,37 +73,48 @@ export class TrucksHomeComponent implements OnInit {
     }
   }
 
-  @ViewChild('truckTable', { static: false }) truckTable: OTableComponent;
+  @ViewChild("truckTable", { static: false }) truckTable: OTableComponent;
 
-  exportExcel()
-  {
+  exportExcel() {
     let data = this.truckTable.getAllValues();
+    //let columnasaquitar = ["type_of_truck", "id_truck"];
+    //let datosfiltrados = [];
     data.forEach((fil) => {
-      if (fil['type_of_truck'] === 0) {
-        fil['checkTruck'] = this.translate.get("Yes");
-      }
-      else {
-        fil['checkTruck'] = this.translate.get("No");
-      }
+      fil["type_of_truck"] === 0
+        ? (fil["checkTruck"] = this.translate.get("Yes"))
+        : (fil["checkTruck"] = this.translate.get("No"));
+
+      // Filtrar las columnas que queremos mantener en el excel.
+      // let filtered = Object.keys(fil)
+      // .filter(key => columnasaquitar.includes(key))
+      // .reduce((obj, key) =>{
+      //     obj[key] = fil[key];
+      //     return obj;
+      // }, {});
+      //   datosfiltrados.push(filtered);
+
       delete fil["type_of_truck"];
       delete fil["id_truck"];
     });
+
     // const updatedArray = data.map(({ ["id_truck"]: _, ...rest }) => rest);
-    const ws: XLSX.WorkSheet= XLSX.utils.json_to_sheet(data);
+
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+
     // ws['!cols'][7] = { hidden: true };
-    ws['A1']['v'] = this.translate.get('viajes_completados');
-    ws['B1']['v'] = this.translate.get('total_carga');
-    ws['C1']['v'] = this.translate.get('viajes_carga');
-    ws['D1']['v'] = this.translate.get('viajes_descarga');
-    ws['E1']['v'] = this.translate.get('total_cargado');
-    ws['F1']['v'] = this.translate.get('total_descargado');
-    ws['G1']['v'] = this.translate.get('plate');
-    ws['H1']['v'] = this.translate.get('checkTruck');
+    ws["A1"]["v"] = this.translate.get("viajes_completados");
+    ws["B1"]["v"] = this.translate.get("total_carga");
+    ws["C1"]["v"] = this.translate.get("viajes_carga");
+    ws["D1"]["v"] = this.translate.get("viajes_descarga");
+    ws["E1"]["v"] = this.translate.get("total_cargado");
+    ws["F1"]["v"] = this.translate.get("total_descargado");
+    ws["G1"]["v"] = this.translate.get("plate");
+    ws["H1"]["v"] = this.translate.get("checkTruck");
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Trucks');
+    XLSX.utils.book_append_sheet(wb, ws, "Trucks");
 
     /* save to file */
-    XLSX.writeFile(wb, 'Trucks.xlsx');
+    XLSX.writeFile(wb, "Trucks.xlsx");
   }
 }

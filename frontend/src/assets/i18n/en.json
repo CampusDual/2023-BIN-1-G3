@@ -59,6 +59,7 @@
   "resultState": "Status",
   "Completado": "Completed",
   "En curso": "In progress",
+  "All": "All",
   "Articulado": "Articulated",
   "No Articulado": "Not articulated",
   "Data of Trucks": "Data of Trucks",
@@ -77,5 +78,6 @@
   "viajes_carga": "Nº loading trips",
   "total_carga": "Total load transportated(m³)",
   "viajes_completados": "Total trips",
-  "Generate report": "Generate report"
+  "Generate report": "Generate report",
+  "type_of_truck": "Type of truck"
 }

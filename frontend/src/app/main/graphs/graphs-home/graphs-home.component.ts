@@ -7,7 +7,7 @@ import {
   LinePlusBarFocusChartConfiguration,
   ChartService,
 } from "ontimize-web-ngx-charts";
-import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
+import { FilterExpressionUtils, Expression, OTableButtonsComponent, OTableComponent, OTableInitializationOptions } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { OTranslateService } from "ontimize-web-ngx";
 import { TranslateService } from "@ngx-translate/core";
@@ -27,7 +27,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GraphsHomeComponent implements OnInit {
   @ViewChild("graph", { static: false }) graph: OChartComponent;
-
+  
   chartParameters: LineChartConfiguration;
 
   chartData: Array<Object>;

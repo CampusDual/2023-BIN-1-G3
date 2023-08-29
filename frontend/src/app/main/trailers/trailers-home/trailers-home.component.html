@@ -4,7 +4,7 @@
   mode="dialog"
 >
   <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <div o-form-toolbar-buttons>
+    <!-- <div o-form-toolbar-buttons>
       <o-button
         type="RAISED"
         color="primary"
@@ -14,7 +14,7 @@
         icon="cloud_download"
       >
       </o-button>
-    </div>
+    </div> -->
     <o-table
       #trailerTable
       attr="trailerTable"
@@ -27,6 +27,15 @@
       visible-columns="trailer_plate;viajes_completados;total_carga;viajes_carga;viajes_descarga;total_cargado;total_descargado"
       query-rows="15"
     >
+      <o-table-button
+        attr="button"
+        type="RAISED"
+        color="primary"
+        label="Generate report"
+        icon="cloud_download"
+        (onClick)="exportExcel()"
+      ></o-table-button>
+
       <o-table-column
         attr="id_trailer"
         title="ID_TRAILER"
@@ -42,54 +51,54 @@
         content-align="center"
       ></o-table-column>
       <o-table-column
-          attr="viajes_completados"
-          title="viajes_completados"
-          type="INTEGER"
-          content-align="center"
-        ></o-table-column>
-        <o-table-column
-          attr="total_carga"
-          title="total_carga"
-          type="real"
-          decimal-separator=","
-          thousand-separator="."
-          max-decimal-digits="2"
-          class="o-table-column-centered"
-          content-align="center"
-        ></o-table-column>
-        <o-table-column
-          attr="viajes_carga"
-          title="viajes_carga"
-          type="INTEGER"
-          content-align="center"
-        ></o-table-column>
-        <o-table-column
-          attr="viajes_descarga"
-          title="viajes_descarga"
-          type="INTEGER"
-          width="80px"
-          content-align="center"
-        ></o-table-column>
-        <o-table-column
-          attr="total_cargado"
-          title="total_cargado"
-          type="real"
-          decimal-separator=","
-          thousand-separator="."
-          max-decimal-digits="2"
-          class="o-table-column-centered"
-          content-align="center"
-        ></o-table-column>
-        <o-table-column
-          attr="total_descargado"
-          title="total_descargado"
-          type="real"
-          decimal-separator=","
-          thousand-separator="."
-          max-decimal-digits="2"
-          class="o-table-column-centered"
-          content-align="center"
-        ></o-table-column>
+        attr="viajes_completados"
+        title="viajes_completados"
+        type="INTEGER"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="total_carga"
+        title="total_carga"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        class="o-table-column-centered"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="viajes_carga"
+        title="viajes_carga"
+        type="INTEGER"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="viajes_descarga"
+        title="viajes_descarga"
+        type="INTEGER"
+        width="80px"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="total_cargado"
+        title="total_cargado"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        class="o-table-column-centered"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="total_descargado"
+        title="total_descargado"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        class="o-table-column-centered"
+        content-align="center"
+      ></o-table-column>
     </o-table>
   </div>
 </o-form-layout-manager>

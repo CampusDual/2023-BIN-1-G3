@@ -6,6 +6,15 @@
   show-header-navigation="yes"
   show-header="yes"
 >
+
+<!-- Boton exportacion pdf (historico camiones)-->
+<!-- <div o-form-toolbar-buttons>
+  <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="exportPDF()"
+    attr="export">
+    <mat-icon>cloud_download</mat-icon>
+    <span>{{ 'Generate load report' | oTranslate }}</span>
+  </button>
+</div> -->
   <o-column title="{{ 'TRUCK DETAILS' | oTranslate }}" fxFlex layout-padding>
     <o-row>
       <o-text-input
@@ -36,6 +45,15 @@
       delete-button="no"
       query-rows="8"
     >
+    <!-- Boton export PDF (historico)-->
+    <!-- <o-table-button
+          attr="button"
+          type="RAISED"
+          color="primary"
+          label="Generate report"
+          icon="cloud_download"
+          (onClick)="exportPDF()"
+        ></o-table-button> -->
       <o-table-column
         attr="trailer_plate"
         title="trailer_plate"

@@ -1,8 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import { FilterExpressionUtils, Expression, OTableComponent } from "ontimize-web-ngx";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  FilterExpressionUtils,
+  Expression,
+  OTableComponent,
+} from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
-import * as XLSX from 'xlsx';
+import * as XLSX from "xlsx";
 
 @Component({
   selector: "app-results-home",
@@ -17,6 +21,10 @@ export class ResultsHomeComponent implements OnInit {
     console.log(this.translate.get("Completado"));
     this.array = [
       {
+        key: 0,
+        value: "All",
+      },
+      {
         key: 1,
         value: "Completado",
       },
@@ -25,7 +33,6 @@ export class ResultsHomeComponent implements OnInit {
         value: "En curso",
       },
     ];
-
   }
 
   public ngOnDestroy(): void {
@@ -35,9 +42,7 @@ export class ResultsHomeComponent implements OnInit {
   }
 
   public getDataArray(): any[] {
-
     return this.array;
-
   }
 
   public getValueSimple(): any {
@@ -77,33 +82,27 @@ export class ResultsHomeComponent implements OnInit {
 
   /*name of the excel-file which will be downloaded. */
 
-  @ViewChild('scanTable', { static: false }) scanTable: OTableComponent;
+  @ViewChild("scanTable", { static: false }) scanTable: OTableComponent;
 
-
-  exportExcel()
-  {
+  exportExcel() {
     let data = this.scanTable.getAllRenderedValues();
     data.forEach((fil) => {
-      if (fil['scan_date_out'] === undefined) {
-        fil['resultState'] = this.translate.get("En curso");
-      }
-      else {
-        fil['resultState'] = this.translate.get("Completado");
-      }
+      fil["scan_date_out"] === undefined
+        ? (fil["resultState"] = this.translate.get("En curso"))
+        : (fil["resultState"] = this.translate.get("Completado"));
     });
-    const ws: XLSX.WorkSheet= XLSX.utils.json_to_sheet(data);
-    ws['A1']['v'] = this.translate.get('resultState');
-    ws['B1']['v'] = this.translate.get('plate');
-    ws['C1']['v'] = this.translate.get('trailer_plate');
-    ws['D1']['v'] = this.translate.get('delivery_note');
-    ws['E1']['v'] = this.translate.get('scan_date_in');
-    ws['F1']['v'] = this.translate.get('scan_date_out');
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    ws["A1"]["v"] = this.translate.get("resultState");
+    ws["B1"]["v"] = this.translate.get("plate");
+    ws["C1"]["v"] = this.translate.get("trailer_plate");
+    ws["D1"]["v"] = this.translate.get("delivery_note");
+    ws["E1"]["v"] = this.translate.get("scan_date_in");
+    ws["F1"]["v"] = this.translate.get("scan_date_out");
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Results');
+    XLSX.utils.book_append_sheet(wb, ws, "Results");
 
     /* save to file */
-    XLSX.writeFile(wb, 'Results.xlsx');
+    XLSX.writeFile(wb, "Results.xlsx");
   }
-
 }

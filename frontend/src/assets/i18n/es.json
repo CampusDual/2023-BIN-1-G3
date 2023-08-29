@@ -59,6 +59,7 @@
   "resultState": "Estado",
   "Completado": "Completado",
   "En curso": "En curso",
+  "All": "Todos",
   "Articulado": "Articulado",
   "No Articulado": "No articulado",
   "Data of Trucks": "Datos de camiones",
@@ -77,6 +78,7 @@
   "viajes_carga": "Nº viajes carga",
   "total_carga": "Total carga transportada(m³)",
   "viajes_completados": "Total viajes",
-  "Generate report": "Generar reporte"
+  "Generate report": "Generar reporte",
+  "type_of_truck": "Tipo de camión"
 
 }
