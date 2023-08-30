@@ -1,3 +1,41 @@
 {
-    "java.compile.nullAnalysis.mode": "disabled"
+    "workbench.colorTheme": "One Dark Pro Mix",
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.overviewRulerBorder": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.formatOnSave": true,
+    "indenticator.width": 1,
+    "indenticator.color.dark": "rgba(255,255,255,0.1)",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.stickyScroll.enabled": true,
+    "git.openRepositoryInParentFolders": "never",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.linkedEditing": true,
+    "tabnine.experimentalAutoImports": true,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.matchBrackets": false,
+    "breadcrumbs.enabled": false,
+    "workbench.statusBar.visible": false,
+    "editor.cursorBlinking": "expand",
+    "terminal.integrated.cursorBlinking": true,
+    "editor.guides.bracketPairs": true,
+    "editor.language.colorizedBracketPairs": [],
+    "editor.cursorSmoothCaretAnimation": "on",
+    "prettier.bracketSameLine": true
 }
