@@ -21,11 +21,20 @@ export class ResultsStateRenderComponent extends OBaseTableCellRenderer {
   }
 
   getStateData(cellvalue: any, rowvalue?: any): string {
-
-    if(rowvalue["scan_date_out"] == null){
+    let limit_date = new Date();
+    limit_date.setHours(limit_date.getHours() - 3);
+    if (
+      rowvalue["scan_date_out"] == null &&
+      rowvalue["scan_date_in"] >= limit_date
+    ) {
       return "⌛";
+    } else if (
+      rowvalue["scan_date_out"] == null &&
+      rowvalue["scan_date_in"] <= limit_date
+    ) {
+      return "❌";
     } else {
-      return "✅"
+      return "✅";
     }
   }
 }

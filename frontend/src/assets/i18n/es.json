@@ -40,7 +40,7 @@
   "Date": "Fecha",
   "INIT": "Inicio",
   "END": "Final",
-  "FILTER": "Filtro",
+  "FILTER": "Filtrar",
   "CLEAR": "Limpiar",
   "GRAPHS": "Gráficas",
   "conteo": "Entradas",
@@ -79,6 +79,6 @@
   "total_carga": "Total carga transportada(m³)",
   "viajes_completados": "Total viajes",
   "Generate report": "Generar reporte",
-  "type_of_truck": "Tipo de camión"
-
+  "type_of_truck": "Tipo de camión",
+  "Scan_error": "Error de escaneo"
 }

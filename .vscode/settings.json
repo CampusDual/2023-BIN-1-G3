@@ -29,7 +29,7 @@
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.matchBrackets": false,
+    "editor.matchBrackets": "never",
     "breadcrumbs.enabled": false,
     "workbench.statusBar.visible": false,
     "editor.cursorBlinking": "expand",

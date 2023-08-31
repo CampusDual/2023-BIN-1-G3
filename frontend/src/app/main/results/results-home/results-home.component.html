@@ -30,6 +30,15 @@
             null-selection="no"
           >
           </o-combo>
+          <o-button
+            attr="filter"
+            [oFilterBuilderQuery]="filterBuilder"
+            type="RAISED"
+            label="FILTER"
+            layout-padding
+            color="accent"
+            class="filter-button"
+          ></o-button>
           <!-- <o-text-input attr="resultState" read-only="no" fxFlex="33"></o-text-input> -->
         </o-row>
 
@@ -37,7 +46,7 @@
           value-column="EMPLOYEETYPEID" keys="EMPLOYEETYPEID" visible-columns="EMPLOYEETYPENAME" width="33%">
         </o-list-picker> -->
 
-        <o-row layout-align="end" layout-gap="18px">
+        <!-- <o-row layout-align="end" layout-gap="18px">
           <o-button
             attr="filter"
             [oFilterBuilderQuery]="filterBuilder"
@@ -56,7 +65,7 @@
             color="accent"
             class="filter-button"
           ></o-button>
-        </o-row>
+        </o-row> -->
       </o-column>
 
       <o-filter-builder

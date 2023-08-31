@@ -32,6 +32,10 @@ export class ResultsHomeComponent implements OnInit {
         key: 2,
         value: "En curso",
       },
+      {
+        key: 3,
+        value: "Scan_error",
+      },
     ];
   }
 
@@ -54,25 +58,48 @@ export class ResultsHomeComponent implements OnInit {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
     values.forEach((fil) => {
-      if (fil.value === 2) {
-        if (fil.attr === "resultState") {
+      if (fil.attr === "resultState") {
+        let limit_date = new Date();
+        limit_date.setHours(limit_date.getHours() - 3);
+        if (fil.value === 1) {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
+          );
+        } else if (fil.value === 2) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );
-        }
-      }
-      if (fil.value === 1) {
-        if (fil.attr === "resultState") {
           filters.push(
-            FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
+            FilterExpressionUtils.buildExpressionMore(
+              "scan_date_in",
+              limit_date
+            )
+          );
+        } else if (fil.value === 3) {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
+          );
+          filters.push(
+            FilterExpressionUtils.buildExpressionLessEqual(
+              "scan_date_in",
+              limit_date
+            )
           );
         }
       }
     });
 
     // Build complex expression
-    if (filters.length > 0) {
+    if (filters.length == 1) {
       return filters[0];
+    } else if (filters.length > 1) {
+      return filters.reduce((exp1, exp2) =>
+        FilterExpressionUtils.buildComplexExpression(
+          exp1,
+          exp2,
+          FilterExpressionUtils.OP_AND
+        )
+      );
     } else {
       return null;
     }
