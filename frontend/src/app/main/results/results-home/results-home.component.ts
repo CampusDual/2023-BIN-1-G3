@@ -6,34 +6,43 @@ import {
 } from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
+import {
+  ComboService,
+  MyEnum,
+  PROGRESS_LIMIT_TIME,
+} from "src/app/shared/combo.service";
 import * as XLSX from "xlsx";
 
 @Component({
   selector: "app-results-home",
   templateUrl: "./results-home.component.html",
   styleUrls: ["./results-home.component.scss"],
+  providers: [ComboService],
 })
 export class ResultsHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
-  constructor(private translate: OTranslateService) {
+  constructor(
+    private translate: OTranslateService,
+    private combo: ComboService
+  ) {
     console.log(this.translate.get("Completado"));
     this.array = [
       {
-        key: 0,
+        key: MyEnum.Todos,
         value: "All",
       },
       {
-        key: 1,
+        key: MyEnum.Completado,
         value: "Completado",
       },
       {
-        key: 2,
+        key: MyEnum.En_curso,
         value: "En curso",
       },
       {
-        key: 3,
+        key: MyEnum.Error,
         value: "Scan_error",
       },
     ];
@@ -57,15 +66,17 @@ export class ResultsHomeComponent implements OnInit {
   createFilter(values: Array<{ attr; value }>): Expression {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
+    let fecha = new Date();
+    fecha.setHours(fecha.getHours() - PROGRESS_LIMIT_TIME);
     values.forEach((fil) => {
       if (fil.attr === "resultState") {
         let limit_date = new Date();
-        limit_date.setHours(limit_date.getHours() - 3);
-        if (fil.value === 1) {
+        limit_date.setHours(limit_date.getHours() - PROGRESS_LIMIT_TIME);
+        if (fil.value === MyEnum.Completado) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
           );
-        } else if (fil.value === 2) {
+        } else if (fil.value === MyEnum.En_curso) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );
@@ -75,7 +86,7 @@ export class ResultsHomeComponent implements OnInit {
               limit_date
             )
           );
-        } else if (fil.value === 3) {
+        } else if (fil.value === MyEnum.Error) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );

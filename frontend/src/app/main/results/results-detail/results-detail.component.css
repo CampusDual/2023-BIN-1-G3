@@ -1,0 +1,14 @@
+@media print {
+  select,
+  input,
+  button,
+  textarea {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    outline: none;
+  }
+}
+/* #form {
+  outline: 1px solid red;
+} */
