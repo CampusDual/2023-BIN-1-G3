@@ -43,7 +43,7 @@ export class ResultsHomeComponent implements OnInit {
       },
       {
         key: 3,
-        value: "Error",
+        value: "Scan_error",
       },
     ];
   }
@@ -70,19 +70,30 @@ export class ResultsHomeComponent implements OnInit {
     fecha.setHours(fecha.getHours() - PROGRESS_LIMIT_TIME);
     values.forEach((fil) => {
       if (fil.attr === "resultState") {
+        let limit_date = new Date();
+        limit_date.setHours(limit_date.getHours() - PROGRESS_LIMIT_TIME);
         if (fil.value === MyEnum.Completado) {
-          filters.push(
-            FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
-          );
-        } else if (fil.value === MyEnum.En_curso) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
           );
+        } else if (fil.value === MyEnum.En_curso) {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
+          );
+          filters.push(
+            FilterExpressionUtils.buildExpressionMore(
+              "scan_date_in",
+              limit_date
+            )
+          );
         } else if (fil.value === MyEnum.Error) {
+          filters.push(
+            FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
+          );
           filters.push(
             FilterExpressionUtils.buildExpressionLessEqual(
               "scan_date_in",
-              fecha
+              limit_date
             )
           );
         }
@@ -90,8 +101,16 @@ export class ResultsHomeComponent implements OnInit {
     });
 
     // Build complex expression
-    if (filters.length > 0) {
+    if (filters.length == 1) {
       return filters[0];
+    } else if (filters.length > 1) {
+      return filters.reduce((exp1, exp2) =>
+        FilterExpressionUtils.buildComplexExpression(
+          exp1,
+          exp2,
+          FilterExpressionUtils.OP_AND
+        )
+      );
     } else {
       return null;
     }

@@ -41,12 +41,12 @@ export const MENU_CONFIG: MenuRootItem[] = [
         route: "/main/graphs",
         icon: "stacked_line_chart",
       },
-      // {
-      //   id: "graficacarga",
-      //   name: "Load volume",
-      //   route: "/main/volume",
-      //   icon: "multiline_chart",
-      // },
+      {
+        id: "graficacarga",
+        name: "Load volume",
+        route: "/main/volume",
+        icon: "multiline_chart",
+      },
     ],
   },
 

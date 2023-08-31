@@ -79,5 +79,6 @@
   "total_carga": "Total load transportated(m³)",
   "viajes_completados": "Total trips",
   "Generate report": "Generate report",
-  "type_of_truck": "Type of truck"
+  "type_of_truck": "Type of truck",
+  "Scan_error": "Scan error"
 }
