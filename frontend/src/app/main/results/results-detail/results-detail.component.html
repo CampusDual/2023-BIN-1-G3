@@ -1,4 +1,5 @@
 <o-form
+  id="form"
   service="scans"
   entity="scanData"
   keys="id_scan_result"
@@ -7,13 +8,18 @@
   show-header="yes"
 >
   <!-- Boton exportacion pdf (Justificante de carga)-->
-  <!-- <div o-form-toolbar-buttons>
-  <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="exportPDF()"
-    attr="export">
-    <mat-icon>cloud_download</mat-icon>
-    <span>{{ 'Generate load report' | oTranslate }}</span>
-  </button>
-</div> -->
+  <div o-form-toolbar-buttons>
+    <button
+      type="button"
+      class="o-form-toolbar-button"
+      mat-stroked-button
+      (click)="exportPDF()"
+      attr="export"
+    >
+      <mat-icon>cloud_download</mat-icon>
+      <span>{{ "Generate load report" | oTranslate }}</span>
+    </button>
+  </div>
 
   <o-text-input
     attr="id_scan_result"

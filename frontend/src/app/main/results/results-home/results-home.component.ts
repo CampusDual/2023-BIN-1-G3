@@ -6,18 +6,27 @@ import {
 } from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
+import {
+  ComboService,
+  MyEnum,
+  PROGRESS_LIMIT_TIME,
+} from "src/app/shared/combo.service";
 import * as XLSX from "xlsx";
 
 @Component({
   selector: "app-results-home",
   templateUrl: "./results-home.component.html",
   styleUrls: ["./results-home.component.scss"],
+  providers: [ComboService],
 })
 export class ResultsHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
-  constructor(private translate: OTranslateService) {
+  constructor(
+    private translate: OTranslateService,
+    private combo: ComboService
+  ) {
     console.log(this.translate.get("Completado"));
     this.array = [
       {
@@ -31,6 +40,10 @@ export class ResultsHomeComponent implements OnInit {
       {
         key: 2,
         value: "En curso",
+      },
+      {
+        key: 3,
+        value: "Error",
       },
     ];
   }
@@ -53,18 +66,24 @@ export class ResultsHomeComponent implements OnInit {
   createFilter(values: Array<{ attr; value }>): Expression {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
+    let fecha = new Date();
+    fecha.setHours(fecha.getHours() - PROGRESS_LIMIT_TIME);
     values.forEach((fil) => {
-      if (fil.value === 2) {
-        if (fil.attr === "resultState") {
+      if (fil.attr === "resultState") {
+        if (fil.value === MyEnum.Completado) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );
-        }
-      }
-      if (fil.value === 1) {
-        if (fil.attr === "resultState") {
+        } else if (fil.value === MyEnum.En_curso) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
+          );
+        } else if (fil.value === MyEnum.Error) {
+          filters.push(
+            FilterExpressionUtils.buildExpressionLessEqual(
+              "scan_date_in",
+              fecha
+            )
           );
         }
       }
