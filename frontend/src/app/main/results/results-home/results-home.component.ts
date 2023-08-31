@@ -30,19 +30,19 @@ export class ResultsHomeComponent implements OnInit {
     console.log(this.translate.get("Completado"));
     this.array = [
       {
-        key: 0,
+        key: MyEnum.Todos,
         value: "All",
       },
       {
-        key: 1,
+        key: MyEnum.Completado,
         value: "Completado",
       },
       {
-        key: 2,
+        key: MyEnum.En_curso,
         value: "En curso",
       },
       {
-        key: 3,
+        key: MyEnum.Error,
         value: "Scan_error",
       },
     ];
