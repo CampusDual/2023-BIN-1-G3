@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { GraphsHomeComponent } from "./graphs-home/graphs-home.component";
+import { GraphVolumesHomeComponent } from "./graph-volumes-home/graph-volumes-home.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: GraphsHomeComponent,
+    component: GraphVolumesHomeComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GraphsRoutingModule {}
+export class GraphVolumesRoutingModule {}

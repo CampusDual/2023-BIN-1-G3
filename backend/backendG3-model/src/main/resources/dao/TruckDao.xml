@@ -82,6 +82,18 @@
                 ]]>
             </Sentence>
         </Query>
-
+        <Query id="insertTruckCustom">
+            <Sentence>
+                <![CDATA[
+        INSERT INTO truck (id_truck, plate, ttype)
+        VALUES (NEXTVAL('truck_id_truck_seq'), '',
+                CASE
+                    WHEN EXISTS (SELECT 1 FROM scan WHERE id_trailer IS NOT NULL) THEN 0
+                    ELSE 1
+                END
+               );
+        ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

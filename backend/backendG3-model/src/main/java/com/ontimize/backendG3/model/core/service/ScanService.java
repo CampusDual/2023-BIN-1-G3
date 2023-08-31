@@ -170,6 +170,7 @@ public class ScanService implements IScanService {
                     if (query.calculateRecordNumber() > 0) {
                         entry.setValue(query.getRecordValues(0).get(TruckDao.ID_TRUCK));
                     } else {
+                        data.put(TruckDao.ttype, nonScanData.get(ScanDao.ID_TRAILER) == null ? 1 : 0);
                         toret = this.masterService.truckInsert(data);
                         entry.setValue(toret.get(TruckDao.ID_TRUCK));
                     }

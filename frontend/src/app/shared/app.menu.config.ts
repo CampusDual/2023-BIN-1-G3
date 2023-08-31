@@ -44,7 +44,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
       {
         id: "graficacarga",
         name: "Load volume",
-        route: "/main/volume",
+        route: "/main/graph_volumes",
         icon: "multiline_chart",
       },
     ],
