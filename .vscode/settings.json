@@ -31,7 +31,7 @@
     },
     "editor.matchBrackets": "never",
     "breadcrumbs.enabled": false,
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "editor.cursorBlinking": "expand",
     "terminal.integrated.cursorBlinking": true,
     "editor.guides.bracketPairs": true,
