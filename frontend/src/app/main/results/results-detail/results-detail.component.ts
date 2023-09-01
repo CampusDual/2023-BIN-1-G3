@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
-import * as jsPDF from "jspdf";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { OFormComponent } from "ontimize-web-ngx";
 
@@ -28,6 +28,7 @@ export class ResultsDetailComponent implements OnInit {
   //     scale: 3,
   //   };
 
+<<<<<<< HEAD
   //   html2canvas(div, options)
   //     .then((canvas) => {
   //       var img = canvas.toDataURL("image/PNG");
@@ -36,6 +37,16 @@ export class ResultsDetailComponent implements OnInit {
   //       // var logo = new Image();
   //       // logo.src = "assets/images/trunksc.png";
   //       var doc1 = new jsPDF("l", "mm", "a4", 1);
+=======
+    html2canvas(div, options)
+      .then((canvas) => {
+        var img = canvas.toDataURL("image/PNG");
+        canvas.toDataURL("image/PNG");
+        // Problemas con el logo!!
+        // var logo = new Image();
+        // logo.src = "assets/images/trunksc.png";
+        const doc1 = new jsPDF("l", "mm", "a4", true);
+>>>>>>> 3e67b1e6cf2880bfce4739bdbee48e4af337138a
 
   //       // Add image Canvas to PDF
   //       const bufferX = 1;
