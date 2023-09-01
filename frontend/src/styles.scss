@@ -1,12 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-.input-padding{
-    padding-right: 6px;
+.input-padding {
+  padding-right: 6px;
 }
-.o-table-column-centered{
+.o-table-column-centered {
   text-align: center;
 }
 
 body {
   margin: 0;
   padding: 0px;
+}
+
+.titulo_graficas {
+  /* font-family: 'Poppins', Courier, monospace; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: larger;
+  font-stretch: narrower;
+  margin: 0;
+  padding: 0px;
+  text-align: center;
+}
+
+#tabla_aux {
+  display: none;
 }

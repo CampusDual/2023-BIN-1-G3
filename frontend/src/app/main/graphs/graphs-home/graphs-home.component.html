@@ -27,7 +27,8 @@
           [oFilterBuilderQuery]="filterBuilder"
           type="RAISED"
           label="FILTER"
-          layout-padding color="accent"
+          layout-padding
+          color="accent"
           class="filter-button"
         >
         </o-button>
@@ -36,7 +37,8 @@
           [oFilterBuilderClear]="filterBuilder"
           type="RAISED"
           label="CLEAR"
-          layout-padding color="accent"
+          layout-padding
+          color="accent"
           class="filter-button"
         >
         </o-button>
@@ -66,7 +68,7 @@
     [chart-parameters]="chartParameters"
     x-data-type="time"
   ></o-chart> -->
-    <h1 class="titulo_graficas">{{'entradacamiones'| oTranslate}}</h1>
+    <h1 class="titulo_graficas">{{ "entradacamiones" | oTranslate }}</h1>
     <o-chart
       fxFlex
       #graph
@@ -82,21 +84,37 @@
 
     <!-- {{ 'graph' | oTranslate }} -->
 
-  <div fxFill id="tabla">
-    <o-table #table attr="scanTable" service="scans" entity="scanByDate" insert-button="no" delete-button="no"
-      (onDataLoaded)="dataLoaded($event)"
-      columns="date;conteo"
-      visible-columns="date;conteo"
-      query-rows="0"
-    >
-      <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
+    <div fxFill id="tabla_aux">
+      <o-table
+        #table
+        attr="scanTable"
+        service="scans"
+        entity="scanByDate"
+        insert-button="no"
+        delete-button="no"
+        (onDataLoaded)="dataLoaded($event)"
+        columns="date;conteo"
+        visible-columns="date;conteo"
+        query-rows="10"
+      >
+        <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
       empty-image="assets/images/no-image.png" image-type="base64"></o-table-column> -->
-      <o-table-column attr="date" type="date" format="DD/MM/YYYY HH:MM" fxFlex="50" content-align="center"></o-table-column>
-      <o-table-column attr="conteo" type="number" fxFlex="50" content-align="center"></o-table-column>
-      <!-- <o-table-column attr="date" title="date" type="date">{{date | date: 'short'}}</o-table-column> -->
-      <!-- <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column> -->
-    </o-table>
-  </div>
+        <o-table-column
+          attr="date"
+          type="date"
+          format="DD/MM/YYYY HH:MM"
+          fxFlex="50"
+          content-align="center"
+        ></o-table-column>
+        <o-table-column
+          attr="conteo"
+          type="number"
+          fxFlex="50"
+          content-align="center"
+        ></o-table-column>
+        <!-- <o-table-column attr="date" title="date" type="date">{{date | date: 'short'}}</o-table-column> -->
+        <!-- <o-table-column attr="id_scan_result" title="ID" width="100px"></o-table-column> -->
+      </o-table>
+    </div>
   </o-form>
 </div>
-

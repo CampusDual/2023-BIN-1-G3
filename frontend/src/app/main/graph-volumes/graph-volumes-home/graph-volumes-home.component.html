@@ -85,7 +85,7 @@
     >
     </o-chart>
 
-    <div fxFill id="tabla">
+    <div fxFill id="tabla_aux">
       <o-table
         #table
         attr="scanTable"
@@ -94,9 +94,9 @@
         insert-button="no"
         delete-button="no"
         (onDataLoaded)="dataLoaded($event)"
-        columns="date;volumen_entrada;volumen_salida;balance"
-        visible-columns="date;volumen_entrada;volumen_salida;balance"
-        query-rows="0"
+        columns="fecha;volumen_entrada;volumen_salida;balance"
+        visible-columns="fecha;volumen_entrada;volumen_salida;balance"
+        query-rows="10"
       >
         <o-real-input
           attr="volumen_entrada"

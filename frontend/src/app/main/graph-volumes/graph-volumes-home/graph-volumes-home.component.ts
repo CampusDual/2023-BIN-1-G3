@@ -62,6 +62,8 @@ export class GraphVolumesHomeComponent implements OnInit {
     translate.onLanguageChanged.subscribe(() => {
       // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
       this.chartData[0]["key"] = this.translate.get("graphvolume");
+      this.chartData[1]["key"] = this.translate.get("graphvolume2");
+      this.chartData[2]["key"] = this.translate.get("graphvolume3");
       this.graphvolume.setDataArray(this.chartData);
       this.graphvolume.reloadData();
     });
@@ -117,12 +119,12 @@ export class GraphVolumesHomeComponent implements OnInit {
       if (fil.value) {
         if (fil.attr === "STARTDATE_I") {
           filters.push(
-            FilterExpressionUtils.buildExpressionMoreEqual("date", fil.value)
+            FilterExpressionUtils.buildExpressionMoreEqual("fecha", fil.value)
           );
         }
         if (fil.attr === "STARTDATE_E") {
           filters.push(
-            FilterExpressionUtils.buildExpressionLessEqual("date", fil.value)
+            FilterExpressionUtils.buildExpressionLessEqual("fecha", fil.value)
           );
         }
       }
@@ -181,7 +183,7 @@ export class GraphVolumesHomeComponent implements OnInit {
       total_carga: [],
     };
     data.forEach(function (d) {
-      let date = d.date;
+      let date = d.fecha;
       let scan_volume_in = d.volumen_entrada;
       let scan_volume_out = d.volumen_salida;
       let total_carga = d.balance;

@@ -40,28 +40,24 @@
         <Query id="loadvolume">
             <Sentence>
                 <![CDATA[
-                  WITH t_query AS (
+                WITH t_query as(
                     WITH date_range AS (
-                            SELECT
-                                generate_series( (SELECT MIN(scan_date_in)
-                            FROM scan),
-                            (
-                                SELECT MAX(scan_date_in)
-                                FROM scan
-                                ), '1 day' )::DATE AS generated_date
-                            )
-                    SELECT date_range.generated_date AS date, coalesce(scan_volume_in,0) as volumen_entrada, coalesce(scan_volume_out,0) as volumen_salida,
-                           coalesce(scan_volume_in,0) - coalesce(scan_volume_out,0) as balance
-                    FROM date_range
-                    LEFT JOIN (
-                        SELECT date(scan_date_in) AS fecha, sr.scan_volume_in, sr.scan_volume_out
-                        FROM scan sr
-                        GROUP BY date(scan_date_in), sr.scan_volume_in, sr.scan_volume_out
+                        SELECT generate_series(
+                            (SELECT MIN(date_trunc('day', scan_date_in)) FROM scan),
+                            (SELECT MAX(date_trunc('day', scan_date_in)) FROM scan),
+                            interval '1 day'
+                        )::date AS fecha
+                        )
+                    SELECT
+                        dr.fecha,
+                        COALESCE(SUM(s.scan_volume_in), 0) AS volumen_entrada,
+                        COALESCE(SUM(s.scan_volume_out)*(-1), 0) AS volumen_salida,
+                        COALESCE(SUM(s.scan_volume_in), 0) - COALESCE(SUM(s.scan_volume_out), 0) AS balance
+                    FROM date_range dr
+                    LEFT JOIN scan s ON dr.fecha = date_trunc('day', s.scan_date_in)
+                    GROUP BY dr.fecha
+                    ORDER BY dr.fecha
                     )
-                    AS sr_count ON date_range.generated_date = sr_count.fecha
-                    group by date,scan_volume_in, scan_volume_out
-                    ORDER BY date_range.generated_date
-                )
                 SELECT #COLUMNS#
                 FROM t_query
                 #WHERE#

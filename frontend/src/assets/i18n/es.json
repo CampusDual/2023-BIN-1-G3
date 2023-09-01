@@ -83,5 +83,6 @@
   "Scan_error": "Error de escaneo",
   "graphvolume": "Volume entrada",
   "graphvolume2": "Volume salida",
-  "graphvolume3": "Balance"
+  "graphvolume3": "Balance",
+  "Volumen de carga diario": "Volumen de carga diario"
 }
