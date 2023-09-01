@@ -80,5 +80,8 @@
   "viajes_completados": "Total trips",
   "Generate report": "Generate report",
   "type_of_truck": "Type of truck",
-  "Scan_error": "Scan error"
+  "Scan_error": "Scan error",
+  "graphvolume": "Volume in",
+  "graphvolume2": "Volume out",
+  "graphvolume3": "Balance"
 }

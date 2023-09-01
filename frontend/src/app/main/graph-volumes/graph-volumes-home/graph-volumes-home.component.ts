@@ -1,23 +1,23 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Injector,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
   OChartComponent,
-  DataAdapterUtils,
   LineChartConfiguration,
-  LinePlusBarFocusChartConfiguration,
   ChartService,
 } from "ontimize-web-ngx-charts";
-import {
-  FilterExpressionUtils,
-  Expression,
-  OTableButtonsComponent,
-  OTableComponent,
-  OTableInitializationOptions,
-} from "ontimize-web-ngx";
+import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { OTranslateService } from "ontimize-web-ngx";
-import { TranslateService } from "@ngx-translate/core";
+// import { TranslateService } from "@ngx-translate/core";
 import { HttpClient } from "@angular/common/http";
+
+declare var d3: any;
 
 @Component({
   selector: "app-graph-volumes-home",
@@ -30,9 +30,14 @@ import { HttpClient } from "@angular/common/http";
   //templateUrl: './line.component.html'
 })
 export class GraphVolumesHomeComponent implements OnInit {
-  @ViewChild("graph", { static: false }) graph: OChartComponent;
+  @ViewChild("graphvolume", { static: false }) graphvolume: OChartComponent;
 
   chartParameters: LineChartConfiguration;
+
+  protected data: Array<Object>;
+
+  protected yAxis: string = "total_carga";
+  protected xAxis: string = "DATE_";
 
   chartData: Array<Object>;
   translatedWord: string;
@@ -43,21 +48,22 @@ export class GraphVolumesHomeComponent implements OnInit {
     private router: Router,
     private actRoute: ActivatedRoute,
     private http: HttpClient,
-    private translate: OTranslateService
+    private translate: OTranslateService,
+    private injector: Injector
   ) {
-    this.chartParameters = new LineChartConfiguration();
-    this.chartParameters.isArea = [false];
-    this.chartParameters.interactive = true;
-    this.chartParameters.useInteractiveGuideline = false;
-    // this.chartParameters.legend.vers = 'furious';
-    // this.fetchTranslation();
-    this.chartParameters.showLegend = true;
+    // this.chartParameters = new LineChartConfiguration();
+    // this.chartParameters.isArea = [false];
+    // this.chartParameters.interactive = true;
+    // this.chartParameters.useInteractiveGuideline = false;
+    // // this.chartParameters.legend.vers = 'furious';
+    // // this.fetchTranslation();
+    // this.chartParameters.showLegend = true;
 
     translate.onLanguageChanged.subscribe(() => {
       // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
-      this.chartData[0]["key"] = this.translate.get("graph");
-      this.graph.setDataArray(this.chartData);
-      this.graph.reloadData();
+      this.chartData[0]["key"] = this.translate.get("graphvolume");
+      this.graphvolume.setDataArray(this.chartData);
+      this.graphvolume.reloadData();
     });
   }
 
@@ -69,6 +75,34 @@ export class GraphVolumesHomeComponent implements OnInit {
 
   ngOnInit() {
     // nothing to do
+  }
+
+  ngAfterViewInit() {
+    if (this.graphvolume) {
+      let chartService: ChartService = this.graphvolume.getChartService();
+      if (chartService) {
+        let chartOps = chartService.getChartOptions();
+
+        // Configuring x axis...
+        chartOps["xAxis"]["tickFormat"] = function (d) {
+          return d3.time.format("%d/%m/%y")(new Date(d));
+        };
+        chartOps["yAxis"]["tickFormat"] = function (d) {
+          return d3.format(",f")(d) + "m³";
+        };
+
+        //Configuring y axis...
+        var yScale = d3.scale.linear();
+        chartOps["yScale"] = yScale;
+        // chartOps["yDomain"] = [-150, 210];
+      }
+    }
+
+    // Ontimize service query...
+    // let service: OntimizeService = this.injector.get(OntimizeService);
+    // let conf = service.getDefaultServiceConfiguration();
+    // conf["entity"] = "scanLoadVolume";
+    // service.configureService(conf);
   }
 
   public ngOnDestroy(): void {
@@ -111,35 +145,65 @@ export class GraphVolumesHomeComponent implements OnInit {
     this.router.navigate(["../", "login"], { relativeTo: this.actRoute });
   }
 
-  ngAfterViewInit() {}
+  // ngAfterViewInit() {}
 
   dataLoaded(event: any) {
     this.chartData = this.adaptResult(event);
-    this.graph.setDataArray(this.chartData);
+    this.graphvolume.setDataArray(this.chartData);
   }
 
   adaptResult(data: any) {
-    let values = this.processValues(data);
-    return [
-      {
-        key: this.translate.get("graph"),
-        values: values,
-        color: "#e74c3c",
-      },
-    ];
+    if (data && data.length) {
+      let values = this.processValues(data);
+      return [
+        {
+          key: this.translate.get("graphvolume"),
+          values: values["scan_volume_in"],
+          color: "#3498db",
+        },
+        {
+          key: this.translate.get("graphvolume2"),
+          values: values["scan_volume_out"],
+          color: "#f9c922",
+        },
+        {
+          key: this.translate.get("graphvolume3"),
+          values: values["total_carga"],
+          color: "#e74c3c",
+        },
+      ];
+    }
   }
   processValues(data: any) {
-    let values = [];
+    let values = {
+      scan_volume_in: [],
+      scan_volume_out: [],
+      total_carga: [],
+    };
     data.forEach(function (d) {
       let date = d.date;
-      let conteo = d.conteo;
+      let scan_volume_in = d.volumen_entrada;
+      let scan_volume_out = d.volumen_salida;
+      let total_carga = d.balance;
 
       let entrada = {
         x: date,
-        y: conteo,
+        y: scan_volume_in,
       };
 
-      values.push(entrada);
+      let entrada2 = {
+        x: date,
+        y: scan_volume_out,
+      };
+
+      let entrada3 = {
+        x: date,
+        y: total_carga,
+      };
+
+      values["scan_volume_in"].push(entrada);
+      values["scan_volume_out"].push(entrada2);
+      values["total_carga"].push(entrada3);
     });
 
     return values;

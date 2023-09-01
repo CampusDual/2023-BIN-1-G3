@@ -3,28 +3,31 @@ import { OTableComponent, OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
 import * as XLSX from "xlsx";
+// import { ComboTruck, enumTruck } from "src/app/shared/combotruck.service";
+import { Enum, enumTruck } from "src/app/shared/enum";
 
 @Component({
   selector: "app-trucks-home",
   templateUrl: "./trucks-home.component.html",
   styleUrls: ["./trucks-home.component.css"],
+  providers: [Enum],
 })
 export class TrucksHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
-  constructor(private translate: OTranslateService) {
+  constructor(private translate: OTranslateService, private combo: Enum) {
     this.array = [
       {
-        key: 0,
+        key: enumTruck.Todos,
         value: "All",
       },
       {
-        key: 1,
+        key: enumTruck.Articulado,
         value: "Articulado",
       },
       {
-        key: 2,
+        key: enumTruck.No_articulado,
         value: "No Articulado",
       },
     ];
@@ -49,18 +52,19 @@ export class TrucksHomeComponent implements OnInit {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
     values.forEach((fil) => {
-      if (fil.value === 1) {
-        if (fil.attr === "checkTruck") {
+      if (fil.attr === "checkTruck") {
+        if (fil.value === enumTruck.Articulado) {
           filters.push(
             FilterExpressionUtils.buildExpressionEquals("type_of_truck", 0)
           );
         }
-      }
-      if (fil.value === 2) {
-        if (fil.attr === "checkTruck") {
-          filters.push(
-            FilterExpressionUtils.buildExpressionEquals("type_of_truck", 1)
-          );
+
+        if (fil.value === enumTruck.No_articulado) {
+          if (fil.attr === "checkTruck") {
+            filters.push(
+              FilterExpressionUtils.buildExpressionEquals("type_of_truck", 1)
+            );
+          }
         }
       }
     });

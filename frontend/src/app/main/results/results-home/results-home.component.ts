@@ -6,43 +6,36 @@ import {
 } from "ontimize-web-ngx";
 import { OTranslateService } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
-import {
-  ComboService,
-  MyEnum,
-  PROGRESS_LIMIT_TIME,
-} from "src/app/shared/combo.service";
+import { Enum, PROGRESS_LIMIT_TIME, enumResults } from "src/app/shared/enum";
 import * as XLSX from "xlsx";
 
 @Component({
   selector: "app-results-home",
   templateUrl: "./results-home.component.html",
   styleUrls: ["./results-home.component.scss"],
-  providers: [ComboService],
+  providers: [Enum],
 })
 export class ResultsHomeComponent implements OnInit {
   private translateServiceSubscription: Subscription;
   public array: Object[];
 
-  constructor(
-    private translate: OTranslateService,
-    private combo: ComboService
-  ) {
+  constructor(private translate: OTranslateService, private combo: Enum) {
     console.log(this.translate.get("Completado"));
     this.array = [
       {
-        key: MyEnum.Todos,
+        key: enumResults.Todos,
         value: "All",
       },
       {
-        key: MyEnum.Completado,
+        key: enumResults.Completado,
         value: "Completado",
       },
       {
-        key: MyEnum.En_curso,
+        key: enumResults.En_curso,
         value: "En curso",
       },
       {
-        key: MyEnum.Error,
+        key: enumResults.Error,
         value: "Scan_error",
       },
     ];
@@ -72,11 +65,11 @@ export class ResultsHomeComponent implements OnInit {
       if (fil.attr === "resultState") {
         let limit_date = new Date();
         limit_date.setHours(limit_date.getHours() - PROGRESS_LIMIT_TIME);
-        if (fil.value === MyEnum.Completado) {
+        if (fil.value === enumResults.Completado) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNotNull("scan_date_out")
           );
-        } else if (fil.value === MyEnum.En_curso) {
+        } else if (fil.value === enumResults.En_curso) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );
@@ -86,7 +79,7 @@ export class ResultsHomeComponent implements OnInit {
               limit_date
             )
           );
-        } else if (fil.value === MyEnum.Error) {
+        } else if (fil.value === enumResults.Error) {
           filters.push(
             FilterExpressionUtils.buildExpressionIsNull("scan_date_out")
           );
