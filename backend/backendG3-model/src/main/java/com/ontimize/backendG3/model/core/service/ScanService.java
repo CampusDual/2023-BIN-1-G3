@@ -31,7 +31,7 @@ public class ScanService implements IScanService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     public EntityResult scanQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(scanDao, keyMap, attrList);
+        return this.daoHelper.query(this.scanDao, keyMap, attrList);
     }
 
     public EntityResult scanByDateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
