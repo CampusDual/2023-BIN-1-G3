@@ -11,6 +11,7 @@ import com.ontimize.backendG3.api.core.service.IMasterService;
 import com.ontimize.backendG3.model.core.dao.DeviceDao;
 import com.ontimize.backendG3.model.core.dao.TruckDao;
 import com.ontimize.backendG3.model.core.dao.TrailerDao;
+import com.ontimize.backendG3.model.core.dao.AreaDao;
 
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -23,6 +24,7 @@ public class MasterService implements IMasterService{
     @Autowired private TruckDao TruckDao;
     @Autowired private TrailerDao TrailerDao;
     @Autowired private DeviceDao DeviceDao;
+    @Autowired private AreaDao AreaDao;
     @Autowired private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
@@ -121,5 +123,25 @@ public class MasterService implements IMasterService{
         return this.daoHelper.delete(this.DeviceDao, keyMap);
     }
 
+    @Override
+    public EntityResult areaQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.AreaDao, keyMap, attrList);
+    }
 
+    @Override
+    public EntityResult areaInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.AreaDao, attrMap);
+    }
+
+    @Override
+    public EntityResult areaUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.AreaDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult areaDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.AreaDao, keyMap);
+    }
 }
