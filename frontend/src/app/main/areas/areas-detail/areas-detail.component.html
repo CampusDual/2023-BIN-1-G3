@@ -4,8 +4,8 @@
   keys="id_area"
   header-actions="R;U"
   editable-detail="yes"
-  show-header-navigation="no"
-  show-header="no"
+  show-header-navigation="yes"
+  show-header="yes"
 >
   <o-column title="{{ 'AREA DETAILS' | oTranslate }}" fxFlex layout-padding>
     <o-row>
@@ -19,39 +19,31 @@
         oHidden
       ></o-text-input>
     </o-row>
-    <o-form
-      id="form"
-      service="master"
-      entity="area"
-      keys="id_area"
-      editable-detail="yes"
-      show-header-navigation="yes"
-      show-header="yes"
-    >
-      <o-row>
-        <o-column title-label="AREAS_INFORMATION" fxFlex layout-padding>
-          <o-row layout-gap="20px" layout-padding>
-            <o-text-input
-              attr="area_name"
-              type="string"
-              fxFlex="20"
-              required="yes"
-              read-only="no"
-            ></o-text-input>
-            <o-real-input
-              attr="maximum_capacity"
-              type="real"
-              decimal-separator=","
-              thousand-separator="."
-              max-decimal-digits="2"
-              title="maximum_capacity"
-              content-align="center"
-              required="yes"
-              read-only="no"
-            ></o-real-input>
-          </o-row>
-        </o-column>
-      </o-row>
-    </o-form>
+    <o-row>
+      <o-column title-label="AREAS_INFORMATION" fxFlex layout-padding>
+        <o-row layout-gap="20px" layout-padding>
+          <o-text-input
+            attr="area_name"
+            type="string"
+            fxFlex="20"
+            required="yes"
+            read-only="no"
+          ></o-text-input>
+        </o-row>
+        <o-row layout-gap="20px" layout-padding>
+          <o-real-input
+            attr="maximum_capacity"
+            type="real"
+            decimal-separator=","
+            thousand-separator="."
+            max-decimal-digits="2"
+            title="maximum_capacity"
+            content-align="center"
+            required="yes"
+            read-only="no"
+          ></o-real-input>
+        </o-row>
+      </o-column>
+    </o-row>
   </o-column>
 </o-form>

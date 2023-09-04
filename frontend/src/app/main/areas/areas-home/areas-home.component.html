@@ -9,6 +9,7 @@
       service="master"
       entity="area"
       keys="id_area"
+      sort-columns="area_name"
       columns="id_area;area_name;current_load;maximum_capacity"
       visible-columns="area_name;current_load;maximum_capacity"
       query-rows="15"
@@ -17,6 +18,7 @@
         attr="id_area"
         title="id_area"
         sql-type="INTEGER"
+        orderable="yes"
         width="100px"
         content-align="center"
       ></o-table-column>
@@ -24,6 +26,7 @@
         attr="area_name"
         title="area_name"
         type="string"
+        orderable="yes"
         content-align="center"
       ></o-table-column>
       <o-table-column
