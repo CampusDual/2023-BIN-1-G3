@@ -42,14 +42,14 @@ export const MENU_CONFIG: MenuRootItem[] = [
     opened: false,
     items: [
       {
-        id: "graficas",
-        name: "Truck entries",
+        id: "graficacamion",
+        name: "graficacamion",
         route: "/main/graphs",
         icon: "stacked_line_chart",
       },
       {
         id: "graficacarga",
-        name: "Load volume",
+        name: "graficacarga",
         route: "/main/graph_volumes",
         icon: "multiline_chart",
       },

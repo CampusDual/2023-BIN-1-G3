@@ -90,5 +90,8 @@
   "area_name": "Area name",
   "current_load": "Current load(m³)",
   "maximum_capacity": "Maximum capacity(m³)",
-  "AREA DETAILS": "Area details"
+  "AREA DETAILS": "Area details",
+  "RESULTS": "Scan results",
+  "graficacamion": "Truck entries",
+  "graficacarga": "Load volume"
 }

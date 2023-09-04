@@ -51,7 +51,7 @@
   "scan_volume_out": "Volumen salida(m)",
   "graph": "Nº de entradas",
   "TRUCKS": "Camiones",
-  "TRAILERS": "Remolque",
+  "TRAILERS": "Remolques",
   "checkTruck": "Articulado",
   "Yes": "Sí",
   "No": "No",
@@ -90,5 +90,8 @@
   "area_name": "Nombre zona",
   "current_load": "Carga actual(m³)",
   "maximum_capacity": "Capacidad máxima(m³)",
-  "AREA DETAILS": "Detalles zona"
+  "AREA DETAILS": "Detalles zona",
+  "RESULTS": "Resultados escaneo",
+  "graficacamion": "Entrada camiones",
+  "graficacarga": "Volumen carga"
 }
