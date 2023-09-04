@@ -59,8 +59,8 @@
           service="scans"
           entity="scanData"
           keys="id_scan_result"
-          columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
-          visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
+          columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
+          visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
           virtual-scroll="no"
           query-rows="15"
           quick-filter="true"
@@ -117,7 +117,12 @@
           >
             <app-results-state-render></app-results-state-render>
           </o-table-column>
-
+          <o-table-column
+            attr="area_name"
+            title="area_name"
+            type="string"
+            content-align="center"
+          ></o-table-column>
           <o-table-column
             attr="id_scan_result"
             title="ID"

@@ -29,8 +29,18 @@
             required="yes"
             read-only="no"
           ></o-text-input>
-        </o-row>
-        <o-row layout-gap="20px" layout-padding>
+          <o-real-input
+            attr="current_load"
+            type="real"
+            decimal-separator=","
+            thousand-separator="."
+            max-decimal-digits="2"
+            title="maximum_capacity"
+            content-align="center"
+            required="no"
+            enabled="no"
+            read-only="yes"
+          ></o-real-input>
           <o-real-input
             attr="maximum_capacity"
             type="real"
