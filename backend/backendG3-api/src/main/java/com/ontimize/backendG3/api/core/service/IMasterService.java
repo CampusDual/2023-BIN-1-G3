@@ -26,5 +26,9 @@ public interface IMasterService {
     public EntityResult deviceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     public EntityResult deviceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-
+    // area
+    public EntityResult areaQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    public EntityResult areaInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+    public EntityResult areaUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult areaDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }
