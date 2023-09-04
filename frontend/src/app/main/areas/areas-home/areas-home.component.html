@@ -1,0 +1,51 @@
+<o-form-layout-manager
+  title="{{ 'AREAS' | oTranslate }}"
+  separator=" "
+  mode="dialog"
+>
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table
+      attr="areasTable"
+      service="master"
+      entity="area"
+      keys="id_area"
+      columns="id_area;area_name;current_load;maximum_capacity"
+      visible-columns="area_name;current_load;maximum_capacity"
+      query-rows="15"
+    >
+      <o-table-column
+        attr="id_area"
+        title="id_area"
+        sql-type="INTEGER"
+        width="100px"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="area_name"
+        title="area_name"
+        type="string"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="current_load"
+        title="current_load"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        class="o-table-column-centered"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="maximum_capacity"
+        title="maximum_capacity"
+        type="real"
+        decimal-separator=","
+        thousand-separator="."
+        max-decimal-digits="2"
+        class="o-table-column-centered"
+        content-align="center"
+      ></o-table-column>
+    </o-table>
+  </div>
+</o-form-layout-manager>

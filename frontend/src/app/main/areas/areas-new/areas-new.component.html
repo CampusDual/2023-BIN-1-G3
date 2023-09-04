@@ -1,0 +1,34 @@
+<o-form
+  service="master"
+  entity="area"
+  keys="id_area"
+  header-actions="R;I;U"
+  show-header-navigation="no"
+>
+  <o-row>
+    <o-column title-label="AREA_INFORMATION" fxFlex>
+      <o-row>
+        <o-text-input
+          class="input-padding"
+          attr="area_name"
+          fxFlex="40"
+          required="yes"
+        ></o-text-input>
+        <o-real-input
+          class="input-padding"
+          attr="current_load"
+          fxFlex="40"
+          required="yes"
+        ></o-real-input>
+      </o-row>
+      <o-row>
+        <o-real-input
+          class="input-padding"
+          attr="maximum_capacity"
+          fxFlex="40"
+          required="yes"
+        ></o-real-input>
+      </o-row>
+    </o-column>
+  </o-row>
+</o-form>

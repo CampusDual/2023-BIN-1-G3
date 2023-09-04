@@ -84,5 +84,11 @@
   "graphvolume": "Volume in",
   "graphvolume2": "Volume out",
   "graphvolume3": "Balance",
-  "Volumen de carga diario": "Daily load volume"
+  "Volumen de carga diario": "Daily load volume",
+  "AREAS": "Areas",
+  "id_area": "Id area",
+  "area_name": "Area name",
+  "current_load": "Current load(m³)",
+  "maximum_capacity": "Maximum capacity(m³)",
+  "AREA DETAILS": "Area details"
 }

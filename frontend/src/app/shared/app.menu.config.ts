@@ -26,6 +26,12 @@ export const MENU_CONFIG: MenuRootItem[] = [
         route: "/main/trailers",
         icon: "rv_hookup",
       },
+      {
+        id: "areas",
+        name: "AREAS",
+        route: "/main/areas",
+        icon: "storage",
+      },
     ],
   },
 

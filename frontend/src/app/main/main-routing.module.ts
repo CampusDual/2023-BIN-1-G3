@@ -13,6 +13,11 @@ export const routes: Routes = [
       { path: "", redirectTo: "results", pathMatch: "full" },
       // { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       {
+        path: "areas",
+        loadChildren: () =>
+          import("./areas/areas.module").then((m) => m.AreasModule),
+      },
+      {
         path: "results",
         loadChildren: () =>
           import("./results/results.module").then((m) => m.ResultsModule),
