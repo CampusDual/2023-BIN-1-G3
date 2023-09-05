@@ -17,7 +17,7 @@
             <Sentence>
                 <![CDATA[
                 WITH consulta as(
-                    SELECT s.id_scan_result, s.delivery_note, t.plate, tra.trailer_plate, s.scan_date_in, s.scan_date_out, entrada.dev as dev_in, salida.dev as dev_out, theight, twidth, tlength, scan_volume_in, scan_volume_out, calculated_volume, sa.area_name
+                    SELECT s.id_scan_result, s.delivery_note, t.plate, tra.trailer_plate, s.scan_date_in, s.scan_date_out, entrada.dev as dev_in, salida.dev as dev_out, theight, twidth, tlength, scan_volume_in, scan_volume_out, calculated_volume, sa.area_name, sa.id_area
                     FROM PUBLIC.scan s
                     LEFT JOIN PUBLIC.device as entrada ON
                        s.id_dev_in = entrada.id_device

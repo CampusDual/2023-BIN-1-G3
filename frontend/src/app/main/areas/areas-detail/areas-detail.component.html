@@ -56,4 +56,72 @@
       </o-column>
     </o-row>
   </o-column>
+  <o-column title="{{ 'RESULTS' | oTranslate }}" fxFlex layout-padding>
+    <o-table
+      fxFlex
+      attr="areasTable"
+      service="scans"
+      entity="scanData"
+      keys="id_scan_result"
+      columns="id_scan_result;id_area;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
+      visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out"
+      insert-button="no"
+      refresh-button="no"
+      detail-mode="none"
+      delete-button="no"
+      query-rows="8"
+      parent-keys="id_area"
+    >
+      <o-row layout-gap="20px" layout-padding>
+        <o-table-column
+          attr="plate"
+          title="plate"
+          type="string"
+          content-align="center"
+        ></o-table-column>
+      </o-row>
+
+      <o-table-column
+        attr="trailer_plate"
+        title="trailer_plate"
+        type="string"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="delivery_note"
+        title="delivery_note"
+        type="INTEGER"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_date_in"
+        title="scan_date_in"
+        type="date"
+        format="DD/MM/YYYY HH:mm"
+        content-align="center"
+      ></o-table-column>
+      <o-table-column
+        attr="scan_date_out"
+        title="scan_date_out"
+        type="date"
+        format="DD/MM/YYYY HH:mm"
+        content-align="center"
+      ></o-table-column>
+
+      <o-table-column
+        attr="resultState"
+        title="resultState"
+        class="o-table-column-centered"
+      >
+        <app-results-state-render></app-results-state-render>
+      </o-table-column>
+      <o-table-column
+        attr="id_scan_result"
+        title="ID"
+        sql-type="INTEGER"
+        width="150px"
+        content-align="center"
+      ></o-table-column>
+    </o-table>
+  </o-column>
 </o-form>
