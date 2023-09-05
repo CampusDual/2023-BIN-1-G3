@@ -48,12 +48,16 @@ public class ScanService implements IScanService {
     public EntityResult scanInsert(Map<String, Object> attrMap) {
 
         Map<String, Object> data = new HashMap<String, Object>();
+        Map<String, Object> area_data = new HashMap<String, Object>();
         Map<String, Object> keyMap = new HashMap<String, Object>();
         String io;
 
         List<Object> cols = new ArrayList<>();
         keyMap.put(ScanDao.DELIVERY_NOTE, (String) attrMap.get("delivery_note").toString());
         cols.add(ScanDao.ID_SCAN_RESULT);
+        cols.add(ScanDao.SCAN_VOLUME_IN);
+        cols.add(ScanDao.SCAN_VOLUME_OUT);
+        cols.add(ScanDao.ID_AREA);
         if (attrMap.get("dev").toString().startsWith("IN")) {
             data.put(ScanDao.ID_DEV_IN, attrMap.get("dev"));
             data.put(ScanDao.SCAN_DATE_IN, dateFormat((String) attrMap.get("date")));
@@ -69,18 +73,59 @@ public class ScanService implements IScanService {
             io = ScanDao.ID_DEV_OUT;
         }
 
-        EntityResult x = this.scanQuery(keyMap, cols);
+        EntityResult scans = this.scanQuery(keyMap, cols);
         Object id_scan_value = 0;
+        int index_scan = 0;
         boolean exist = false;
-        for (int i = 0; i < x.calculateRecordNumber(); i++) {
-            if (x.getRecordValues(i).get(io) == null) {
-                id_scan_value = x.getRecordValues(i).get(ScanDao.ID_SCAN_RESULT);
+        for (int i = 0; i < scans.calculateRecordNumber(); i++) {
+            if (scans.getRecordValues(i).get(io) == null) {
+                id_scan_value = scans.getRecordValues(i).get(ScanDao.ID_SCAN_RESULT);
                 exist = true;
+                index_scan = i;
                 break;
             }
         }
 
+        List<String> colAreas = new ArrayList<>();
+        colAreas.add(AreaDao.ATTR_ID_AREA);
+        colAreas.add(AreaDao.ATTR_AREA_NAME);
+        colAreas.add(AreaDao.ATTR_CURRENT_LOAD);
+
+        colAreas.add(AreaDao.ATTR_MAXIMUM_CAPACITY);
+        keyMap.clear();
+        boolean loaded = (Double) attrMap.get("scan_volume") >= 1;
+
+        EntityResult areas = this.masterService.areaQuery(keyMap, colAreas);
+
+        List<Double> list = (List<Double>) areas.get(AreaDao.ATTR_CURRENT_LOAD);
+
         if (!exist) {
+            int aux_index = 0;
+            if (loaded) {
+                while (list.size() > 0) {
+//                for (int i = 0; i < list.size(); i++) {
+                    aux_index = list.indexOf(Collections.min(list));
+                    Double max_cap = (Double) areas.getRecordValues(aux_index).get(AreaDao.ATTR_MAXIMUM_CAPACITY);
+                    Double current_cap = (Double) areas.getRecordValues(aux_index).get(AreaDao.ATTR_CURRENT_LOAD);
+                    if ((current_cap + (Double) attrMap.get("scan_volume")) < max_cap) {
+                        break;
+                    } else {
+                        list.remove(aux_index);
+                    }
+                }
+            } else {
+                while (list.size() > 0) {
+                    aux_index = list.indexOf(Collections.max(list));
+                    Double current_cap = (Double) areas.getRecordValues(aux_index).get(AreaDao.ATTR_CURRENT_LOAD);
+                    if ((current_cap - (Double) attrMap.get("scan_volume")) > 0) {
+                        break;
+                    } else {
+                        list.remove(aux_index);
+                    }
+                }
+            }
+
+            data.put(ScanDao.ID_AREA, (Integer) areas.getRecordValues(aux_index).get(AreaDao.ATTR_ID_AREA));
             data.put(ScanDao.THEIGHT, (Double) attrMap.get("height"));
             data.put(ScanDao.TWIDTH, (Double) attrMap.get("width"));
             data.put(ScanDao.TLENGTH, (Double) attrMap.get("length"));
@@ -95,7 +140,16 @@ public class ScanService implements IScanService {
         } else {
             keyMap.clear();
             keyMap.put(ScanDao.ID_SCAN_RESULT, id_scan_value);
-            return this.scanUpdate(data, keyMap);
+            this.scanUpdate(data, keyMap);
+
+            Double balance = (Double) scans.getRecordValues(index_scan).get(ScanDao.SCAN_VOLUME_IN) - (Double) attrMap.get("scan_volume");
+            keyMap.clear();
+            int id_area = (int) scans.getRecordValues(index_scan).get(ScanDao.ID_AREA);
+            keyMap.put(AreaDao.ATTR_ID_AREA, id_area);
+            areas = this.masterService.areaQuery(keyMap, colAreas);
+            Double total = (Double) areas.getRecordValues(0).get(AreaDao.ATTR_CURRENT_LOAD) + balance;
+            area_data.put(AreaDao.ATTR_CURRENT_LOAD, total);
+            return this.masterService.areaUpdate(area_data, keyMap);
         }
     }
 
