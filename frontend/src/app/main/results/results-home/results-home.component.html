@@ -8,6 +8,11 @@
   mode="dialog"
   label-columns="delivery_note"
 >
+  <o-form-layout-dialog-options
+    width="800px"
+    height="450px"
+    disable-close="false"
+  ></o-form-layout-dialog-options>
   <div fxFill>
     <o-form editable-detail="no" show-header="no">
       <o-column layout-padding class="container-item">
@@ -61,6 +66,7 @@
           keys="id_scan_result"
           columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
           visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
+          sort-columns="scan_date_in:DESC"
           virtual-scroll="no"
           query-rows="15"
           quick-filter="true"

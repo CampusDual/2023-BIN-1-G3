@@ -8,7 +8,7 @@
   show-header="yes"
 >
   <!-- Boton exportacion pdf (Justificante de carga)-->
-  <div o-form-toolbar-buttons>
+  <!-- <div o-form-toolbar-buttons>
     <button
       type="button"
       class="o-form-toolbar-button"
@@ -19,7 +19,7 @@
       <mat-icon>cloud_download</mat-icon>
       <span>{{ "Generate load report" | oTranslate }}</span>
     </button>
-  </div>
+  </div> -->
 
   <o-text-input
     attr="id_scan_result"
@@ -34,14 +34,20 @@
         <o-text-input
           class="input-padding"
           attr="plate"
-          fxFlex="50"
+          fxFlex="33"
           read-only="yes"
         ></o-text-input>
         <o-text-input
           class="input-padding"
           attr="trailer_plate"
-          fxFlex="50"
+          fxFlex="33"
           required="no"
+          read-only="yes"
+        ></o-text-input>
+        <o-text-input
+          class="input-padding"
+          attr="area_name"
+          fxFlex="33"
           read-only="yes"
         ></o-text-input>
       </o-row>
