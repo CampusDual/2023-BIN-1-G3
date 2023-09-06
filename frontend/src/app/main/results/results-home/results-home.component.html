@@ -62,18 +62,23 @@
           delete-button="no"
           insert-button="no"
           service="scans"
-          entity="scanData"
+          entity="scans"
           keys="id_scan_result"
           columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
           visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
           sort-columns="scan_date_in:DESC"
           virtual-scroll="no"
-          query-rows="15"
           quick-filter="true"
           filter-case-sensitive="true"
           refresh-button="true"
+          pageable="yes"
+          show-page-size="no"
+          query-rows="15"
           fxFill
+          pagination-controls="yes"
         >
+          <!-- <o-table-paginator page-size="20"></o-table-paginator> -->
+          <!-- pageable="yes" -->
           <o-table-button
             attr="button"
             type="RAISED"

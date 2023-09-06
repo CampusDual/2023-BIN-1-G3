@@ -2,6 +2,7 @@ package com.ontimize.backendG3.model.core.service;
 
 import com.ontimize.backendG3.api.core.service.IScanService;
 import com.ontimize.backendG3.model.core.dao.*;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -238,6 +239,13 @@ public class ScanService implements IScanService {
     public EntityResult scanDataQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.scanDao, keyMap, attrList, "data");
 
+    }
+
+    // Pagination Query
+
+    public AdvancedEntityResult scansPaginationQuery(Map<String, Object> keyMap, List<String> attrList, int recordNumber, int startIndex, List<String> orderBy)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.scanDao, keyMap, attrList,recordNumber,startIndex, orderBy, "data");
     }
 
 

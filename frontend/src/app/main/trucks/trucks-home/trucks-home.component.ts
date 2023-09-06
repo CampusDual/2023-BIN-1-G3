@@ -127,7 +127,18 @@ export class TrucksHomeComponent implements OnInit {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Trucks");
 
+    const date = new Date();
+    const name = this.translate.get("TRUCKS");
+    const format = date
+      .toLocaleDateString(undefined, {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+      .replace(/\//g, "-");
+    const namewithdate = `${format}_${name}.xlsx`;
+
     /* save to file */
-    XLSX.writeFile(wb, "Trucks.xlsx", { cellStyles: true });
+    XLSX.writeFile(wb, namewithdate, { cellStyles: true });
   }
 }

@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import {
   FilterExpressionUtils,
@@ -115,6 +116,17 @@ export class ResultsHomeComponent implements OnInit {
 
   @ViewChild("scanTable", { static: false }) scanTable: OTableComponent;
 
+  // date() {
+  //   let today = new Date();
+  //   let dd = today.getDate();
+  //   let mm = today.getMonth() + 1;
+  //   let yyyy = today.getFullYear();
+
+  //   let valor = dd + "/" + mm + "/" + yyyy;
+  //   console.log(valor);
+  //   return valor;
+  // }
+
   exportExcel() {
     let data = this.scanTable.getAllRenderedValues();
     data.forEach((fil) => {
@@ -136,11 +148,24 @@ export class ResultsHomeComponent implements OnInit {
     ws["D1"]["v"] = this.translate.get("delivery_note");
     ws["E1"]["v"] = this.translate.get("scan_date_in");
     ws["F1"]["v"] = this.translate.get("scan_date_out");
+    ws["G1"]["v"] = this.translate.get("area_name");
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Results");
 
+    const date = new Date();
+    const name = this.translate.get("RESULTS");
+    const format = date
+      .toLocaleDateString(undefined, {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+      .replace(/\//g, "-");
+    const namewithdate = `${format}_${name}.xlsx`;
     /* save to file */
-    XLSX.writeFile(wb, "Results.xlsx", { cellStyles: true });
+    XLSX.writeFile(wb, namewithdate, {
+      cellStyles: true,
+    });
   }
 }
