@@ -69,10 +69,96 @@
           visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
           sort-columns="scan_date_in:DESC"
           virtual-scroll="no"
-          quick-filter="true"
+          quick-filter="yes"
           filter-case-sensitive="true"
           refresh-button="true"
           pageable="yes"
+          show-page-size="no"
+          query-rows="15"
+          fxFill
+          pagination-controls="yes"
+        >
+          <o-table-button
+            attr="button"
+            type="RAISED"
+            color="primary"
+            label="Generate report"
+            icon="cloud_download"
+            (onClick)="exportExcel()"
+          ></o-table-button>
+
+          <o-table-column
+            attr="plate"
+            title="plate"
+            type="string"
+            content-align="center"
+          ></o-table-column>
+          <o-table-column
+            attr="trailer_plate"
+            title="trailer_plate"
+            type="string"
+            content-align="center"
+          ></o-table-column>
+          <o-table-column
+            attr="delivery_note"
+            title="delivery_note"
+            type="INTEGER"
+            content-align="center"
+          ></o-table-column>
+          <o-table-column
+            attr="scan_date_in"
+            title="scan_date_in"
+            type="date"
+            format="DD/MM/YYYY HH:mm"
+            content-align="center"
+          ></o-table-column>
+          <o-table-column
+            attr="scan_date_out"
+            title="scan_date_out"
+            type="date"
+            format="DD/MM/YYYY HH:mm"
+            content-align="center"
+          ></o-table-column>
+
+          <o-table-column
+            attr="resultState"
+            title="resultState"
+            class="o-table-column-centered"
+            searchable="no"
+          >
+            <app-results-state-render></app-results-state-render>
+          </o-table-column>
+          <o-table-column
+            attr="area_name"
+            title="area_name"
+            type="string"
+            content-align="center"
+          ></o-table-column>
+          <o-table-column
+            attr="id_scan_result"
+            title="ID"
+            sql-type="INTEGER"
+            width="150px"
+            content-align="center"
+          ></o-table-column>
+        </o-table>
+      </div>
+      <div #scantablaaux2 id="tabla_aux">
+        <o-table
+          #scanTable2
+          attr="scanTable2"
+          delete-button="no"
+          insert-button="no"
+          service="scans"
+          entity="scanData"
+          keys="id_scan_result"
+          columns="id_scan_result;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
+          visible-columns="resultState;plate;trailer_plate;delivery_note;scan_date_in;scan_date_out;area_name"
+          sort-columns="scan_date_in:DESC"
+          virtual-scroll="no"
+          quick-filter="true"
+          filter-case-sensitive="true"
+          refresh-button="true"
           show-page-size="no"
           query-rows="15"
           fxFill

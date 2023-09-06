@@ -14,6 +14,7 @@
     <GeneratedKey>id_scan_result</GeneratedKey>
     <Queries>
         <Query id="data">
+            <!-- ORDER BY s.id_scan_result, s.delivery_note -->
             <Sentence>
                 <![CDATA[
                 WITH consulta as(
@@ -29,11 +30,11 @@
                         s.id_trailer = tra.id_trailer
                     LEFT JOIN PUBLIC.storage_area sa on
                         s.id_area = sa.id_area
-                ORDER BY s.id_scan_result, s.delivery_note
                 )
                 SELECT #COLUMNS#
                 FROM consulta
                  #WHERE#
+                #ORDER#
                 ]]>
             </Sentence>
         </Query>
