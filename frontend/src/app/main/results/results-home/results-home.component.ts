@@ -114,7 +114,7 @@ export class ResultsHomeComponent implements OnInit {
 
   /*name of the excel-file which will be downloaded. */
 
-  @ViewChild("scanTable", { static: false }) scanTable: OTableComponent;
+  @ViewChild("scanTable2", { static: false }) scanTable: OTableComponent;
 
   // date() {
   //   let today = new Date();
@@ -128,15 +128,40 @@ export class ResultsHomeComponent implements OnInit {
   // }
 
   exportExcel() {
-    let data = this.scanTable.getAllRenderedValues();
-    data.forEach((fil) => {
-      let translate_to =
-        fil["scan_date_out"] === undefined ? "En curso" : "Completado";
+    let data = this.scanTable.getAllValues();
+    let cols_to_del = ["id_scan_result"];
+    let excel_data = data.map((fil) => {
+      let ret = {};
+      for (let key of Object.keys(fil)) {
+        if (cols_to_del.includes(key)) continue;
+        ret[key] = fil[key];
+      }
+      return ret;
+    });
+    let limit_date = new Date();
+    limit_date.setHours(limit_date.getHours() - 3);
+    excel_data.forEach((fil) => {
+      let translate_to: string;
+      let scan_date_in = new Date(fil["scan_date_in"]);
+      let scan_date_out = new Date(fil["scan_date_out"]);
+      if (fil["scan_date_out"] === undefined && scan_date_in >= limit_date) {
+        translate_to = "En curso";
+      } else if (
+        fil["scan_date_out"] === undefined &&
+        scan_date_in <= limit_date
+      ) {
+        translate_to = "Error";
+      } else {
+        fil["scan_date_out"] = scan_date_out;
+        translate_to = "Completado";
+      }
+      fil["scan_date_in"] = scan_date_in;
+      // fil["scan_date_out"] === undefined ? "En curso" : "Completado";
       fil["resultState"] = this.translate.get(translate_to);
     });
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(excel_data);
     ws["!cols"] = [];
-    Object.keys(data[0]).forEach((cell: any) => {
+    Object.keys(excel_data[0]).forEach((cell: any) => {
       const colWidth = 140;
       ws["!cols"].push({
         wpx: colWidth,
