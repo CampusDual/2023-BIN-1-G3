@@ -54,15 +54,18 @@ export class GraphsHomeComponent implements OnInit {
     this.chartParameters.showLegend = true;
     this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
-    translate.onLanguageChanged.subscribe(() => {
-      // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
-      this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
-      if (!this.chartData === undefined) {
-        this.chartData[0]["key"] = this.translate.get("graph");
+    this.translateServiceSubscription = translate.onLanguageChanged.subscribe(
+      () => {
+        // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
+        this.chartParameters.noDataMessage =
+          this.translate.get("noDataMessage");
+        if (!this.chartData === undefined) {
+          this.chartData[0]["key"] = this.translate.get("graph");
+        }
+        this.graph.setDataArray(this.chartData);
+        this.graph.reloadData();
       }
-      this.graph.setDataArray(this.chartData);
-      this.graph.reloadData();
-    });
+    );
   }
 
   // fetchTranslation() {
@@ -76,6 +79,7 @@ export class GraphsHomeComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
+    this.translateServiceSubscription.unsubscribe();
     if (this.http) {
       this.http.delete;
     }

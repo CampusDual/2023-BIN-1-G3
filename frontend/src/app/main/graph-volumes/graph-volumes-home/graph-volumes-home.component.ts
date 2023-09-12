@@ -65,18 +65,21 @@ export class GraphVolumesHomeComponent implements OnInit {
     this.chartParameters = new MultiBarChartConfiguration();
     this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
-    translate.onLanguageChanged.subscribe(() => {
-      // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
-      this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
-      if (!this.chartData === undefined) {
-        this.chartData[0]["key"] = this.translate.get("graphvolume");
-        this.chartData[1]["key"] = this.translate.get("graphvolume2");
-        this.chartData[2]["key"] = this.translate.get("graphvolume3");
-      }
+    this.translateServiceSubscription = translate.onLanguageChanged.subscribe(
+      () => {
+        // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
+        this.chartParameters.noDataMessage =
+          this.translate.get("noDataMessage");
+        if (!this.chartData === undefined) {
+          this.chartData[0]["key"] = this.translate.get("graphvolume");
+          this.chartData[1]["key"] = this.translate.get("graphvolume2");
+          this.chartData[2]["key"] = this.translate.get("graphvolume3");
+        }
 
-      this.graphvolume.setDataArray(this.chartData);
-      this.graphvolume.reloadData();
-    });
+        this.graphvolume.setDataArray(this.chartData);
+        this.graphvolume.reloadData();
+      }
+    );
   }
 
   // fetchTranslation() {
@@ -118,6 +121,7 @@ export class GraphVolumesHomeComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
+    this.translateServiceSubscription.unsubscribe();
     if (this.http) {
       this.http.delete;
     }
