@@ -39,7 +39,7 @@
   "Entry_Filters": "Entrada de filtros",
   "Date": "Fecha",
   "INIT": "Inicio",
-  "END": "Final",
+  "END": "Fin",
   "FILTER": "Filtrar",
   "CLEAR": "Limpiar",
   "GRAPHS": "Gráficas",
@@ -70,6 +70,8 @@
   "TRAILER DETAILS": "Detalles remolque",
   "LANG_es": "Español",
   "LANG_en": "Inglés",
+  "LANG_gl": "Gallego",
+  "LANG_pt": "Portugués",
   "THEME": "Tema",
   "DARK_MODE": "Modo oscuro",
   "DATOS": "Datos",
@@ -98,5 +100,12 @@
   "RESULTS": "Resultados escaneo",
   "RESULT": "Resultado escaneo",
   "graficacamion": "Entrada camiones",
-  "graficacarga": "Volumen carga"
+  "graficacarga": "Volumen carga",
+  "SPANISH": "Español",
+  "GALICIAN": "Gallego",
+  "ENGLISH": "Inglés",
+  "PORTUGUESE": "Portugués",
+  "LOCALE_gl": "GL",
+  "Grouped": "Agrupada",
+  "Stacked": "Apilada"
 }

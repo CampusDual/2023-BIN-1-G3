@@ -70,6 +70,8 @@
   "TRAILER DETAILS": "Trailer details",
   "LANG_es": "Spanish",
   "LANG_en": "English",
+  "LANG_gl": "Galician",
+  "LANG_pt": "Portuguese",
   "THEME": "Theme",
   "DARK_MODE": "Dark mode",
   "DATOS": "Data",
@@ -98,5 +100,10 @@
   "RESULTS": "Scan results",
   "RESULT": "Scan result",
   "graficacamion": "Truck entries",
-  "graficacarga": "Load volume"
+  "graficacarga": "Load volume",
+  "SPANISH": "Spanish",
+  "GALICIAN": "Galician",
+  "ENGLISH": "English",
+  "PORTUGUESE": "Portuguese",
+  "LOCALE_gl": "GL"
 }

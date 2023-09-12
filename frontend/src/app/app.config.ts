@@ -18,7 +18,7 @@ export const CONFIG: Config = {
   title: "JEE seed",
 
   //  Language of the application.
-  locale: "en",
+  locale: "es",
 
   // The service type used (Ontimize REST standart, Ontimize REST JEE
   // or custom implementation) in the whole application.
@@ -29,7 +29,7 @@ export const CONFIG: Config = {
 
   appMenuConfiguration: MENU_CONFIG,
 
-  applicationLocales: ["es", "en"],
+  applicationLocales: ["es", "en", "pt", "gl"],
 
   exportConfiguration: {
     path: "/export",
