@@ -7,11 +7,17 @@ import {
   LinePlusBarFocusChartConfiguration,
   ChartService,
 } from "ontimize-web-ngx-charts";
-import { FilterExpressionUtils, Expression, OTableButtonsComponent, OTableComponent, OTableInitializationOptions } from "ontimize-web-ngx";
+import {
+  FilterExpressionUtils,
+  Expression,
+  OTableButtonsComponent,
+  OTableComponent,
+  OTableInitializationOptions,
+} from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { OTranslateService } from "ontimize-web-ngx";
 import { TranslateService } from "@ngx-translate/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-graphs-home",
@@ -20,14 +26,12 @@ import { HttpClient } from '@angular/common/http';
 })
 @Component({
   selector: "line",
-  template: `
-    <p>{{ translatedWord }}</p>
-  `
+  template: ` <p>{{ translatedWord }}</p> `,
   //templateUrl: './line.component.html'
 })
 export class GraphsHomeComponent implements OnInit {
   @ViewChild("graph", { static: false }) graph: OChartComponent;
-  
+
   chartParameters: LineChartConfiguration;
 
   chartData: Array<Object>;
@@ -35,8 +39,12 @@ export class GraphsHomeComponent implements OnInit {
 
   private translateServiceSubscription: Subscription;
 
-
-  constructor(private router: Router, private actRoute: ActivatedRoute, private http: HttpClient, private translate: OTranslateService) {
+  constructor(
+    private router: Router,
+    private actRoute: ActivatedRoute,
+    private http: HttpClient,
+    private translate: OTranslateService
+  ) {
     this.chartParameters = new LineChartConfiguration();
     this.chartParameters.isArea = [false];
     this.chartParameters.interactive = true;
@@ -44,10 +52,15 @@ export class GraphsHomeComponent implements OnInit {
     // this.chartParameters.legend.vers = 'furious';
     // this.fetchTranslation();
     this.chartParameters.showLegend = true;
+    this.chartParameters = new LineChartConfiguration();
+    this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
     translate.onLanguageChanged.subscribe(() => {
       // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
-      this.chartData[0]['key'] = this.translate.get('graph');
+      this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
+      if (!this.chartData === undefined) {
+        this.chartData[0]["key"] = this.translate.get("graph");
+      }
       this.graph.setDataArray(this.chartData);
       this.graph.reloadData();
     });
@@ -103,8 +116,7 @@ export class GraphsHomeComponent implements OnInit {
     this.router.navigate(["../", "login"], { relativeTo: this.actRoute });
   }
 
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 
   dataLoaded(event: any) {
     this.chartData = this.adaptResult(event);
@@ -115,9 +127,9 @@ export class GraphsHomeComponent implements OnInit {
     let values = this.processValues(data);
     return [
       {
-        key: this.translate.get('graph'),
+        key: this.translate.get("graph"),
         values: values,
-        color: '#e74c3c'
+        color: "#e74c3c",
       },
     ];
   }

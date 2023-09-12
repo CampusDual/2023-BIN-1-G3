@@ -105,5 +105,6 @@
   "GALICIAN": "Galician",
   "ENGLISH": "English",
   "PORTUGUESE": "Portuguese",
-  "LOCALE_gl": "GL"
+  "LOCALE_gl": "GL",
+  "noDataMessage": "No data available"
 }

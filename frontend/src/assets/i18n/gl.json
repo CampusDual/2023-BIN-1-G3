@@ -383,5 +383,6 @@
   "FILTERBUILDERMENU.BUTTONS.CLEAR_FILTER": "Limpar filtro",
   "FILTERBUILDERMENU.DIALOG.CONFIRM_CLEAR_FILTER": "Esta acción limpará todos os filtros desta sección. Desexa continuar?",
   "OIMAGE.TEXT.DROP&DRAG": "Arrastra e solta a imaxe aquí",
-  "OIMAGE.BUTTON.BROWSEFILE": "Seleccionar imaxen"
+  "OIMAGE.BUTTON.BROWSEFILE": "Seleccionar imaxen",
+  "noDataMessage": "Non hai datos dispoñibles"
 }

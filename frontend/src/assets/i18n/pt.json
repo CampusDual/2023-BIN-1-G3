@@ -101,5 +101,6 @@
   "ENGLISH": "Inglés",
   "PORTUGUESE": "Portugués",
   "LOCALE_gl": "GL",
-  "APP_LAYOUT.SETTINGS": "configuração"
+  "APP_LAYOUT.SETTINGS": "configuração",
+  "noDataMessage": "Não há dados disponíveis"
 }

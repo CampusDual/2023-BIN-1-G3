@@ -107,5 +107,6 @@
   "PORTUGUESE": "Portugués",
   "LOCALE_gl": "GL",
   "Grouped": "Agrupada",
-  "Stacked": "Apilada"
+  "Stacked": "Apilada",
+  "noDataMessage": "No hay datos disponibles"
 }

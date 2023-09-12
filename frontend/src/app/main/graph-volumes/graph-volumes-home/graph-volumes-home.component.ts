@@ -10,12 +10,15 @@ import {
   OChartComponent,
   LineChartConfiguration,
   ChartService,
+  MultiBarChartConfiguration,
 } from "ontimize-web-ngx-charts";
 import { FilterExpressionUtils, Expression } from "ontimize-web-ngx";
 import { Subscription } from "rxjs";
 import { OTranslateService } from "ontimize-web-ngx";
 // import { TranslateService } from "@ngx-translate/core";
 import { HttpClient } from "@angular/common/http";
+import { D3LocaleOptions } from "ontimize-web-ngx-charts";
+import { D3LocaleService } from "ontimize-web-ngx-charts/lib/services/d3Locale.service";
 
 declare var d3: any;
 
@@ -32,7 +35,7 @@ declare var d3: any;
 export class GraphVolumesHomeComponent implements OnInit {
   @ViewChild("graphvolume", { static: false }) graphvolume: OChartComponent;
 
-  chartParameters: LineChartConfiguration;
+  chartParameters: MultiBarChartConfiguration;
 
   protected data: Array<Object>;
 
@@ -40,6 +43,7 @@ export class GraphVolumesHomeComponent implements OnInit {
   protected xAxis: string = "DATE_";
 
   chartData: Array<Object>;
+  chartData2: Object;
   translatedWord: string;
 
   private translateServiceSubscription: Subscription;
@@ -58,12 +62,18 @@ export class GraphVolumesHomeComponent implements OnInit {
     // // this.chartParameters.legend.vers = 'furious';
     // // this.fetchTranslation();
     // this.chartParameters.showLegend = true;
+    this.chartParameters = new MultiBarChartConfiguration();
+    this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
     translate.onLanguageChanged.subscribe(() => {
       // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
-      this.chartData[0]["key"] = this.translate.get("graphvolume");
-      this.chartData[1]["key"] = this.translate.get("graphvolume2");
-      this.chartData[2]["key"] = this.translate.get("graphvolume3");
+      this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
+      if (!this.chartData === undefined) {
+        this.chartData[0]["key"] = this.translate.get("graphvolume");
+        this.chartData[1]["key"] = this.translate.get("graphvolume2");
+        this.chartData[2]["key"] = this.translate.get("graphvolume3");
+      }
+
       this.graphvolume.setDataArray(this.chartData);
       this.graphvolume.reloadData();
     });
