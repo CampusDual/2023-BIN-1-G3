@@ -52,7 +52,6 @@ export class GraphsHomeComponent implements OnInit {
     // this.chartParameters.legend.vers = 'furious';
     // this.fetchTranslation();
     this.chartParameters.showLegend = true;
-    this.chartParameters = new LineChartConfiguration();
     this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
     translate.onLanguageChanged.subscribe(() => {
