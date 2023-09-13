@@ -46,12 +46,12 @@ export class GraphsHomeComponent implements OnInit {
     private translate: OTranslateService
   ) {
     this.chartParameters = new LineChartConfiguration();
-    this.chartParameters.isArea = [false];
-    this.chartParameters.interactive = true;
-    this.chartParameters.useInteractiveGuideline = false;
-    // this.chartParameters.legend.vers = 'furious';
-    // this.fetchTranslation();
-    this.chartParameters.showLegend = true;
+    // this.chartParameters.isArea = [false];
+    // this.chartParameters.interactive = true;
+    // this.chartParameters.useInteractiveGuideline = false;
+    // // this.chartParameters.legend.vers = 'furious';
+    // // this.fetchTranslation();
+    // this.chartParameters.showLegend = true;
     this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
 
     this.translateServiceSubscription = translate.onLanguageChanged.subscribe(
@@ -60,7 +60,8 @@ export class GraphsHomeComponent implements OnInit {
         this.chartParameters.noDataMessage =
           this.translate.get("noDataMessage");
         if (this.chartData) {
-          this.chartData[0]["key"] = this.translate.get("graph");
+          this.chartData[0]["key"] = this.translate.get("N_ENTRADAS");
+          this.chartData[1]["key"] = this.translate.get("N_SALIDAS");
         }
         this.graph.setDataArray(this.chartData);
         this.graph.reloadData();
@@ -130,24 +131,36 @@ export class GraphsHomeComponent implements OnInit {
     let values = this.processValues(data);
     return [
       {
-        key: this.translate.get("graph"),
-        values: values,
-        color: "#e74c3c",
+        key: this.translate.get("N_ENTRADAS"),
+        values: values["conteo_in"],
+        color: "#6002EE",
+      },
+      {
+        key: this.translate.get("N_SALIDAS"),
+        values: values["conteo_out"],
+        color: "#90ee02",
       },
     ];
   }
   processValues(data: any) {
-    let values = [];
+    let values = {
+      conteo_in: [],
+      conteo_out: [],
+    };
     data.forEach(function (d) {
       let date = d.date;
-      let conteo = d.conteo;
-
-      let entrada = {
+      let conteo_in = d.conteo_in;
+      let conteo_out = d.conteo_out;
+      let entrada_in = {
         x: date,
-        y: conteo,
+        y: conteo_in,
       };
-
-      values.push(entrada);
+      let entrada_out = {
+        x: date,
+        y: conteo_out,
+      };
+      values["conteo_in"].push(entrada_in);
+      values["conteo_out"].push(entrada_out);
     });
 
     return values;

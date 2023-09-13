@@ -71,25 +71,31 @@
         <Query id="groupByDate">
             <Sentence>
                 <![CDATA[
-                WITH t_query AS (
-                    WITH date_range AS (
-                            SELECT
-                                generate_series( (SELECT MIN(scan_date_in)
-                            FROM scan),
-                            (
-                                SELECT MAX(scan_date_in)
-                                FROM scan
-                                ), '1 day' )::DATE AS generated_date
-                            )
-                    SELECT date_range.generated_date AS date, COALESCE(conteo, 0) AS conteo
-                    FROM date_range
-                    LEFT JOIN (
-                        SELECT date(scan_date_in) AS fecha, COUNT(*) AS conteo
-                        FROM scan sr
-                        GROUP BY sr.id_dev_in, date(scan_date_in)
-                    )
-                    AS sr_count ON date_range.generated_date = sr_count.fecha
-                    ORDER BY date_range.generated_date
+                    WITH t_query AS (
+                        WITH date_range AS (
+                                SELECT
+                                    generate_series( (SELECT MIN(scan_date_in)
+                                FROM scan),
+                                (
+                                    SELECT MAX(scan_date_in)
+                                    FROM scan
+                                    ), '1 day' )::DATE AS generated_date
+                                )
+                        SELECT date_range.generated_date AS date, COALESCE(conteo1, 0) AS conteo_in, COALESCE(conteo2, 0) AS conteo_out
+                        FROM date_range
+                        LEFT JOIN (
+                            SELECT date(scan_date_in) AS fecha, COUNT(*) AS conteo1
+                            FROM scan sr
+                            GROUP BY sr.id_dev_in, date(scan_date_in)
+                        )
+                        AS sr_count ON date_range.generated_date = sr_count.fecha
+                        LEFT JOIN (
+                            SELECT date(scan_date_out) AS fecha, COUNT(*) AS conteo2
+                            FROM scan sr2
+                            GROUP BY sr2.id_dev_out, date(scan_date_out)
+                        )
+                        AS sr_count2 ON date_range.generated_date = sr_count2.fecha
+                        ORDER BY date_range.generated_date
                 )
                 SELECT #COLUMNS#
                 FROM t_query

@@ -14,11 +14,12 @@ export class AreasHomeComponent implements OnInit {
 
   constructor(private translate: OTranslateService) {
     this.chartParameters = new PieChartConfiguration();
-    this.chartParameters.cornerRadius = 20;
+    this.chartParameters.cornerRadius = 10;
     // this.chartParameters.labelType = "value";
     this.chartParameters.showLeyend = false;
     this.chartParameters.showTooltip = true;
     this.chartParameters.noDataMessage = this.translate.get("noDataMessage");
+    this.chartParameters.labelSunbeamLayout = true;
 
     this.translateServiceSubscription = translate.onLanguageChanged.subscribe(
       () => {

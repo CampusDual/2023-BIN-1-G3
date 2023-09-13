@@ -76,7 +76,7 @@
       x-label="Tiempo"
       y-label="Entradas"
       x-axis="date"
-      y-axis="conteo"
+      y-axis="conteo_in;conteo_out"
       [chart-parameters]="chartParameters"
       x-data-type="time"
     >
@@ -93,8 +93,8 @@
         insert-button="no"
         delete-button="no"
         (onDataLoaded)="dataLoaded($event)"
-        columns="date;conteo"
-        visible-columns="date;conteo"
+        columns="date;conteo_in;conteo_out"
+        visible-columns="date;conteo_in;conteo_out"
         query-rows="10"
       >
         <!-- <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes"
@@ -107,7 +107,7 @@
           content-align="center"
         ></o-table-column>
         <o-table-column
-          attr="conteo"
+          attr="conteo_in"
           type="number"
           fxFlex="50"
           content-align="center"
