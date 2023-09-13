@@ -59,7 +59,7 @@ export class GraphsHomeComponent implements OnInit {
         // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
         this.chartParameters.noDataMessage =
           this.translate.get("noDataMessage");
-        if (!this.chartData === undefined) {
+        if (this.chartData) {
           this.chartData[0]["key"] = this.translate.get("graph");
         }
         this.graph.setDataArray(this.chartData);

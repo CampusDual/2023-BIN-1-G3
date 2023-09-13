@@ -70,7 +70,8 @@ export class GraphVolumesHomeComponent implements OnInit {
         // let result = Object.keys(this.chartData).map((key) => [key, this.chartData[key]]);
         this.chartParameters.noDataMessage =
           this.translate.get("noDataMessage");
-        if (!this.chartData === undefined) {
+        //if (this.chartData !== undefined) {
+        if (this.chartData) {
           this.chartData[0]["key"] = this.translate.get("graphvolume");
           this.chartData[1]["key"] = this.translate.get("graphvolume2");
           this.chartData[2]["key"] = this.translate.get("graphvolume3");
