@@ -10,7 +10,7 @@
     disable-close="false"
     title="AREA"
   ></o-form-layout-dialog-options>
-  <div fxFill fxLayout="column" fxLayoutAlign="start">
+  <div fxFill fxLayout="row" fxLayoutAlign="start">
     <o-table
       attr="areasTable"
       service="master"
@@ -21,14 +21,16 @@
       visible-columns="area_name;current_load;maximum_capacity"
       query-rows="15"
       delete-button="no"
+      fxFlex="50"
     >
       <o-table-column
         attr="id_area"
         title="id_area"
         sql-type="INTEGER"
         orderable="yes"
-        width="100px"
         content-align="center"
+        hidden="true"
+        fxFlex
       ></o-table-column>
       <o-table-column
         attr="area_name"
@@ -36,6 +38,7 @@
         type="string"
         orderable="yes"
         content-align="center"
+        fxFlex
       ></o-table-column>
       <o-table-column
         attr="current_load"
@@ -46,6 +49,7 @@
         max-decimal-digits="0"
         class="o-table-column-centered"
         content-align="center"
+        fxFlex
       ></o-table-column>
       <o-table-column
         attr="maximum_capacity"
@@ -56,15 +60,18 @@
         max-decimal-digits="0"
         class="o-table-column-centered"
         content-align="center"
+        fxFlex
       ></o-table-column>
     </o-table>
     <o-chart
+      fxFlex="50"
       type="pie"
       layout-fill
       service="master"
       entity="area"
       x-axis="area_name"
       y-axis="current_load"
+      [chart-parameters]="chartParameters"
     ></o-chart>
   </div>
 </o-form-layout-manager>
