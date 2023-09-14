@@ -1,0 +1,659 @@
+-- DROP SCHEMA public;
+
+CREATE SCHEMA public AUTHORIZATION postgres;
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+-- DROP SEQUENCE public.device_id_device_seq;
+
+CREATE SEQUENCE public.device_id_device_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.device_id_device_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.device_id_device_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.scan_id_scan_result_seq;
+
+CREATE SEQUENCE public.scan_id_scan_result_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.scan_id_scan_result_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.scan_id_scan_result_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.scan_result_id_scan_result_seq;
+
+CREATE SEQUENCE public.scan_result_id_scan_result_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.scan_result_id_scan_result_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.scan_result_id_scan_result_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.storage_area_id_area_seq;
+
+CREATE SEQUENCE public.storage_area_id_area_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 9223372036854775807
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.storage_area_id_area_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.storage_area_id_area_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.storage_area_id_area_seq1;
+
+CREATE SEQUENCE public.storage_area_id_area_seq1
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.storage_area_id_area_seq1 OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.storage_area_id_area_seq1 TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.ti18n_id_i18n_seq;
+
+CREATE SEQUENCE public.ti18n_id_i18n_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.ti18n_id_i18n_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.ti18n_id_i18n_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.ti18n_value_id_i18n_value_seq;
+
+CREATE SEQUENCE public.ti18n_value_id_i18n_value_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.ti18n_value_id_i18n_value_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.ti18n_value_id_i18n_value_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.trailer_id_trailer_seq;
+
+CREATE SEQUENCE public.trailer_id_trailer_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.trailer_id_trailer_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.trailer_id_trailer_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.trole_id_rolename_seq;
+
+CREATE SEQUENCE public.trole_id_rolename_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.trole_id_rolename_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.trole_id_rolename_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.trole_server_permission_id_role_server_permission_seq;
+
+CREATE SEQUENCE public.trole_server_permission_id_role_server_permission_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.trole_server_permission_id_role_server_permission_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.trole_server_permission_id_role_server_permission_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.truck_id_truck_seq;
+
+CREATE SEQUENCE public.truck_id_truck_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.truck_id_truck_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.truck_id_truck_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.tserver_permission_id_server_permission_seq;
+
+CREATE SEQUENCE public.tserver_permission_id_server_permission_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.tserver_permission_id_server_permission_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.tserver_permission_id_server_permission_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.tsetting_id_setting_seq;
+
+CREATE SEQUENCE public.tsetting_id_setting_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.tsetting_id_setting_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.tsetting_id_setting_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.tuser_preference_id_user_preference_seq;
+
+CREATE SEQUENCE public.tuser_preference_id_user_preference_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.tuser_preference_id_user_preference_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.tuser_preference_id_user_preference_seq TO "2023-BIN-1-G3";
+
+-- DROP SEQUENCE public.tuser_role_id_user_role_seq;
+
+CREATE SEQUENCE public.tuser_role_id_user_role_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+-- Permissions
+
+ALTER SEQUENCE public.tuser_role_id_user_role_seq OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON SEQUENCE public.tuser_role_id_user_role_seq TO "2023-BIN-1-G3";
+-- public.device definition
+
+-- Drop table
+
+-- DROP TABLE public.device;
+
+CREATE TABLE public.device (
+	id_device serial4 NOT NULL,
+	dev varchar(10) NOT NULL,
+	CONSTRAINT device_pkey PRIMARY KEY (id_device)
+);
+
+-- Permissions
+
+ALTER TABLE public.device OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.device TO "2023-BIN-1-G3";
+
+
+-- public.scan_result definition
+
+-- Drop table
+
+-- DROP TABLE public.scan_result;
+
+CREATE TABLE public.scan_result (
+	id_scan_result serial4 NOT NULL,
+	dev varchar(10) NOT NULL,
+	"date" timestamp NOT NULL,
+	scan_volume float8 NOT NULL,
+	calculated_volume float8 NULL,
+	plate varchar(8) NOT NULL,
+	height float8 NOT NULL,
+	width float8 NOT NULL,
+	length float8 NOT NULL,
+	trailer_plate varchar(8) NULL,
+	delivery_note int8 NOT NULL,
+	CONSTRAINT scan_result_pkey PRIMARY KEY (id_scan_result)
+);
+
+-- Permissions
+
+ALTER TABLE public.scan_result OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.scan_result TO "2023-BIN-1-G3";
+
+
+-- public.storage_area definition
+
+-- Drop table
+
+-- DROP TABLE public.storage_area;
+
+CREATE TABLE public.storage_area (
+	id_area serial4 NOT NULL,
+	area_name varchar(255) NOT NULL,
+	current_load float8 NOT NULL,
+	maximum_capacity float8 NOT NULL,
+	CONSTRAINT storage_area1_area_name_key UNIQUE (area_name),
+	CONSTRAINT storage_area_pkey PRIMARY KEY (id_area)
+);
+
+-- Permissions
+
+ALTER TABLE public.storage_area OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.storage_area TO "2023-BIN-1-G3";
+
+
+-- public.ti18n definition
+
+-- Drop table
+
+-- DROP TABLE public.ti18n;
+
+CREATE TABLE public.ti18n (
+	id_i18n serial4 NOT NULL,
+	class_name varchar(150) NULL,
+	i18n_description varchar(250) NULL,
+	CONSTRAINT ti18n_pkey PRIMARY KEY (id_i18n)
+);
+
+-- Permissions
+
+ALTER TABLE public.ti18n OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.ti18n TO "2023-BIN-1-G3";
+
+
+-- public.ti18n_value definition
+
+-- Drop table
+
+-- DROP TABLE public.ti18n_value;
+
+CREATE TABLE public.ti18n_value (
+	id_i18n_value serial4 NOT NULL,
+	id_i18n int4 NOT NULL,
+	"key" varchar(250) NULL,
+	es_es varchar(10485760) NULL,
+	en_us varchar(10485760) NULL,
+	gl_es varchar(10485760) NULL,
+	CONSTRAINT ti18n_value_pkey PRIMARY KEY (id_i18n_value)
+);
+
+-- Permissions
+
+ALTER TABLE public.ti18n_value OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.ti18n_value TO "2023-BIN-1-G3";
+
+
+-- public.trailer definition
+
+-- Drop table
+
+-- DROP TABLE public.trailer;
+
+CREATE TABLE public.trailer (
+	id_trailer serial4 NOT NULL,
+	trailer_plate varchar(8) NOT NULL,
+	CONSTRAINT trailer_pkey PRIMARY KEY (id_trailer),
+	CONSTRAINT trailer_trailer_plate_key UNIQUE (trailer_plate)
+);
+
+-- Permissions
+
+ALTER TABLE public.trailer OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.trailer TO "2023-BIN-1-G3";
+
+
+-- public.trequest_statistics definition
+
+-- Drop table
+
+-- DROP TABLE public.trequest_statistics;
+
+CREATE TABLE public.trequest_statistics (
+	id_request_statistics int4 NOT NULL,
+	service_name varchar(255) NULL,
+	method_name varchar(50) NULL,
+	user_name varchar(50) NULL,
+	execution_date date NULL,
+	execution_time int4 NULL,
+	method_params varchar(5000) NULL,
+	service_exception varchar(5000) NULL,
+	CONSTRAINT trequest_statistics_pkey PRIMARY KEY (id_request_statistics)
+);
+
+-- Permissions
+
+ALTER TABLE public.trequest_statistics OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.trequest_statistics TO "2023-BIN-1-G3";
+
+
+-- public.trole definition
+
+-- Drop table
+
+-- DROP TABLE public.trole;
+
+CREATE TABLE public.trole (
+	id_rolename serial4 NOT NULL,
+	rolename varchar(255) NULL,
+	xmlclientpermission varchar(10485760) NULL,
+	CONSTRAINT trole_pkey PRIMARY KEY (id_rolename)
+);
+
+-- Permissions
+
+ALTER TABLE public.trole OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.trole TO "2023-BIN-1-G3";
+
+
+-- public.truck definition
+
+-- Drop table
+
+-- DROP TABLE public.truck;
+
+CREATE TABLE public.truck (
+	id_truck serial4 NOT NULL,
+	plate varchar(8) NOT NULL,
+	ttype int4 NOT NULL DEFAULT 0,
+	CONSTRAINT truck_pkey PRIMARY KEY (id_truck),
+	CONSTRAINT truck_plate_key UNIQUE (plate)
+);
+
+-- Permissions
+
+ALTER TABLE public.truck OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.truck TO "2023-BIN-1-G3";
+
+
+-- public.tserver_permission definition
+
+-- Drop table
+
+-- DROP TABLE public.tserver_permission;
+
+CREATE TABLE public.tserver_permission (
+	id_server_permission serial4 NOT NULL,
+	permission_name varchar(10485760) NULL,
+	CONSTRAINT tserver_permission_pkey PRIMARY KEY (id_server_permission)
+);
+
+-- Permissions
+
+ALTER TABLE public.tserver_permission OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.tserver_permission TO "2023-BIN-1-G3";
+
+
+-- public.tsetting definition
+
+-- Drop table
+
+-- DROP TABLE public.tsetting;
+
+CREATE TABLE public.tsetting (
+	id_setting serial4 NOT NULL,
+	setting_key varchar(10485760) NULL,
+	setting_value varchar(10485760) NULL,
+	setting_comment varchar(10485760) NULL,
+	CONSTRAINT tsetting_pkey PRIMARY KEY (id_setting)
+);
+
+-- Permissions
+
+ALTER TABLE public.tsetting OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.tsetting TO "2023-BIN-1-G3";
+
+
+-- public.tuser definition
+
+-- Drop table
+
+-- DROP TABLE public.tuser;
+
+CREATE TABLE public.tuser (
+	user_ varchar(50) NOT NULL,
+	"password" varchar(255) NULL,
+	"name" varchar(50) NULL,
+	surname varchar(50) NULL,
+	email varchar(50) NULL,
+	nif varchar(50) NULL,
+	userblocked timestamp NULL,
+	lastpasswordupdate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+	firstlogin bool NULL DEFAULT true,
+	CONSTRAINT tuser_pkey PRIMARY KEY (user_)
+);
+
+-- Permissions
+
+ALTER TABLE public.tuser OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.tuser TO "2023-BIN-1-G3";
+
+
+-- public.tuser_preference definition
+
+-- Drop table
+
+-- DROP TABLE public.tuser_preference;
+
+CREATE TABLE public.tuser_preference (
+	id_user_preference serial4 NOT NULL,
+	preference_name varchar(150) NULL,
+	user_login varchar(150) NULL,
+	preference_value varchar(10485760) NULL,
+	CONSTRAINT tuser_preference_pkey PRIMARY KEY (id_user_preference)
+);
+
+-- Permissions
+
+ALTER TABLE public.tuser_preference OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.tuser_preference TO "2023-BIN-1-G3";
+
+
+-- public.scan definition
+
+-- Drop table
+
+-- DROP TABLE public.scan;
+
+CREATE TABLE public.scan (
+	id_scan_result serial4 NOT NULL,
+	id_dev_in int4 NULL,
+	id_dev_out int4 NULL,
+	scan_date_in timestamp NULL,
+	scan_date_out timestamp NULL,
+	scan_volume_in float8 NULL,
+	scan_volume_out float8 NULL,
+	calculated_volume float8 NULL,
+	theight float8 NOT NULL,
+	twidth float8 NOT NULL,
+	tlength float8 NOT NULL,
+	delivery_note varchar NOT NULL,
+	id_truck int4 NULL,
+	id_trailer int4 NULL,
+	id_area int4 NULL,
+	CONSTRAINT scan_pkey PRIMARY KEY (id_scan_result),
+	CONSTRAINT fk_scan_area FOREIGN KEY (id_area) REFERENCES public.storage_area(id_area),
+	CONSTRAINT scan_fk FOREIGN KEY (id_truck) REFERENCES public.truck(id_truck),
+	CONSTRAINT scan_fk_1 FOREIGN KEY (id_trailer) REFERENCES public.trailer(id_trailer),
+	CONSTRAINT scan_id_dev_in_fkey FOREIGN KEY (id_dev_in) REFERENCES public.device(id_device),
+	CONSTRAINT scan_id_dev_out_fkey FOREIGN KEY (id_dev_out) REFERENCES public.device(id_device)
+);
+
+-- Permissions
+
+ALTER TABLE public.scan OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.scan TO "2023-BIN-1-G3";
+
+
+-- public.trole_server_permission definition
+
+-- Drop table
+
+-- DROP TABLE public.trole_server_permission;
+
+CREATE TABLE public.trole_server_permission (
+	id_role_server_permission serial4 NOT NULL,
+	id_rolename int4 NULL,
+	id_server_permission int4 NULL,
+	CONSTRAINT trole_server_permission_pkey PRIMARY KEY (id_role_server_permission),
+	CONSTRAINT fk_trole_server_permission FOREIGN KEY (id_rolename) REFERENCES public.trole(id_rolename),
+	CONSTRAINT fk_tserver_permission FOREIGN KEY (id_server_permission) REFERENCES public.tserver_permission(id_server_permission)
+);
+
+-- Permissions
+
+ALTER TABLE public.trole_server_permission OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.trole_server_permission TO "2023-BIN-1-G3";
+
+
+-- public.tuser_role definition
+
+-- Drop table
+
+-- DROP TABLE public.tuser_role;
+
+CREATE TABLE public.tuser_role (
+	id_user_role serial4 NOT NULL,
+	id_rolename int4 NULL,
+	user_ varchar(50) NULL,
+	CONSTRAINT tuser_role_pkey PRIMARY KEY (id_user_role),
+	CONSTRAINT fk_trole FOREIGN KEY (id_rolename) REFERENCES public.trole(id_rolename),
+	CONSTRAINT fk_tuser FOREIGN KEY (user_) REFERENCES public.tuser(user_)
+);
+
+-- Permissions
+
+ALTER TABLE public.tuser_role OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.tuser_role TO "2023-BIN-1-G3";
+
+
+-- public.datatrailers source
+
+CREATE OR REPLACE VIEW public.datatrailers
+AS SELECT DISTINCT s.id_trailer,
+    t.trailer_plate,
+    s.theight,
+    s.twidth,
+    s.tlength,
+    s.calculated_volume,
+    s.scan_date_in,
+    s.scan_date_out,
+    t2.plate,
+    s.scan_volume_in,
+    s.scan_volume_out,
+    s.delivery_note
+   FROM scan s
+     LEFT JOIN trailer t ON t.id_trailer = s.id_trailer
+     LEFT JOIN truck t2 ON t2.id_truck = s.id_truck
+  GROUP BY s.id_trailer, t.trailer_plate, t2.plate, s.theight, s.twidth, s.tlength, s.scan_volume_in, s.scan_volume_out, s.calculated_volume, s.scan_date_in, s.scan_date_out, s.delivery_note
+  ORDER BY s.scan_date_in DESC;
+
+-- Permissions
+
+ALTER TABLE public.datatrailers OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.datatrailers TO "2023-BIN-1-G3";
+
+
+-- public.datatrailersresults source
+
+CREATE OR REPLACE VIEW public.datatrailersresults
+AS SELECT DISTINCT s.id_trailer,
+    t.trailer_plate,
+    s.theight,
+    s.twidth,
+    s.tlength,
+    s.calculated_volume,
+    s.scan_date_in,
+    s.scan_date_out
+   FROM scan s
+     LEFT JOIN trailer t ON t.id_trailer = s.id_trailer
+  GROUP BY s.id_trailer, t.trailer_plate, s.theight, s.twidth, s.tlength, s.calculated_volume, s.scan_date_in, s.scan_date_out
+  ORDER BY s.id_trailer, s.calculated_volume;
+
+-- Permissions
+
+ALTER TABLE public.datatrailersresults OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.datatrailersresults TO "2023-BIN-1-G3";
+
+
+-- public.datatrucks source
+
+CREATE OR REPLACE VIEW public.datatrucks
+AS SELECT DISTINCT s.id_truck,
+    t.plate,
+    s.scan_volume_in,
+    s.scan_volume_out,
+    s.calculated_volume,
+    t2.trailer_plate,
+    s.delivery_note,
+    s.scan_date_in,
+    s.scan_date_out
+   FROM truck t
+     LEFT JOIN scan s ON s.id_truck = t.id_truck
+     LEFT JOIN trailer t2 ON t2.id_trailer = s.id_trailer
+  GROUP BY s.id_truck, s.scan_volume_in, s.scan_volume_out, s.calculated_volume, t2.trailer_plate, s.delivery_note, s.scan_date_in, s.scan_date_out, t.plate
+  ORDER BY s.scan_date_in DESC;
+
+-- Permissions
+
+ALTER TABLE public.datatrucks OWNER TO "2023-BIN-1-G3";
+GRANT ALL ON TABLE public.datatrucks TO "2023-BIN-1-G3";
+
+
+
+
+-- Permissions
+
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO public;
