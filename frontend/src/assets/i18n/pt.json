@@ -70,6 +70,8 @@
   "TRAILER DETAILS": "Detalhes do Reboque",
   "LANG_es": "Espanhol",
   "LANG_en": "Inglês",
+  "LANG_gl": "Galego",
+  "LANG_pt": "Português",
   "THEME": "Tema",
   "DARK_MODE": "Modo Escuro",
   "DATOS": "Dados",
@@ -103,8 +105,11 @@
   "SPANISH": "Castelán",
   "GALICIAN": "Galego",
   "ENGLISH": "Inglés",
-  "PORTUGUESE": "Portugués",
+  "PORTUGUESE": "Português",
+  "LOCALE_en": "EN",
+  "LOCALE_es": "ES",
+  "LOCALE_pt": "PT",
   "LOCALE_gl": "GL",
-  "APP_LAYOUT.SETTINGS": "configuração",
+  "APP_LAYOUT.SETTINGS": "Configuração",
   "noDataMessage": "Não há dados disponíveis"
 }
